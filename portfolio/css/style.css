@@ -705,8 +705,8 @@ figcaption {
 /* =========================================================
    12. guide.html
    ========================================================= */
-/* The contents sit on the grid. Seven links can't share twelve
-   columns evenly, so each takes three, four to a row. */
+/* The contents sit on the grid, each link four columns wide,
+   three to a row. */
 .guide-toc {
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
@@ -715,7 +715,8 @@ figcaption {
   margin-top: var(--s6);
   font-size: var(--fs-label);
 }
-.guide-toc a { grid-column: span 3; justify-self: start; }
+.guide-toc a { grid-column: span 4; justify-self: start; }
+@media screen and (max-width: 1023px) { .guide-toc a { grid-column: span 3; } }
 @media screen and (max-width: 640px) { .guide-toc a { grid-column: span 2; } }
 .guide-toc a { color: var(--muted); border-bottom: 1px solid var(--line); }
 .guide-toc a:hover { color: var(--fg); border-color: var(--fg); }
