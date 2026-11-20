@@ -944,3 +944,14 @@ figcaption {
 /* Star 6 ink, lifted so it reads on a phone screen as a faint line. */
 .ink { color: #3d3d3b; }
 .ink .star polygon { fill: #3d3d3b; }
+/* Answer and Add are small filled buttons, tight around the word. */
+.stella-case__code button,
+.stella-box__row button {
+  padding: 2px 8px; border: 0; border-radius: 2px;
+  font-size: var(--fs-label); font-weight: 500; line-height: 1.4;
+}
+.stella-box__row button { background: var(--gold-ink); color: var(--gold); }
+.stella-box__row button:hover { filter: brightness(1.4); }
+.stella-box__row { align-items: center; }
+.stella-example__code span:last-child { padding: 2px 8px; }
+.stella-example__code { align-items: center; }
