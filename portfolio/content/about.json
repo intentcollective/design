@@ -1,0 +1,21 @@
+{
+  "portrait": "",
+  "portraitAlt": "Portrait of Sena Hart",
+  "lead": "Hi, I’m Sena. I design things that make people read twice.",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "I came to graphic design through writing. In my first year at SCAD I kept turning typography assignments into short stories, until a professor told me to stop fighting it and design the story instead. Since then most of my work starts with a sentence and ends as a poster, a book or a film.\n\nWhat I care about is the moment a viewer realizes the form is saying something the words alone can’t. A circle of greetings that becomes a calendar. A book you can’t read in order. I like making that moment, and I like being clear about how I got there, which is why every project on this site shows the process along with the result."
+    },
+    {
+      "type": "text",
+      "heading": "What I’m looking for",
+      "body": "A junior role on a team that cares about ideas, where I can learn from senior designers and still bring my own voice to the work. Editorial, cultural and brand projects interest me most. I’m available from June 2026 and happy to relocate to New York or Chicago."
+    },
+    {
+      "type": "text",
+      "heading": "Outside the studio",
+      "body": "I run a small risograph zine about bus stops. I collect old train timetables for their typography. I’m slowly learning Korean so I can read my grandmother’s letters without help, and I bake bread most Sundays, with mixed results."
+    }
+  ]
+}

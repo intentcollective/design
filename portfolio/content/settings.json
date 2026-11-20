@@ -1,0 +1,43 @@
+{
+  "name": "Sena Hart",
+  "role": "Graphic Designer",
+  "location": "Savannah, Georgia",
+  "email": "hello@example.com",
+  "linkedin": "https://www.linkedin.com/",
+  "website": "senahart.design",
+
+  "headline": ["I build", "{rotate}", "out of words."],
+  "rotatingWords": ["cities", "books", "films", "posters", "arguments"],
+  "intro": "Sena Hart is a graphic designer working where language turns into image. Posters, books and short films about how meaning moves. BFA Graphic Design, SCAD, 2026.",
+
+  "menu": [
+    { "label": "Works", "link": "index.html" },
+    { "label": "Resume", "link": "resume.html" },
+    { "label": "Li", "link": "https://www.linkedin.com/", "newTab": true },
+    { "label": "About", "link": "about.html" }
+  ],
+
+  "works": [
+    "tamara",
+    "octavia",
+    "zobeide",
+    "vital-perception",
+    "four-inks",
+    "dump-your-design"
+  ],
+
+  "resumePdf": "files/sena-hart-resume.pdf",
+  "portfolioPdf": "files/sena-hart-portfolio.pdf",
+
+  "theme": {
+    "background": "#000000",
+    "text": "#f2f2f0",
+    "muted": "#8a8a86",
+    "line": "#2a2a2a",
+    "accent": "#ff3b2f",
+    "font": "DM Sans",
+    "googleFont": false
+  },
+
+  "showGuideLink": true
+}

@@ -1,0 +1,76 @@
+{
+  "summary": "Graphic designer working where language turns into image. I make posters, books and short films that turn ideas into systems people can read. Looking for a junior designer role at a studio or in-house team that values concept as much as craft.",
+  "availability": "Available June 2026. Open to New York and Chicago.",
+
+  "sections": [
+    {
+      "title": "Experience",
+      "items": [
+        {
+          "what": "Design Intern",
+          "where": "Field Office Studio, Chicago",
+          "when": "Summer 2025",
+          "details": [
+            "Designed exhibition graphics and wayfinding for a 6,000 square foot gallery show",
+            "Built a type specimen system used across the studio’s client pitches",
+            "Prepared print files and checked proofs with two local printers"
+          ]
+        },
+        {
+          "what": "Graphic Design Assistant",
+          "where": "SCAD Exhibitions Office, Savannah",
+          "when": "2024 to 2026",
+          "details": [
+            "Designed posters, invitations and social graphics for twelve student exhibitions",
+            "Kept the office’s template library consistent with the university brand"
+          ]
+        },
+        {
+          "what": "Freelance Designer",
+          "where": "Independent",
+          "when": "2023 to present",
+          "details": [
+            "Identity and packaging for two small food businesses in Savannah",
+            "Album artwork and lyric videos for local musicians"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Education",
+      "items": [
+        {
+          "what": "BFA Graphic Design, minor in Creative Writing",
+          "where": "Savannah College of Art and Design",
+          "when": "2022 to 2026",
+          "details": [
+            "Dean’s List, six quarters",
+            "Senior Showcase, selected work, 2026"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Recognition",
+      "items": [
+        {
+          "what": "Student Typography Exhibition, selected",
+          "where": "Tamara poster",
+          "when": "2025"
+        },
+        {
+          "what": "Motion Design Screening, finalist",
+          "where": "Octavia film",
+          "when": "2025"
+        }
+      ]
+    }
+  ],
+
+  "skills": [
+    { "title": "Design", "list": "Typography, editorial design, identity systems, information design, motion, art direction" },
+    { "title": "Tools", "list": "InDesign, Illustrator, Photoshop, After Effects, Premiere Pro, Figma, HTML and CSS basics" },
+    { "title": "Making", "list": "Risograph, letterpress, bookbinding, laser cutting, studio photography" },
+    { "title": "Languages", "list": "English, conversational Korean" }
+  ]
+}

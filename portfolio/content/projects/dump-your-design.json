@@ -1,0 +1,47 @@
+{
+  "title": "Dump Your Design",
+  "series": "",
+  "discipline": "Poster, Manifesto",
+  "year": "2025",
+  "summary": "A manifesto about letting ideas go, written as a definition of digestion.",
+  "role": "Concept, writing, photography",
+  "tools": "Photoshop, InDesign, studio lighting",
+  "timeline": "3 weeks",
+  "context": "Visual Rhetoric",
+  "cover": "images/projects/dump-your-design/cover.jpg",
+  "coverAlt": "Photo of a fish in a toilet bowl under the words Dump Your Design",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Make an argument about the design process using a metaphor from outside design."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "Good design works like digestion. You break an idea down, keep what feeds the work and flush the rest. Most students, me included, hold on to ideas for too long."
+    },
+    {
+      "type": "image",
+      "src": "images/projects/dump-your-design/detail-text.jpg",
+      "alt": "Definition of digestion with words crossed out and replaced by design terms",
+      "width": "narrow",
+      "caption": "A textbook definition of digestion, edited by hand."
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I rewrote a textbook definition of digestion and crossed out the words for food and the body, replacing them with words from design.\n\nThe fish is literal. It is the idea that didn’t make it."
+    },
+    {
+      "type": "placeholder",
+      "label": "Photo shoot. Lighting tests and the other objects you tried in the bowl.",
+      "ratio": "3/2"
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "People laugh first and read second, which is the order I wanted. The risk is that the joke wins. Plain, clinical typography keeps it from turning into a gag."
+    }
+  ]
+}
