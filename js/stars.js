@@ -133,82 +133,10 @@ const Stars = {
           <p class="stella-box__note">${all ? "All eight. Imperial Scholar." : "Take a screenshot to claim it."}</p>
         </div>
       </div>`);
-    // When the box closes, a new star flies into the collection.
-    if (fresh) {
-      const badge = dialog.querySelector(".stella-box__badge");
-      let from = null;
-      const remember = () => { from = badge.getBoundingClientRect(); };
-      setTimeout(remember, 750);
-      dialog.addEventListener("cancel", remember, { once: true });
-      dialog.querySelector("[data-close]").addEventListener("pointerdown", remember, { once: true });
-      dialog.addEventListener("close", () => this.flyHome(n, from), { once: true });
-    }
+    // Closing the box on the eighth star opens the finale.
+    if (fresh && all) dialog.addEventListener("close", () => this.finale(), { once: true });
   },
 
-  /* The collection slides up at the bottom of the screen,
-     wherever the student is, and the star flies into its
-     numbered slot. The page itself never moves. */
-  flyHome(n, from) {
-    const list = this.found();
-    const bar = document.createElement("div");
-    bar.className = "stella-bar";
-    bar.setAttribute("aria-hidden", "true");
-    bar.innerHTML = Array.from({ length: this.total }, (_, i) => {
-      const k = i + 1;
-      const filled = list.includes(k) && k !== n;
-      return `<span class="stella-bar__slot" data-slot="${k}">${filled ? this.svg(k, 28) : this.outline(28)}</span>`;
-    }).join("");
-    document.body.appendChild(bar);
-    requestAnimationFrame(() => bar.classList.add("is-up"));
-
-    const slot = bar.querySelector(`[data-slot="${n}"]`);
-    const complete = list.length === this.total;
-    const land = () => {
-      slot.innerHTML = `<span class="is-pop">${this.svg(n, 28)}</span><span class="glint is-on"></span>`;
-      this.tick();
-      // The eighth star: every slot glints in turn, climbing a
-      // scale, then the finale opens.
-      if (complete) {
-        const notes = [1046.5, 1174.7, 1318.5, 1396.9, 1568, 1760, 1975.5, 2093];
-        bar.querySelectorAll(".stella-bar__slot").forEach((el, i) => setTimeout(() => {
-          el.insertAdjacentHTML("beforeend", `<span class="glint is-on"></span>`);
-          this.tick(notes[i]);
-        }, 500 + i * 140));
-        setTimeout(() => { bar.classList.remove("is-up"); setTimeout(() => bar.remove(), 500); this.finale(); }, 500 + 8 * 140 + 500);
-        return;
-      }
-      setTimeout(() => {
-        bar.classList.remove("is-up");
-        setTimeout(() => bar.remove(), 500);
-      }, 1600);
-    };
-
-    const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (calm) return setTimeout(land, 300);
-
-    // Wait for the bar to rise, then fly.
-    setTimeout(() => {
-      const to = slot.getBoundingClientRect();
-      const start = from && from.width ? from : { left: innerWidth / 2 - 32, top: innerHeight / 2 - 32, width: 64, height: 64 };
-      const flyer = document.createElement("div");
-      flyer.className = "stella-flyer";
-      flyer.innerHTML = this.svg(n, 64);
-      flyer.style.left = start.left + "px";
-      flyer.style.top = start.top + "px";
-      document.body.appendChild(flyer);
-      const dx = to.left + to.width / 2 - (start.left + 32);
-      const dy = to.top + to.height / 2 - (start.top + 32);
-      const scale = 28 / 64;
-      flyer.animate([
-        { transform: "translate(0, 0) scale(1) rotate(0)" },
-        { transform: `translate(${dx * 0.45}px, ${Math.min(dy * 0.2, -80)}px) scale(0.9) rotate(200deg)`, offset: 0.45 },
-        { transform: `translate(${dx}px, ${dy}px) scale(${scale}) rotate(360deg)` }
-      ], { duration: 800, easing: "cubic-bezier(0.5, 0, 0.3, 1)", fill: "forwards" })
-        .onfinish = () => { flyer.remove(); land(); };
-    }, 350);
-  },
-
-  /* A single soft note when the star lands. */
   /* The finale, once, when the eighth star is claimed. */
   finale() {
     const row = Array.from({ length: this.total }, () => this.svg(0, 14, true)).join("");
@@ -224,7 +152,8 @@ const Stars = {
       <p class="stella-final__msg">All eight stars, found. You read to the end, looked closely, got curious, and got in touch. That’s what reviewers notice. Take a screenshot and show it to Henry.</p>`);
     dialog.classList.add("stella-final");
     dialog.addEventListener("close", () => dialog.classList.remove("stella-final"), { once: true });
-    this.chime();
+    // A rising scale, one note for each star.
+    [1046.5, 1174.7, 1318.5, 1396.9, 1568, 1760, 1975.5, 2093].forEach((f, i) => setTimeout(() => this.tick(f), 300 + i * 120));
   },
 
   tick(freq = 2093) {

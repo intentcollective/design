@@ -890,23 +890,6 @@ figcaption {
   .is-new .stella-box__badge > .star, .is-new .glint, .is-pop { animation: none; }
 }
 
-/* The collection bar that slides up when a star is found,
-   and the star that flies into it. */
-.stella-bar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
-  display: flex; justify-content: center; gap: var(--s2);
-  padding: var(--s4) var(--margin) calc(var(--s4) + env(safe-area-inset-bottom));
-  background: #000; border-top: 2px solid var(--gold);
-  transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.1, 1);
-}
-.stella-bar.is-up { transform: none; }
-.stella-bar__slot { position: relative; display: inline-block; width: 28px; height: 28px; line-height: 0; }
-.stella-bar__slot .glint { inset: -60%; }
-.glint.is-on { animation: glint 0.9s ease-out 0.15s both; }
-.stella-flyer { position: fixed; z-index: 1001; width: 64px; height: 64px; line-height: 0; pointer-events: none; }
-@media (prefers-reduced-motion: reduce) { .stella-bar { transition: none; } .glint.is-on { animation: none; } }
-@media print { .stella-bar, .stella-flyer { display: none; } }
-
 /* The finale. A big gold star holds the headline, and the
    message sits below it on the dimmed page. */
 .stella-box.stella-final { width: min(360px, calc(100vw - 2 * var(--margin))); padding: 0; background: none; color: var(--fg); overflow: visible; }
@@ -955,3 +938,12 @@ figcaption {
 .stella-box__row { align-items: center; }
 .stella-example__code span:last-child { padding: 2px 8px; }
 .stella-example__code { align-items: center; }
+
+/* The finale star takes its time, so it can be seen. */
+.stella-final__star { animation: final-land 2.2s cubic-bezier(0.16, 1.2, 0.3, 1) both; }
+@keyframes final-land {
+  0%   { transform: scale(0) rotate(-360deg); opacity: 0; }
+  15%  { opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+@media (prefers-reduced-motion: reduce) { .stella-final__star { animation: none; } }

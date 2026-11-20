@@ -60,5 +60,5 @@
       setTimeout(wander, between(1500, 4000));
     }, 5000);
   };
-  setTimeout(wander, 1500);
+  setTimeout(wander, 200);
 })();
