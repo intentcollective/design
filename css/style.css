@@ -952,3 +952,6 @@ figcaption {
    titles take the headline size of the home page. */
 .page-title--big { font-size: var(--fs-hero); line-height: 1; letter-spacing: 0; margin-bottom: var(--s7); }
 .page .page-title--big { margin-bottom: var(--s7); }
+
+/* Without labels, the first rule of each example is not needed. */
+.stella-example__state:first-child .stella-example__foot { border-top: 0; padding-top: 0; }
