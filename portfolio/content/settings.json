@@ -39,12 +39,14 @@
     "text": "#f2f2f0",
     "muted": "#8a8a86",
     "line": "#2a2a2a",
+    "gridLine": "rgba(255, 255, 255, 0.07)",
     "accent": "#ff3b2f",
     "font": "DM Sans",
     "googleFont": false
   },
 
   "passwordHash": "927a3aed189d610b2e151c4208913b3ed0cb38f6be613756819b1513c8924d7f",
+  "showGrid": true,
   "colophon": "story.html",
   "showGuideLink": true
 }

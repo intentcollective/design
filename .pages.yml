@@ -137,9 +137,11 @@ content:
           - { name: text, label: Text color, type: string }
           - { name: muted, label: Secondary text color, type: string }
           - { name: line, label: Line color, type: string }
+          - { name: gridLine, label: Grid line color, type: string }
           - { name: accent, label: Accent color, type: string }
           - { name: font, label: Typeface, type: string }
           - { name: googleFont, label: Load typeface from Google Fonts, type: boolean }
+      - { name: showGrid, label: Draw the column grid behind the page, type: boolean }
       - { name: showGuideLink, label: Show portfolio guide link in footer, type: boolean }
 
   # ---------- About ----------

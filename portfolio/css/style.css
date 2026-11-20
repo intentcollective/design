@@ -44,6 +44,7 @@
   --muted: #8a8a86;
   --line: #2a2a2a;
   --accent: #ff3b2f;
+  --grid-line: rgba(255, 255, 255, 0.07);
 
   /* Type. Six roles, each with one job.
        label    13px  captions, metadata, small labels
@@ -183,6 +184,27 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 }
 .gate input:focus { border-color: var(--accent); }
 .gate__error { min-height: 1.6em; font-size: var(--fs-label); color: var(--accent); }
+
+/* The grid drawn behind the page: two faint lines for each
+   column, the gutter between them left empty. It is drawn from
+   the same numbers that place the content, so they always line
+   up. Turn it on or off with "showGrid" in settings.json. */
+.show-grid { background: var(--bg); }
+.show-grid body { background: transparent; }
+.show-grid body::before {
+  content: "";
+  position: fixed;
+  inset: 0 auto 0 50%;
+  transform: translateX(-50%);
+  width: min(100% - 2 * var(--margin), var(--text-w));
+  z-index: -1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(90deg,
+    var(--grid-line) 0 1px,
+    transparent 1px calc(var(--col) - 1px),
+    var(--grid-line) calc(var(--col) - 1px) var(--col),
+    transparent var(--col) calc((100% + var(--gutter)) / var(--cols)));
+}
 
 /* =========================================================
    4. Navigation and footer
@@ -577,6 +599,7 @@ figcaption {
 @media print {
   :root { --bg: #fff; --fg: #111; --muted: #555; --line: #ccc; --fs-display: 26pt; --fs-large: 10.5pt; --fs-body: 9.5pt; --fs-label: 8.5pt; --fs-title: 11pt; --margin: 0px; --gutter: 8px; }
   html, body { background: #fff !important; color: #111; }
+  .show-grid body::before { display: none; }
   .site-nav, .site-footer, .page__actions, .no-print { display: none !important; }
   .page { padding-top: 0; }
   /* The CV fits on one Letter page. */
