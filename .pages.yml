@@ -30,11 +30,12 @@ content:
       - { name: title, label: Title, type: string, required: true }
       - { name: discipline, label: Discipline, type: string, description: "For example Poster, Typography" }
       - { name: summary, label: One-line summary, type: text, description: "What the project is and why it matters, in one sentence. This is what reviewers read first." }
-      - { name: role, label: Role, type: string }
+      - { name: subject, label: Subject, type: string, description: "The class, client or competition" }
       - { name: tools, label: Tools, type: string }
-      - { name: context, label: Context, type: string, description: "Class, client or competition" }
+      - { name: role, label: Role, type: string, description: "Group projects only. What you did on the team." }
       - { name: cover, label: Cover image, type: image }
       - { name: coverAlt, label: Cover description, type: string, description: "Describe the image for people who can't see it." }
+      - { name: hideCover, label: Hide the cover on the project page, type: boolean, description: "For example when a video opens the page" }
       - { name: coverPosition, label: Cover crop position, type: select, options: { values: [center, top, bottom, left, right] } }
       - name: blocks
         label: Page blocks

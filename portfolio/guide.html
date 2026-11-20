@@ -90,9 +90,9 @@
 <pre>"menu": [
   { "label": "Works", "link": "index.html" },
   { "label": "Resume", "link": "files/your-name-resume.pdf", "newTab": true },
+  { "label": "About", "link": "about.html" },
   { "label": "in", "fullName": "LinkedIn", "badge": true,
-    "link": "https://www.linkedin.com/in/your-name/", "newTab": true },
-  { "label": "About", "link": "about.html" }
+    "link": "https://www.linkedin.com/in/your-name/", "newTab": true }
 ],</pre>
 
       <h3>Colors and typeface</h3>
@@ -123,13 +123,14 @@
       </ol>
 
       <h3>The top of a project</h3>
-      <p>These fields fill the header of the project page and the card on the Works page.</p>
+      <p>These fields fill the header of the project page and the card on the Works page. <code>subject</code> is the class, client or competition. Add <code>role</code> only for group projects, to say what you did on the team. Leave it out for solo work.</p>
+      <p>The cover appears on the Works page and at the top of the project page. When a video should open the page instead, as in Octavia, add <code>"hideCover": true</code>.</p>
 <pre>"title": "Tamara",
 "discipline": "Poster, Lettering",
 "summary": "One sentence. What it is and why it matters.",
-"role": "Concept, lettering, layout",
+"subject": "Typography III",
 "tools": "Illustrator, InDesign",
-"context": "Typography III",
+"role": "Lettering and layout, in a team of two",
 "cover": "images/projects/tamara/cover.jpg",
 "coverAlt": "Describe the image for someone who can’t see it",</pre>
 
@@ -204,7 +205,7 @@
 --measure-cols: 6;  /* reading text spans 6 columns */
 --wide-cols: 8;     /* intros and wide images span 8 */
 --card-span: 4;     /* each project card spans 4, three to a row */</pre>
-      <p>Every left edge on the site hangs from a column line. The menu takes the last four columns, one item per column. The project facts take four columns each. Nothing is centered.</p>
+      <p>Every left edge on the site hangs from a column line. The menu takes the last four columns, one item per column. The project facts, Subject, Tools and Role, take four columns each. Project images are the exception. They are centered, because the work is the object being shown, like a piece hung on a wall, while text stays flush left for reading. Nothing is centered.</p>
 
       <h3>Measure</h3>
       <p>Running text spans six of the twelve columns, about 68 characters a line. Robert Bringhurst calls 66 characters ideal, within a comfortable range of 45 to 75. Lines much longer than that tire the eye, and much shorter ones break the rhythm of reading.</p>
@@ -293,7 +294,7 @@ palette(b) {
         <li><strong>Lead with your best work.</strong> The first two projects decide whether anyone sees the rest. Six strong projects beat ten uneven ones.</li>
         <li><strong>Make the summary do the work.</strong> One sentence per project that says what it is and why it’s interesting. Many reviewers read only that.</li>
         <li><strong>Show how you think.</strong> Sketches, rejected directions and the reason you changed course tell a studio more than the final image. That is why every project here has a process section.</li>
-        <li><strong>Say what you did.</strong> Name your role, especially on group work.</li>
+        <li><strong>Say what you did.</strong> On group work, always name your role.</li>
         <li><strong>Keep it fast.</strong> Compress your images and test on your phone.</li>
         <li><strong>Make contact easy.</strong> Email, resume and LinkedIn should never be more than one click away.</li>
         <li><strong>Leave nothing unfinished.</strong> Replace every placeholder and check every link before you send the address to anyone.</li>

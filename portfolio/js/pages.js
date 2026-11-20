@@ -94,7 +94,9 @@ const Pages = {
     const p = await Site.load(`content/projects/${slug}.json`);
     document.title = `${p.title}, ${s.name}`;
 
-    const facts = [["Role", p.role], ["Tools", p.tools], ["Context", p.context]].filter(([, v]) => v);
+    // Subject, Tools, Role. Role is only for group projects, to say
+    // what you did on the team. Leave it out for solo work.
+    const facts = [["Subject", p.subject], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v);
 
     main.innerHTML = `
       <article>
@@ -206,7 +208,7 @@ const Pages = {
     const pages = projects.map(({ data: p }) => {
       // The first three titled text blocks become the short story for the PDF.
       const texts = (p.blocks || []).filter(b => b.type === "text" && b.heading).slice(0, 3);
-      const facts = [["Role", p.role], ["Tools", p.tools], ["Context", p.context]].filter(([, v]) => v);
+      const facts = [["Subject", p.subject], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v);
       return `
         <section class="sheet">
           <div class="sheet__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}"></div>

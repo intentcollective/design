@@ -13,8 +13,8 @@
   "menu": [
     { "label": "Works", "link": "index.html" },
     { "label": "Resume", "link": "files/sena-hart-resume.pdf", "newTab": true },
-    { "label": "in", "fullName": "LinkedIn", "badge": true, "link": "https://www.linkedin.com/", "newTab": true },
-    { "label": "About", "link": "about.html" }
+    { "label": "About", "link": "about.html" },
+    { "label": "in", "fullName": "LinkedIn", "badge": true, "link": "https://www.linkedin.com/", "newTab": true }
   ],
 
   "works": [

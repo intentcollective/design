@@ -347,17 +347,18 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 .project-head .page-title { grid-column: 1 / -1; }
 .project-head .lead { grid-column: 1 / -1; margin-top: var(--s4); }
 
-/* Role, Tools, Context. Equal parts take equal shares of the
-   grid, so three facts take four columns each. */
+/* Subject, Tools, Role. Each takes four columns, always in
+   the same place, so they line up from project to project. */
 .facts { grid-column: 1 / -1; margin-top: var(--s7); padding-top: var(--s4); border-top: 1px solid var(--line); row-gap: var(--s4); }
 .facts > div { grid-column: span 4; }
 .facts dt { font-size: var(--fs-label); color: var(--muted); }
 @media screen and (max-width: 1023px) { .facts > div { grid-column: span 2; } }
 @media screen and (max-width: 640px)  { .facts > div { grid-column: 1 / -1; } }
 
-/* The cover keeps its own proportions and hangs flush left. */
+/* The work is centered, like a piece hung on a wall. Text
+   stays flush left, where it reads best. */
 .project-cover { margin-bottom: var(--s9); }
-.project-cover img { max-height: 86vh; width: auto; }
+.project-cover img { max-height: 86vh; width: auto; margin-inline: auto; }
 
 /* =========================================================
    8. Blocks (project and about pages)
@@ -375,6 +376,7 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
      full    all 12 columns
      wide    8 columns
      narrow  6 columns, the same as the text */
+.b-figure         { margin-inline: auto; }  /* images and video are centered */
 .b-figure--full   { width: 100%; }
 .b-figure--wide   { width: var(--measure-wide); }
 .b-figure--narrow { width: var(--measure); }
