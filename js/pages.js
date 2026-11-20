@@ -264,7 +264,7 @@ const Pages = {
         <div class="deck__name"><h1>${esc(s.name)}</h1><p>${esc(s.role)}</p></div>
         <ul class="deck__contact">${contact.map(c => `<li>${esc(c)}</li>`).join("")}</ul>
         <p class="deck__statement">${esc(s.statement || s.intro)}</p>
-        <p class="deck__label">Portfolio Works</p>
+        <p class="deck__label">Selected Work</p>
       </section>
       ${pages}`;
   }

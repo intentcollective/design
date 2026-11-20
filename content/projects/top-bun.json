@@ -1,32 +1,32 @@
 {
   "title": "Top Bun",
   "discipline": "Brand Identity & Experience Systems",
-  "format": "Logo, paper bags, labels, shop sign and van livery",
+  "format": "Logo, paper bags, labels, shop sign, and van livery",
   "color": "#9a7a55",
   "summary": "An identity for a family bakery in Wigan that has to work at four in the morning, on a paper bag, in floury hands.",
   "tools": "Illustrator, InDesign, Photoshop",
   "cover": "",
-  "coverAlt": "Bread bags, a shop sign and a delivery van in the Top Bun identity",
+  "coverAlt": "Bread bags, a shop sign, and a delivery van in the Top Bun identity",
   "blocks": [
     {
       "type": "text",
       "heading": "The brief",
-      "body": "Give a small bakery an identity it can afford to use every day, on bags, labels, a shop sign and one delivery van."
+      "body": "Give a small bakery an identity it can afford to use every day, on bags, labels, a shop sign, and one delivery van."
     },
     {
       "type": "text",
       "heading": "The idea",
-      "body": "Bakers mark their loaves by hand with a single cut. I built the identity from that gesture. One scored line becomes the logo, the pattern on the bags and the stripe on the van."
+      "body": "Bakers mark their loaves by hand with a single cut. I built the identity from that gesture. One scored line becomes the logo, the pattern on the bags, and the stripe on the van."
     },
     {
       "type": "placeholder",
-      "label": "Research. Old bakery signs, bread scores and paper bags from three local shops.",
+      "label": "Research. Old bakery signs, bread scores, and paper bags from three local shops.",
       "ratio": "16/9"
     },
     {
       "type": "text",
       "heading": "Process",
-      "body": "I tested the mark at the size of a price sticker first, because that is where most people meet it. Anything that failed at two centimeters was cut. The type came last, a sturdy sans that survives a cheap printer and a greasy thumb."
+      "body": "I tested the mark at the size of a price sticker first, because that is where most people meet it. Anything that failed there was cut. The type came last, a sturdy sans that survives a cheap printer and a greasy thumb."
     },
     {
       "type": "gallery",
@@ -54,7 +54,7 @@
       "alt": "",
       "width": "wide",
       "ratio": "3/2",
-      "caption": "The identity on bags, labels and the shop sign."
+      "caption": "The identity on bags, labels, and the shop sign."
     },
     {
       "type": "image",

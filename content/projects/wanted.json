@@ -16,11 +16,11 @@
     {
       "type": "text",
       "heading": "The idea",
-      "body": "Every time Feathers McGraw escapes, the police get dozens of vague phone calls and lose a day. People don’t need a form. They need one button, a photo and their location. The app does the rest and puts every sighting on one shared map."
+      "body": "Every time Feathers McGraw escapes, the police get dozens of vague phone calls and lose a day. People don’t need a form. They need one button, a photo, and their location. The app does the rest and puts every sighting on one shared map."
     },
     {
       "type": "placeholder",
-      "label": "User research. Notes from interviews with neighbors, shopkeepers and two police officers.",
+      "label": "User research. Notes from interviews with neighbors, shopkeepers, and two police officers.",
       "ratio": "16/9"
     },
     {
@@ -54,7 +54,7 @@
       "alt": "",
       "width": "wide",
       "ratio": "16/9",
-      "caption": "The app. Report, map and alerts."
+      "caption": "The app. Report, map, and alerts."
     },
     {
       "type": "image",

@@ -23,7 +23,7 @@ const Site = {
     } catch (err) {
       throw new Error(
         location.protocol === "file:"
-          ? "This site reads its content with fetch(), which browsers block when you open the file directly. Preview it with a local server (see the guide, “Preview on your computer”)."
+          ? "This site reads its content with fetch(), which browsers block when you open the file directly. Preview it with a local server (see “Preview locally” in the README)."
           : `Could not reach ${path}.`
       );
     }

@@ -16,7 +16,7 @@
     {
       "type": "text",
       "heading": "The idea",
-      "body": "A vegetable show is a maze of stalls that changes every year. The system had to be cheap, quick to install and readable from across a muddy field. Arrows and numbers do the work, and the illustrations add the warmth."
+      "body": "A vegetable show is a maze of stalls that changes every year. The system had to be cheap, quick to install, and readable from across a muddy field. Arrows and numbers do the work, and the illustrations add the warmth."
     },
     {
       "type": "placeholder",
@@ -26,7 +26,7 @@
     {
       "type": "text",
       "heading": "Process",
-      "body": "I walked the site with a clipboard and marked every place a visitor might stop and wonder. Each stop became a sign. Mockups at full size showed that the first type was too thin to read at ten meters."
+      "body": "I walked the site with a clipboard and marked every place a visitor might stop and wonder. Each stop became a sign. Mockups at full size showed that the first type was too thin to read at thirty feet."
     },
     {
       "type": "gallery",
@@ -46,7 +46,7 @@
           "alt": "Bold"
         }
       ],
-      "caption": "Type tests at ten meters."
+      "caption": "Type tests at thirty feet."
     },
     {
       "type": "image",
