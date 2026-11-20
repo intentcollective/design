@@ -2,16 +2,16 @@
   "portrait": "",
   "portraitAlt": "Portrait of Your Name",
   "color": "#ff8fb8",
-  "lead": "Open with one line in your own voice. Who are you, in a sentence?",
+  "lead": "One line that says who you are and what you do.",
   "blocks": [
     {
       "type": "text",
-      "body": "Where do you come from, and how did you find design? Two short paragraphs.\n\nBe specific. One detail only you could write is worth more than a list of adjectives."
+      "body": "Write this page like the opening of a cover letter. Say what kind of role you are applying for, and what kinds of work you have done.\n\nThen say what your work is about. One specific sentence is worth more than a list of adjectives."
     },
     {
       "type": "text",
-      "heading": "How I work",
-      "body": "What do you care about in your work? What do you do that others don’t?"
+      "heading": "What I bring",
+      "body": "How you work on a team. Give one real example that shows it, from school, a job or anywhere else."
     },
     {
       "type": "text",
@@ -21,7 +21,7 @@
     {
       "type": "text",
       "heading": "Outside the studio",
-      "body": "Two or three things you do when you are not designing. Choose the ones that say something about how you see the world."
+      "body": "One or two sentences about life outside design. This is the only place for it, so keep it short."
     }
   ]
 }
