@@ -1,6 +1,5 @@
 {
   "title": "Tamara",
-  "series": "Invisible Cities",
   "discipline": "Poster, Lettering",
   "year": "2025",
   "summary": "A poster that treats holiday greetings the way Calvino treats signs, as things you read long before you understand them.",
@@ -35,9 +34,18 @@
       "type": "gallery",
       "columns": 3,
       "images": [
-        { "src": "", "alt": "Lettering round one" },
-        { "src": "", "alt": "Lettering round two" },
-        { "src": "", "alt": "Lettering round three" }
+        {
+          "src": "",
+          "alt": "Lettering round one"
+        },
+        {
+          "src": "",
+          "alt": "Lettering round two"
+        },
+        {
+          "src": "",
+          "alt": "Lettering round three"
+        }
       ],
       "caption": "Lettering iterations. Replace with three rounds of one greeting moving from legible to symbolic."
     },

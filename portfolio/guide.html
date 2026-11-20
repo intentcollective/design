@@ -39,7 +39,7 @@
 <pre>portfolio/
   index.html        Works page, the first page people see
   project.html      One page that shows any project
-  resume.html       Resume
+  resume.html       Source for your resume PDF. Not in the menu.
   about.html        About
   print.html        The page your PDF portfolio is made from
   content/
@@ -84,10 +84,11 @@
       <p>Write a line that only you could say. “Graphic designer based in Savannah” is true of hundreds of people. A point of view is what makes a reviewer remember you.</p>
 
       <h3>The menu</h3>
-      <p>Each item in <code>menu</code> has a label and a link. Rename, reorder, add or remove items freely. Set <code>"newTab": true</code> for links that leave your site.</p>
+      <p>Each item in <code>menu</code> has a label and a link. Rename, reorder, add or remove items freely. Set <code>"newTab": true</code> for links that leave your site or open a PDF.</p>
+      <p>The Resume item links straight to your PDF, because that is the version reviewers save and forward. If you would rather show a web resume, change its link to <code>resume.html</code>. That page is already built from <code>content/resume.json</code>.</p>
 <pre>"menu": [
   { "label": "Works", "link": "index.html" },
-  { "label": "Resume", "link": "resume.html" },
+  { "label": "Resume", "link": "files/your-name-resume.pdf", "newTab": true },
   { "label": "Li", "link": "https://www.linkedin.com/in/your-name/", "newTab": true },
   { "label": "About", "link": "about.html" }
 ],</pre>
@@ -122,7 +123,6 @@
       <h3>The top of a project</h3>
       <p>These fields fill the header of the project page and the card on the Works page.</p>
 <pre>"title": "Tamara",
-"series": "Invisible Cities",
 "discipline": "Poster, Lettering",
 "year": "2025",
 "summary": "One sentence. What it is and why it matters.",
@@ -132,7 +132,6 @@
 "context": "Typography III",
 "cover": "images/projects/tamara/cover.jpg",
 "coverAlt": "Describe the image for someone who can’t see it",</pre>
-      <p>Projects that share a <code>series</code> name are numbered on the Works page and linked to each other at the bottom of each project page.</p>
 
       <h3>Blocks</h3>
       <p>Below the header, a project page is a list of blocks, stacked in the order you write them. Mix them however the project needs. A typical order is brief, idea, research, process, iterations, final work, reflection.</p>

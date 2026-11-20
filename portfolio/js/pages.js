@@ -40,24 +40,14 @@ const Pages = {
 
     // 2. The project cards, in the order listed in settings.json
     const projects = await Pages.loadProjects(s.works);
-    const counts = {};
-    document.getElementById("grid").innerHTML = projects.map(({ slug, data: p }) => {
-      let series = "";
-      if (p.series) {
-        counts[p.series] = (counts[p.series] || 0) + 1;
-        series = `<span class="card__series">${esc(p.series)}, part ${counts[p.series]}</span>`;
-      }
-      return `
-        <a class="card reveal" href="project.html?p=${encodeURIComponent(slug)}">
-          <div class="card__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}" loading="lazy" style="object-position:${esc(p.coverPosition || "center")}"></div>
-          <div class="card__text">
-            <h2 class="card__title">${esc(p.title)}</h2>
-            <span class="card__meta">${esc(p.discipline)}, ${esc(p.year)}</span>
-            ${series}
-            <p class="card__summary">${esc(p.summary)}</p>
-          </div>
-        </a>`;
-    }).join("");
+    document.getElementById("grid").innerHTML = projects.map(({ slug, data: p }) => `
+      <a class="card reveal" href="project.html?p=${encodeURIComponent(slug)}">
+        <div class="card__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}" loading="lazy" style="object-position:${esc(p.coverPosition || "center")}"></div>
+        <div class="card__text">
+          <h2 class="card__title">${esc(p.title)}</h2>
+          <p class="card__meta">${esc(p.discipline)}, ${esc(p.year)}</p>
+        </div>
+      </a>`).join("");
     Site.reveal();
   },
 
@@ -110,7 +100,6 @@ const Pages = {
     main.innerHTML = `
       <article>
         <header class="project-head">
-          ${p.series ? `<p class="project-head__series">${esc(p.series)}</p>` : ""}
           <h1 class="project-head__title">${esc(p.title)}</h1>
           <p class="project-head__summary">${esc(p.summary)}</p>
           <dl class="facts">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
@@ -121,24 +110,18 @@ const Pages = {
       </article>`;
     Site.reveal();
 
-    // Series links and the "next project" link need the other projects.
+    // Previous and next links need the full list of projects.
     const all = await Pages.loadProjects(s.works);
-    let after = "";
-    if (p.series) {
-      const parts = all.filter(x => x.data.series === p.series);
-      if (parts.length > 1) {
-        after += `
-          <nav class="series" aria-label="${esc(p.series)} series">
-            <h2>Part of the series ${esc(p.series)}</h2>
-            <ol>${parts.map((x, n) => `<li><a href="project.html?p=${encodeURIComponent(x.slug)}"${x.slug === slug ? ' aria-current="page"' : ""}><span>${n + 1}</span>${esc(x.data.title)}</a></li>`).join("")}</ol>
-          </nav>`;
-      }
-    }
     const index = all.findIndex(x => x.slug === slug);
-    const next = all[(index + 1) % all.length];
-    if (next && next.slug !== slug) {
-      after += `<a class="next" href="project.html?p=${encodeURIComponent(next.slug)}"><small>Next project</small><strong>${esc(next.data.title)} →</strong></a>`;
-    }
+    const prev = index > 0 ? all[index - 1] : null;
+    const next = index > -1 && index < all.length - 1 ? all[index + 1] : all[0];
+    const link = (x, label, cls) => x && x.slug !== slug
+      ? `<a class="${cls}" href="project.html?p=${encodeURIComponent(x.slug)}"><small>${label}</small><strong>${esc(x.data.title)}</strong></a>`
+      : "";
+    const after = `<nav class="pager" aria-label="More projects">
+      ${link(prev, "← Previous", "pager__prev")}
+      ${link(next, "Next project →", "pager__next")}
+    </nav>`;
     document.getElementById("after").innerHTML = after;
   },
 
@@ -227,7 +210,6 @@ const Pages = {
         <section class="sheet sheet--project">
           <div class="sheet__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}"></div>
           <div class="sheet__text">
-            ${p.series ? `<span class="sheet__series">${esc(p.series)}</span>` : ""}
             <h2>${esc(p.title)}</h2>
             <p class="sheet__summary">${esc(p.summary)}</p>
             <dl class="sheet__facts">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>

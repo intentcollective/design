@@ -50,8 +50,8 @@
   --text-s: 0.875rem;
   --text-m: 1.0625rem;
   --text-l: clamp(1.25rem, 2vw, 1.6rem);
-  --text-xl: clamp(2.25rem, 6vw, 5.5rem);
-  --text-hero: clamp(3.25rem, 10.5vw, 11.5rem);
+  --text-xl: clamp(2rem, 4.5vw, 3.75rem);
+  --text-hero: clamp(2.75rem, 7vw, 7.25rem);
 
   /* Space */
   --margin: clamp(1.25rem, 4vw, 3rem);   /* page edges */
@@ -59,8 +59,8 @@
   --section: clamp(4rem, 10vw, 9rem);    /* between big sections */
 
   /* Layout */
-  --grid-columns: 2;     /* project cards per row on large screens */
-  --reading: 40rem;      /* comfortable line length for paragraphs */
+  --grid-columns: 3;     /* project cards per row on large screens */
+  --reading: 36rem;      /* comfortable line length for paragraphs */
 }
 
 /* ---------- Base ---------- */
@@ -131,11 +131,7 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
   /* Short enough that the first row of work peeks in below
      the header on a laptop screen. Reviewers should see work
      without having to guess that they need to scroll. */
-  min-height: min(68vh, 40rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 3rem var(--margin) clamp(2rem, 4vw, 3rem);
+  padding: clamp(3rem, 8vh, 6rem) var(--margin) clamp(2rem, 4vw, 3rem);
 }
 
 .hero__headline {
@@ -175,7 +171,7 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 }
 @keyframes fade { to { opacity: 1; } }
 
-.hero__intro { max-width: 34rem; font-size: var(--text-l); line-height: 1.4; color: var(--muted); }
+.hero__intro { max-width: 32rem; font-size: var(--text-m); line-height: 1.55; color: var(--muted); }
 .hero__intro strong { color: var(--fg); font-weight: 500; }
 
 .hero__cue { color: var(--muted); font-size: var(--text-s); white-space: nowrap; }
@@ -210,14 +206,15 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 
 .works__grid {
   display: grid;
-  grid-template-columns: repeat(var(--grid-columns), 1fr);
-  gap: calc(var(--gap) * 1.6) var(--gap);
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  gap: calc(var(--gap) * 1.2) var(--gap);
 }
+@media screen and (max-width: 900px) { :root { --grid-columns: 2; } }
 
 .card { display: block; }
 
 .card__media {
-  aspect-ratio: 4 / 5;      /* every cover is cropped to the same shape */
+  aspect-ratio: 4 / 3;      /* every cover is cropped to the same shape */
   overflow: hidden;
   background: var(--line);
 }
@@ -229,20 +226,9 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 }
 .card:hover .card__media img { transform: scale(1.03); }
 
-.card__text {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.25rem 1rem;
-  padding-top: 1rem;
-}
-.card__title { font-size: var(--text-l); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
-.card__meta { color: var(--muted); font-size: var(--text-s); text-align: right; }
-.card__summary {
-  grid-column: 1 / -1;
-  color: var(--muted);
-  max-width: 34rem;
-}
-.card__series { color: var(--accent); font-size: var(--text-s); grid-column: 1 / -1; }
+.card__text { padding-top: 0.65rem; font-size: 0.95rem; line-height: 1.45; }
+.card__title { font-size: 0.95rem; font-weight: 500; }
+.card__meta { color: var(--muted); }
 
 /* Cards fade up as they scroll into view (see pages.js). */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.1, 1); }
@@ -251,7 +237,6 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 /* ---------- Project page ---------- */
 .project-head { padding: clamp(3rem, 8vw, 7rem) var(--margin) var(--gap); }
 
-.project-head__series { color: var(--accent); font-size: var(--text-s); margin-bottom: 1rem; }
 
 .project-head__title {
   font-size: var(--text-xl);
@@ -261,10 +246,10 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 }
 
 .project-head__summary {
-  max-width: 44rem;
-  margin-top: 1.5rem;
-  font-size: var(--text-l);
-  line-height: 1.4;
+  max-width: 38rem;
+  margin-top: 1.25rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
 /* The facts row: Role, Tools, Timeline, Context, Year */
@@ -298,8 +283,8 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
   gap: 1rem var(--gap);
 }
 .b-text h2 { font-size: var(--text-s); font-weight: 500; color: var(--muted); padding-top: 0.35em; }
-.b-text__body { max-width: var(--reading); font-size: var(--text-l); line-height: 1.45; }
-.b-text__body p + p { margin-top: 1em; }
+.b-text__body { max-width: var(--reading); font-size: var(--text-m); line-height: 1.7; }
+.b-text__body p + p { margin-top: 0.9em; }
 .b-text__body a { border-bottom: 1px solid var(--accent); }
 .b-text--no-heading .b-text__body { grid-column: 2; }
 
@@ -372,30 +357,22 @@ figcaption, .b-caption {
 .b-spacer--medium { height: 4rem; }
 .b-spacer--large { height: 10rem; }
 
-/* ---------- Series and next project ---------- */
-.series {
+/* ---------- Previous and next project ----------
+   Next sits on the right, because moving forward reads
+   left to right. */
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
   margin: var(--section) var(--margin) 0;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 1rem var(--gap);
 }
-.series h2 { font-size: var(--text-s); font-weight: 500; color: var(--muted); }
-.series ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; font-size: var(--text-l); }
-.series a { color: var(--muted); }
-.series a:hover, .series a[aria-current="page"] { color: var(--fg); }
-.series span { color: var(--accent); font-size: var(--text-s); margin-right: 0.4rem; }
-
-.next {
-  display: block;
-  margin: var(--section) var(--margin) 0;
-  padding: clamp(2rem, 5vw, 4rem) 0;
-  border-top: 1px solid var(--line);
-}
-.next small { display: block; color: var(--muted); font-size: var(--text-s); margin-bottom: 0.75rem; }
-.next strong { font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.045em; line-height: 1; transition: color 0.2s; }
-.next:hover strong { color: var(--accent); }
+.pager a { display: block; max-width: 45%; }
+.pager__next { margin-left: auto; text-align: right; }
+.pager small { display: block; color: var(--muted); font-size: var(--text-s); margin-bottom: 0.25rem; }
+.pager strong { font-size: var(--text-l); font-weight: 500; letter-spacing: -0.02em; transition: color 0.2s; }
+.pager a:hover strong { color: var(--accent); }
 
 /* ---------- Simple pages (Resume, About, Guide) ---------- */
 .page { padding: clamp(3rem, 8vw, 7rem) var(--margin) var(--section); }
@@ -470,14 +447,12 @@ figcaption, .b-caption {
    true. Here: when the window is 760px wide or narrower. */
 @media screen and (max-width: 760px) {
   :root { --grid-columns: 1; }
-  .hero { min-height: 0; padding-top: 4rem; }
+  .hero { padding-top: 3rem; }
   .hero__cue { display: none; }
-  .b-text, .series, .resume-section, .about-grid { grid-template-columns: 1fr; }
+  .b-text, .resume-section, .about-grid { grid-template-columns: 1fr; }
   .b-text--no-heading .b-text__body { grid-column: 1; }
   .b-gallery__grid { grid-template-columns: 1fr 1fr; }
   .skills div { grid-template-columns: 1fr; gap: 0; }
-  .card__text { grid-template-columns: 1fr; }
-  .card__meta { text-align: left; }
 }
 
 /* ---------- Printing ----------
@@ -535,7 +510,6 @@ figcaption, .b-caption {
 .sheet__media { display: flex; align-items: center; justify-content: center; background: #f2f2f0; overflow: hidden; }
 .sheet__media img { max-width: 100%; max-height: 7.3in; object-fit: contain; }
 .sheet__text { display: flex; flex-direction: column; }
-.sheet__series { color: var(--accent); font-size: 8.5pt; }
 .sheet__text h2 { font-size: 30pt; font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin: 0.06in 0 0.16in; }
 .sheet__summary { font-size: 12.5pt; line-height: 1.35; }
 .sheet__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.12in 0.25in; margin: 0.25in 0; padding-top: 0.15in; border-top: 1px solid #ddd; font-size: 8.5pt; }

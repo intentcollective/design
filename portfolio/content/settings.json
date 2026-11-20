@@ -12,7 +12,7 @@
 
   "menu": [
     { "label": "Works", "link": "index.html" },
-    { "label": "Resume", "link": "resume.html" },
+    { "label": "Resume", "link": "files/sena-hart-resume.pdf", "newTab": true },
     { "label": "Li", "link": "https://www.linkedin.com/", "newTab": true },
     { "label": "About", "link": "about.html" }
   ],
