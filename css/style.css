@@ -962,3 +962,4 @@ figcaption {
 .stella-example__stars span { margin-right: var(--s3); }
 .stella-example__code { width: min(100%, 360px); }
 .stella-example__state + .stella-example__state { padding-top: var(--s4); border-top: 1px solid var(--gold-muted); }
+.stella-example__state + .stella-example__state { border-top: 2px solid var(--gold-ink); }
