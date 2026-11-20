@@ -73,7 +73,7 @@
      space them, so gutters stay narrow. Tablets get 6
      columns and phones 4 (see the media queries below). */
   --text-w: 1140px;
-  --margin: var(--s6);
+  --margin: var(--s7);      /* 48px of breathing room at the page edges */
   --cols: 12;
   --gutter: var(--s3);
 
@@ -198,7 +198,13 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
   backdrop-filter: blur(12px);
 }
 .site-nav .cols { align-items: baseline; }
-.site-nav__name { grid-column: 1 / span 4; font-weight: 600; }
+.site-nav__name {
+  grid-column: 1 / span 4;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
 .site-nav__menu {
   grid-column: span 4 / -1;
   display: grid;
@@ -225,7 +231,8 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 .site-nav__menu a[aria-current="page"] { color: var(--fg); }
 
 @media screen and (max-width: 1023px) {
-  .site-nav__name { grid-column: 1 / span 2; }
+  .site-nav__name { grid-column: 1 / span 3; }
+  .site-nav__menu { grid-column: span 3 / -1; grid-template-columns: repeat(4, auto); justify-content: space-between; }
 }
 @media screen and (max-width: 640px) {
   .site-nav__name { grid-column: 1 / -1; margin-bottom: var(--s2); }
