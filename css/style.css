@@ -717,13 +717,12 @@ figcaption {
   body[data-page="print"] { background: #fff; }
   .print-help { display: none; }
 }
-}
 
 /* =========================================================
    12. guide.html
    ========================================================= */
 /* The contents sit on the grid, each link four columns wide,
-   three to a row. */
+   three to a row. On a phone, one to a row. */
 .guide-toc {
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
@@ -734,7 +733,7 @@ figcaption {
 }
 .guide-toc a { grid-column: span 4; justify-self: start; }
 @media screen and (max-width: 1023px) { .guide-toc a { grid-column: span 3; } }
-@media screen and (max-width: 640px) { .guide-toc a { grid-column: span 2; } }
+@media screen and (max-width: 640px) { .guide-toc a { grid-column: 1 / -1; } }
 .guide-toc a { color: var(--muted); border-bottom: 1px solid var(--line); }
 .guide-toc a:hover { color: var(--fg); border-color: var(--fg); }
 
