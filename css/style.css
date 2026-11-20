@@ -52,12 +52,13 @@
   --accent: #ff3b2f;
   --grid-line: rgba(255, 255, 255, 0.07);
 
-  /* Type. Six roles, each with one job.
+  /* Type. Seven roles, each with one job.
        label    13px  captions, metadata, small labels
        body     16px  all running text
        large    18px  summaries and intros
        title    20px  section titles and card heads
        display        page titles
+       headline       titles of the long reading pages, guide and story
        hero           the home page headline only
      clamp(MIN, PREFERRED, MAX) grows with the window width
      (vw is 1% of it) but never past MIN or MAX. */
@@ -67,6 +68,7 @@
   --fs-large: 18px;
   --fs-title: 20px;
   --fs-display: clamp(1.75rem, 3.6vw, 2.5rem);
+  --fs-headline: clamp(2.25rem, 5vw, 4rem);
   --fs-hero: clamp(2.75rem, 7vw, 5.75rem);
 
   /* Space moves in steps of 4px. Every margin, padding and
@@ -949,8 +951,8 @@ figcaption {
 @media (prefers-reduced-motion: reduce) { .stella-final__star { animation: none; } }
 
 /* The guide and the story are pages to read through, so their
-   titles take the headline size of the home page. */
-.page-title--big { font-size: var(--fs-hero); line-height: 1; letter-spacing: 0; margin-bottom: var(--s7); }
+   titles take the headline size, between display and hero. */
+.page-title--big { font-size: var(--fs-headline); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: var(--s7); }
 .page .page-title--big { margin-bottom: var(--s7); }
 
 /* Without labels, the first rule of each example is not needed. */
