@@ -955,3 +955,10 @@ figcaption {
 
 /* Without labels, the first rule of each example is not needed. */
 .stella-example__state:first-child .stella-example__foot { border-top: 0; padding-top: 0; }
+
+/* The example matches the real footer collection, stars on the
+   left and the code field below. */
+.stella-example__stars { display: flex; align-items: center; gap: var(--s1); }
+.stella-example__stars span { margin-right: var(--s3); }
+.stella-example__code { width: min(100%, 360px); }
+.stella-example__state + .stella-example__state { padding-top: var(--s4); border-top: 1px solid var(--gold-muted); }
