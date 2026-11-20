@@ -57,9 +57,34 @@ const Stars = {
   },
   claim(n) {
     const list = this.found();
-    if (!list.includes(n)) this.save([...list, n]);
-    this.drawCase();
-    this.success(n);
+    const fresh = !list.includes(n);
+    if (fresh) this.save([...list, n]);
+    this.drawCase(fresh ? n : 0);
+    this.success(n, fresh);
+  },
+
+  /* A short rising chime, made in the browser with the Web
+     Audio API, so there is no sound file to load. It only
+     plays right after a click, as browsers require. */
+  chime() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const now = ctx.currentTime;
+      [1046.5, 1318.5, 1568, 2093].forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.value = freq;
+        const t = now + i * 0.07;
+        gain.gain.setValueAtTime(0, t);
+        gain.gain.linearRampToValueAtTime(0.12, t + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.65);
+      });
+      setTimeout(() => ctx.close(), 1200);
+    } catch (e) {}
   },
 
   /* ---------- Drawing ---------- */
@@ -96,11 +121,13 @@ const Stars = {
     return dialog;
   },
 
-  success(n) {
+  success(n, fresh = false) {
     const all = this.found().length === this.total;
+    // A new find gets a glint and a chime. A star found before just shows.
+    if (fresh) this.chime();
     this.box(`
-      <div class="stella-box__win">
-        ${this.svg(n, 64, true)}
+      <div class="stella-box__win${fresh ? " is-new" : ""}">
+        <span class="stella-box__badge">${this.svg(n, 64, true)}<span class="glint" aria-hidden="true"></span></span>
         <div>
           <p class="stella-box__q">Star ${n} of ${this.total}.</p>
           <p class="stella-box__note">${all ? "All eight. Imperial Scholar." : "Take a screenshot to claim it."}</p>
@@ -135,7 +162,7 @@ const Stars = {
   },
 
   /* ---------- The collection in the footer ---------- */
-  drawCase() {
+  drawCase(latest = 0) {
     const footer = document.querySelector(".site-footer .cols");
     if (!footer || !this.hunting()) return;
     let el = footer.querySelector(".stella-case");
@@ -151,7 +178,9 @@ const Stars = {
       <div class="stella-case__row">
         ${all ? `<span class="stella-case__title">Imperial Scholar</span>` : ""}
         <span class="stella-case__stars" aria-label="${list.length} of ${this.total} stars found">
-          ${Array.from({ length: this.total }, (_, i) => list.includes(i + 1) ? this.svg(0, 16) : this.outline(16)).join("")}
+          ${Array.from({ length: this.total }, (_, i) => list.includes(i + 1)
+            ? (i + 1 === latest ? `<span class="is-pop">${this.svg(0, 16)}</span>` : this.svg(0, 16))
+            : this.outline(16)).join("")}
         </span>
       </div>
       ${all ? "" : `
