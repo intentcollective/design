@@ -30,9 +30,24 @@ content:
       fields: [title, discipline]
     fields:
       - { name: title, label: Title, type: string, required: true }
-      - { name: discipline, label: Discipline, type: string, description: "For example Poster, Typography" }
+      - name: discipline
+        label: Discipline
+        type: select
+        options:
+          values:
+            - "Brand Identity & Experience Systems"
+            - "Editorial & Publication Design"
+            - "Communication & Campaign Design"
+            - "Visual Communication & Poster Design"
+            - "Packaging & Product Experience"
+            - "Spatial & Experiential Design"
+            - "Information & Data Design"
+            - "Digital Interface Design"
+            - "Experience & Interaction Design"
+            - "Motion & Time-based Media"
+            - "Experimental & Interdisciplinary Practice"
+      - { name: format, label: Format, type: string, description: "Size, materials and quantity, for example Poster, 18 × 24 in, screen print" }
       - { name: summary, label: One-line summary, type: text, description: "What the project is and why it matters, in one sentence. This is what reviewers read first." }
-      - { name: subject, label: Subject, type: string, description: "The class, client or competition" }
       - { name: tools, label: Tools, type: string }
       - { name: role, label: Role, type: string, description: "Group projects only. What you did on the team." }
       - { name: cover, label: Cover image, type: image }

@@ -1,10 +1,10 @@
 {
   "title": "Thorn Princess",
-  "discipline": "Type Design",
+  "discipline": "Experimental & Interdisciplinary Practice",
+  "format": "Display typeface, 52 uppercase and lowercase letters",
   "color": "#7d5262",
   "summary": "A display typeface that looks elegant from a distance and turns sharp up close.",
-  "subject": "Type Design",
-  "tools": "Glyphs, pencil and tracing paper",
+  "tools": "Illustrator, Figma",
   "cover": "",
   "coverAlt": "Large letters of a display typeface with small thorn-like serifs",
   "blocks": [
@@ -26,7 +26,7 @@
     {
       "type": "text",
       "heading": "Process",
-      "body": "I drew the control letters by hand, then built the full set in Glyphs. The thorns were the hard part. Too many and the type looked angry, too few and the idea disappeared. The final set has thorns only at the ends of strokes."
+      "body": "I drew the control letters by hand, then built the full set digitally. The thorns were the hard part. Too many and the type looked angry, too few and the idea disappeared. The final set has thorns only at the ends of strokes."
     },
     {
       "type": "gallery",

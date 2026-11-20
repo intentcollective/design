@@ -1,10 +1,10 @@
 {
   "title": "Project Nine",
-  "discipline": "Editorial",
+  "discipline": "One discipline, for example Editorial & Publication Design",
+  "format": "Size, materials and quantity, for example Poster, 18 × 24 in, screen print",
   "color": "#7d5262",
   "summary": "One sentence that says what this is and why it matters. Many reviewers read only this.",
-  "subject": "Class, client or competition",
-  "tools": "Software and materials",
+  "tools": "The software you used, for example InDesign, Illustrator",
   "cover": "",
   "coverAlt": "Your strongest image of the finished work. On the Works page it is cropped to 4:3.",
   "blocks": [

@@ -1,10 +1,10 @@
 {
   "title": "Stella Stars",
-  "discipline": "Information Design",
+  "discipline": "Information & Data Design",
+  "format": "Poster, 24 × 36 in, digital print",
   "color": "#9a8648",
   "summary": "A poster that shows how one elite school rewards and punishes its students, drawn as a night sky.",
-  "subject": "Information Design",
-  "tools": "Illustrator, Google Sheets",
+  "tools": "Illustrator, Figma, Claude AI",
   "cover": "",
   "coverAlt": "Poster of a night sky where every star and bolt marks one award",
   "blocks": [

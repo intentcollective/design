@@ -366,13 +366,14 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 .project-head .page-title { grid-column: 1 / -1; }
 .project-head .lead { grid-column: 1 / -1; margin-top: var(--s4); }
 
-/* Subject, Tools, Role. Each takes four columns, always in
-   the same place, so they line up from project to project. */
+/* Discipline, Format, Tools and Role. Equal parts take equal
+   shares of the 12 columns, four facts take three each. */
 .facts { grid-column: 1 / -1; margin-top: var(--s7); padding-top: var(--s4); border-top: 1px solid var(--line); row-gap: var(--s4); }
 .facts > div { grid-column: span 4; }
+.facts[data-n="4"] > div { grid-column: span 3; }
 .facts dt { font-size: var(--fs-label); color: var(--muted); }
-@media screen and (max-width: 1023px) { .facts > div { grid-column: span 2; } }
-@media screen and (max-width: 640px)  { .facts > div { grid-column: 1 / -1; } }
+@media screen and (max-width: 1023px) { .facts > div, .facts[data-n="4"] > div { grid-column: span 3; } }
+@media screen and (max-width: 640px)  { .facts > div, .facts[data-n="4"] > div { grid-column: 1 / -1; } }
 
 /* The work is centered, like a piece hung on a wall. Text
    stays flush left, where it reads best. */

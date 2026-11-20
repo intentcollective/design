@@ -96,16 +96,16 @@ const Pages = {
     const p = await Site.load(`content/projects/${slug}.json`);
     document.title = `${p.title}, ${s.name}`;
 
-    // Subject, Tools, Role. Role is only for group projects, to say
-    // what you did on the team. Leave it out for solo work.
-    const facts = [["Subject", p.subject], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v);
+    // Discipline, Format, Tools and Role. Role is only for group
+    // projects, to say what you did on the team.
+    const facts = [["Discipline", p.discipline], ["Format", p.format], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v);
 
     main.innerHTML = `
       <article${p.color ? ` class="has-hue" style="--hue:${esc(p.color)}"` : ""}>
         <header class="project-head wrap cols">
           <h1 class="page-title">${esc(p.title)}</h1>
           <p class="lead">${esc(p.summary)}</p>
-          <dl class="facts cols">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+          <dl class="facts cols" data-n="${facts.length}">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         </header>
         ${p.cover
           ? `<div class="project-cover wrap"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}"></div>`
