@@ -96,7 +96,9 @@ const Pages = {
   /* ---------- One project (project.html?p=slug) ---------- */
   async project(s) {
     const main = document.querySelector("main");
-    const slug = new URLSearchParams(location.search).get("p") || (s.works || [])[0];
+    // The project name comes from the address, project.html?p=tamara
+    // (or project.html#tamara on hosts that drop the ?p= part).
+    const slug = new URLSearchParams(location.search).get("p") || location.hash.slice(1) || (s.works || [])[0];
     const p = await Site.load(`content/projects/${slug}.json`);
     document.title = `${p.title}, ${s.name}`;
 
@@ -253,6 +255,9 @@ const Pages = {
       </section>`;
   }
 };
+
+/* When only the #name changes, the browser doesn't reload. Do it ourselves. */
+addEventListener("hashchange", () => { if (document.body.dataset.page === "project") location.reload(); });
 
 /* ---------- Start ---------- */
 (async () => {
