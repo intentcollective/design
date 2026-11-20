@@ -765,3 +765,14 @@ figcaption {
 }
 .guide-note { padding-left: var(--s4); border-left: 2px solid var(--accent); color: var(--muted); }
 .guide-alert { color: var(--accent); }
+
+/* A pair of eyes peeking over the first rule on story.html.
+   The rule cuts them off at the bottom, so they seem to hide
+   behind it. js/peek.js makes them blink and wander. */
+.has-peek { position: relative; }
+.peek { position: absolute; left: 0; right: 0; bottom: 100%; height: 22px; overflow: hidden; pointer-events: none; }
+.peek__eyes { position: absolute; left: 0; top: 4px; display: flex; gap: 10px; transition: transform 5s cubic-bezier(0.45, 0, 0.55, 1); }
+.peek__eye { position: relative; width: 26px; height: 26px; border-radius: 50%; background: var(--fg); transform-origin: 50% 100%; transition: transform 0.07s ease-in; }
+.peek__eye.is-shut { transform: scaleY(0.1); }
+.peek__eye i { position: absolute; top: 6px; left: 7.5px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); transition: left 0.6s ease; }
+@media print { .peek { display: none; } }
