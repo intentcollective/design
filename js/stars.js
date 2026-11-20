@@ -370,12 +370,7 @@ const Stars = {
       mail.innerHTML = `${esc(user)}<button class="at" type="button" aria-label="@">@</button>${esc(domain)}`;
       mail.querySelector(".at").addEventListener("click", () => {
         const address = `${user}@${domain}`;
-        this.quiz(8, `<div class="stella-box__head"><span>To ${esc(address)}</span><button type="button" class="stella-box__copy">Copy address</button></div>`);
-        const copy = document.querySelector(".stella-box__copy");
-        copy.addEventListener("click", () => {
-          navigator.clipboard && navigator.clipboard.writeText(address);
-          copy.textContent = "Copied";
-        });
+        this.quiz(8, `<div class="stella-box__head"><span>To ${esc(address)}</span></div>`);
       });
     }
 
