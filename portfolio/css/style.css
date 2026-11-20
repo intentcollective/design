@@ -587,9 +587,12 @@ figcaption {
 .guide-section > div { max-width: var(--measure); }
 .guide-section h3 { font-size: var(--fs-title); font-weight: 500; line-height: 1.25; margin: var(--s7) 0 var(--s3); }
 .guide-section h3:first-child { margin-top: 0; }
-.guide-section h4 { font-size: var(--fs-body); font-weight: 600; margin: 0 0 var(--s1); font-family: ui-monospace, Menlo, monospace; }
 .guide-section p + p { margin-top: var(--s3); }
-.guide-section ol, .guide-section ul { padding-left: 1.2rem; }
+/* Numbers and midpoints hang outside the text edge, so every
+   item's text lines up with the paragraphs around it. */
+.guide-section ol, .guide-section ul { padding-left: 0; margin: var(--s4) 0; }
+.guide-section ol { list-style-position: outside; }
+.guide-section ol li::marker { color: var(--muted); }
 .guide-section li + li { margin-top: var(--s2); }
 .guide-section a { border-bottom: 1px solid var(--accent); }
 
@@ -605,4 +608,3 @@ figcaption {
   color: #d8d8d4;
 }
 .guide-note { padding-left: var(--s4); border-left: 2px solid var(--accent); color: var(--muted); }
-.guide-blocks { display: grid; gap: var(--s6); margin-top: var(--s5); }

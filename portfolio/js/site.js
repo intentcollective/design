@@ -105,7 +105,7 @@ const Site = {
     const links = [];
     if (s.email) links.push(`<a href="mailto:${esc(s.email)}">${esc(s.email)}</a>`);
     if (s.portfolioPdf) links.push(`<a href="${esc(s.portfolioPdf)}" target="_blank" rel="noopener">PDF portfolio</a>`);
-    if (s.showGuideLink) links.push(`<a href="guide.html">Template guide</a>`);
+    if (s.showGuideLink) links.push(`<a href="guide.html">Portfolio guide</a>`);
     footer.innerHTML = `
       <div class="wrap"><div class="cols">
         <p>&copy; ${new Date().getFullYear()} ${esc(s.name)}</p>

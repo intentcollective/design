@@ -140,7 +140,7 @@ content:
           - { name: accent, label: Accent color, type: string }
           - { name: font, label: Typeface, type: string }
           - { name: googleFont, label: Load typeface from Google Fonts, type: boolean }
-      - { name: showGuideLink, label: Show template guide link in footer, type: boolean }
+      - { name: showGuideLink, label: Show portfolio guide link in footer, type: boolean }
 
   # ---------- About ----------
   - name: about

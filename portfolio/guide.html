@@ -3,301 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Template guide</title>
-<meta name="description" content="How to make this portfolio template your own.">
+<title>Making a portfolio site</title>
+<meta name="description" content="The process and principles behind this example portfolio.">
 <link rel="preload" href="fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="guide">
 
-<!-- This page is plain HTML. Unlike the other pages, nothing
-     here is loaded from /content. Delete it, and set
-     "showGuideLink" to false in settings.json, once your
-     site is ready. -->
-
 <main class="page guide wrap">
-  <h1 class="page-title">Make this site<br><span style="color:var(--accent)">your own.</span></h1>
-  <p class="lead">This portfolio is a template. Everything you see, from the name in the corner to the color of the links, comes from a few small files you can change without writing code. This guide moves in four levels, from changing your name to building your own layouts. Stop at whichever level you need.</p>
+  <h1 class="page-title">Making a portfolio site</h1>
+  <p class="lead">This site is an example. Gromit Forger is a fictional designer. Don’t copy its code or its look. Study the decisions behind it, then design your own.</p>
 
   <nav class="guide-toc" aria-label="Guide contents">
-    <a href="#start">Before you start</a>
-    <a href="#level-1">1. Settings</a>
-    <a href="#level-2">2. Projects</a>
-    <a href="#level-3">3. Style and the grid</a>
-    <a href="#level-4">4. Structure</a>
-    <a href="#publish">Publish</a>
-    <a href="#reviewers">What reviewers look for</a>
+    <a href="#reader">1. Know your reader</a>
+    <a href="#choose">2. Choose the work</a>
+    <a href="#story">3. Tell each story</a>
+    <a href="#principles">4. Design principles</a>
+    <a href="#build">5. Build it</a>
+    <a href="#send">6. Before you send it</a>
   </nav>
 
   <!-- ===================================================== -->
-  <section class="guide-section" id="start">
-    <h2>Before you start</h2>
+  <section class="guide-section" id="reader">
+    <h2>1. Know your reader</h2>
     <div>
-      <h3>How the site is built</h3>
-      <p>The site is plain HTML, CSS and JavaScript. There is no framework and no build step. The HTML pages are empty frames. When someone opens a page, a small script reads your content files and fills the frame.</p>
-<pre>portfolio/
-  index.html        Works page, the first page people see
-  project.html      One page that shows any project
-  resume.html       Source for your resume PDF. Not in the menu.
-  about.html        About
-  print.html        The page your PDF portfolio is made from
-  content/
-    settings.json   Name, menu, colors, typeface, project order
-    projects/       One file per project
-    resume.json
-    about.json
-  images/           Your images, one folder per project
-  files/            Your PDFs
-  css/style.css     The look of the whole site
-  js/               The engine. You rarely need to open it.</pre>
+      <p>A portfolio is read by people deciding whether to hire you. Most of them spend less than a minute before deciding whether to look closer. Design for that minute.</p>
+      <p>In that minute they want to see three things. Strong work, how you think, and how to reach you. Everything on this site follows from that. The work starts on the first screen. Every project opens with one sentence that says what it is. Email, resume and LinkedIn are always one click away.</p>
+    </div>
+  </section>
 
-      <h3>Three ways to edit</h3>
-      <p>Every change in this guide can be made in any of these three ways. Pick the one you are comfortable with.</p>
-      <ol>
-        <li><strong>Ask an AI.</strong> Give an AI assistant access to your repository, or paste in the file, and describe what you want. “Add a two-column gallery after the Process text in tamara.json, using these two images.” Always check the result in your browser.</li>
-        <li><strong>Use the Pages CMS forms.</strong> Go to <a href="https://app.pagescms.org" target="_blank" rel="noopener">app.pagescms.org</a>, sign in with GitHub and open your repository. The template includes a <code>.pages.yml</code> file that tells Pages CMS which fields to show. Every save becomes a commit.</li>
-        <li><strong>Edit on GitHub.</strong> Open a file on github.com, click the pencil icon, change it and commit. Upload images with “Add file” then “Upload files.”</li>
+  <!-- ===================================================== -->
+  <section class="guide-section" id="choose">
+    <h2>2. Choose the work</h2>
+    <div>
+      <ul class="dots">
+        <li><strong>Six to eight projects.</strong> Six strong projects beat ten uneven ones.</li>
+        <li><strong>Lead with your best.</strong> The first two decide whether anyone sees the rest.</li>
+        <li><strong>Show range with a point of view.</strong> The projects here move across posters, books and film, but all of them deal with language and image.</li>
+        <li><strong>Cut anything you would have to apologize for.</strong></li>
+      </ul>
+      <p>Write your headline last, once you see what your strongest work has in common. “Graphic designer based in Savannah” is true of hundreds of people. A point of view is what a reviewer remembers.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <section class="guide-section" id="story">
+    <h2>3. Tell each story</h2>
+    <div>
+      <p>Each project has its own page, because studios hire for thinking, not only for finished images. Every page follows the same order, so a reviewer always knows where to look.</p>
+      <ol class="guide-steps">
+        <li><strong>One sentence.</strong> What it is and why it matters. Many reviewers read only this.</li>
+        <li><strong>Subject, tools and role.</strong> Name the class or client. Add your role only for group work, and be specific about what you did.</li>
+        <li><strong>The work.</strong> The strongest image first, shown large.</li>
+        <li><strong>The brief.</strong> What you were asked to do.</li>
+        <li><strong>The idea.</strong> The insight that shaped your answer.</li>
+        <li><strong>The process.</strong> Research, sketches, rejected directions, and why you changed course.</li>
+        <li><strong>The reflection.</strong> What worked, and what you would do differently.</li>
       </ol>
-
-      <h3 id="preview">Preview on your computer</h3>
-      <p>Double-clicking <code>index.html</code> shows an error, because browsers don’t let a page read other files straight from your disk. Run a tiny local server instead. On a Mac, open Terminal in the portfolio folder and type the line below, then visit <code>http://localhost:8000</code>.</p>
-<pre>python3 -m http.server 8000</pre>
-      <p>In VS Code, the Live Server extension does the same with one click.</p>
+      <p>Keep it short. Two or three sentences for each part is plenty.</p>
+      <p class="guide-note">The dashed boxes on the project pages mark where process images belong. They are there on purpose. Photograph your sketches, save early versions and keep notes while you work. A process is very hard to rebuild at the end of the quarter.</p>
     </div>
   </section>
 
   <!-- ===================================================== -->
-  <section class="guide-section" id="level-1">
-    <h2>Level 1, settings</h2>
+  <section class="guide-section" id="principles">
+    <h2>4. Design principles</h2>
     <div>
-      <p>Open <code>content/settings.json</code>. This one file controls everything that appears on every page.</p>
-<pre>"name": "Sena Hart",
-"role": "Graphic Designer",
-"email": "hello@example.com",
-"linkedin": "https://www.linkedin.com/in/your-name/",</pre>
+      <p>Your portfolio is a design project. It should show the same care as your work, then get out of its way.</p>
 
-      <h3>The header</h3>
-      <p>Each item in <code>headline</code> becomes one large line. The line <code>{rotate}</code> is replaced by the changing words, shown in your accent color. For a still header, leave only one word in the list, or remove the <code>{rotate}</code> line.</p>
-<pre>"headline": ["I build", "{rotate}", "out of words."],
-"rotatingWords": ["cities", "books", "films", "posters"],</pre>
-      <p>Write a line that only you could say. “Graphic designer based in Savannah” is true of hundreds of people. A point of view is what makes a reviewer remember you.</p>
-
-      <h3>The menu</h3>
-      <p>Each item in <code>menu</code> has a label and a link. Rename, reorder, add or remove items freely. Set <code>"newTab": true</code> for links that leave your site or open a PDF.</p>
-      <p><code>"badge": true</code> draws an item as a small outlined mark, the way “in” stands for LinkedIn. Give a short label like that a <code>fullName</code>, so screen readers announce “LinkedIn” and not “in.”</p>
-      <p>The Resume item links straight to your PDF, because that is the version reviewers save and forward. If you would rather show a web resume, change its link to <code>resume.html</code>. That page is already built from <code>content/resume.json</code>.</p>
-<pre>"menu": [
-  { "label": "Works", "link": "index.html" },
-  { "label": "Resume", "link": "files/your-name-resume.pdf", "newTab": true },
-  { "label": "About", "link": "about.html" },
-  { "label": "in", "fullName": "LinkedIn", "badge": true,
-    "link": "https://www.linkedin.com/in/your-name/", "newTab": true }
-],</pre>
-
-      <h3>Colors and typeface</h3>
-      <p>Change the colors in <code>theme</code>. Any CSS color works. To use a Google Font, type its exact name and set <code>googleFont</code> to true.</p>
-<pre>"theme": {
-  "background": "#000000",
-  "text": "#f2f2f0",
-  "accent": "#ff3b2f",
-  "font": "Space Grotesk",
-  "googleFont": true
-}</pre>
-      <p class="guide-note">Check contrast. Text must stay readable against the background, for every visitor. Paste both colors into a contrast checker and aim for a ratio of at least 4.5 to 1.</p>
-
-      <h3>If something breaks</h3>
-      <p>JSON is strict about punctuation. If a page shows a red box saying there is a typo, look near the line it names for a missing comma between items, a missing quote mark, or an extra comma after the last item in a list.</p>
-    </div>
-  </section>
-
-  <!-- ===================================================== -->
-  <section class="guide-section" id="level-2">
-    <h2>Level 2, projects</h2>
-    <div>
-      <h3>Add a project</h3>
-      <ol>
-        <li>Copy any file in <code>content/projects</code> and rename it, for example <code>bus-stop-zine.json</code>. Use lowercase letters and hyphens.</li>
-        <li>Make a folder with the same name in <code>images/projects</code> and put your images there.</li>
-        <li>Add the name, without <code>.json</code>, to the <code>works</code> list in settings.json. The order of that list is the order on your Works page.</li>
-      </ol>
-
-      <h3>The top of a project</h3>
-      <p>These fields fill the header of the project page and the card on the Works page. <code>subject</code> is the class, client or competition. Add <code>role</code> only for group projects, to say what you did on the team. Leave it out for solo work.</p>
-      <p>The cover appears on the Works page and at the top of the project page. When a video should open the page instead, as in Octavia, add <code>"hideCover": true</code>.</p>
-<pre>"title": "Tamara",
-"discipline": "Poster, Lettering",
-"summary": "One sentence. What it is and why it matters.",
-"subject": "Typography III",
-"tools": "Illustrator, InDesign",
-"role": "Lettering and layout, in a team of two",
-"cover": "images/projects/tamara/cover.jpg",
-"coverAlt": "Describe the image for someone who can’t see it",</pre>
-
-      <h3>Blocks</h3>
-      <p>Below the header, a project page is a list of blocks, stacked in the order you write them. Mix them however the project needs. A typical order is brief, idea, research, process, iterations, final work, reflection.</p>
-
-      <div class="guide-blocks">
-        <div><h4>text</h4><p>A heading on the left and paragraphs on the right. A blank line starts a new paragraph.</p>
-<pre>{ "type": "text",
-  "heading": "Process",
-  "body": "First paragraph.\n\nSecond paragraph." }</pre></div>
-
-        <div><h4>image</h4><p>Width is measured in columns. <code>full</code> spans all 12, <code>wide</code> spans 8, and <code>narrow</code> spans 6, the same as the text. A background color adds a frame around the image.</p>
-<pre>{ "type": "image",
-  "src": "images/projects/tamara/detail.jpg",
-  "alt": "Close-up of the lettering",
-  "width": "wide",
-  "background": "#efefed",
-  "caption": "Optional caption" }</pre></div>
-
-        <div><h4>gallery</h4><p>Two, three or four images in a row, sharing the 12 columns equally. <code>ratio</code> crops them all to the same shape.</p>
-<pre>{ "type": "gallery",
-  "columns": 3,
-  "ratio": "4/5",
-  "images": [
-    { "src": "images/.../sketch1.jpg", "alt": "..." },
-    { "src": "images/.../sketch2.jpg", "alt": "..." },
-    { "src": "images/.../sketch3.jpg", "alt": "..." }
-  ],
-  "caption": "Three rounds of sketches" }</pre></div>
-
-        <div><h4>video</h4><p>Paste a Vimeo or YouTube link, or the path to an .mp4 in your images folder. For a short silent loop, set <code>autoplay</code> to true.</p>
-<pre>{ "type": "video",
-  "url": "https://vimeo.com/88666098",
-  "caption": "Final film" }</pre></div>
-
-        <div><h4>quote</h4><p>One large line. Use it once per project, at most.</p>
-<pre>{ "type": "quote",
-  "text": "The constraint was the idea." }</pre></div>
-
-        <div><h4>compare</h4><p>A before and after slider. Good for showing a redesign or a big revision.</p>
-<pre>{ "type": "compare",
-  "before": "images/.../draft.jpg",
-  "after": "images/.../final.jpg",
-  "caption": "Midterm draft and final" }</pre></div>
-
-        <div><h4>placeholder</h4><p>A dashed box that marks what still needs to go in. The example projects use these to show where process images belong. Replace every one before you share your site.</p>
-<pre>{ "type": "placeholder",
-  "label": "Research wall photos",
-  "ratio": "16/9" }</pre></div>
-
-        <div><h4>spacer</h4><p>Extra breathing room. <code>small</code>, <code>medium</code> or <code>large</code>.</p>
-<pre>{ "type": "spacer", "size": "large" }</pre></div>
-      </div>
-
-      <h3>Preparing images</h3>
-      <p>Export images 2300 pixels wide for <code>full</code>, 1600 for <code>wide</code>, and 1200 for <code>narrow</code> and gallery images. That is twice their size on screen, so they stay sharp on high-resolution displays. Save photos as JPG at about 80 percent quality. Keep each file under 500 KB if you can, because a slow site loses reviewers before your work appears.</p>
-    </div>
-  </section>
-
-  <!-- ===================================================== -->
-  <section class="guide-section" id="level-3">
-    <h2>Level 3, style and the grid</h2>
-    <div>
-      <p>Open <code>css/style.css</code>. The site follows the discipline of the printed page, and the top of the file sets that discipline down as tokens, named values used everywhere else. Change one and the whole site follows.</p>
-
-      <h3>The grid</h3>
-      <p>Everything sits on a column grid. Wide screens have 12 columns, tablets 6, and phones 4. Columns hold things, and gutters only space them, so the gutters stay narrow. To see them, open your browser’s developer tools, select the <code>.cols</code> element and turn on its grid overlay.</p>
-<pre>--text-w: 1140px;   /* 12 columns of 84px, 11 gutters of 12px */
---cols: 12;
---gutter: 12px;
---measure-cols: 6;  /* reading text spans 6 columns */
---wide-cols: 8;     /* intros and wide images span 8 */
---card-span: 4;     /* each project card spans 4, three to a row */</pre>
-      <p>Every left edge on the site hangs from a column line. The menu takes the last four columns, one item per column. The project facts, Subject, Tools and Role, take four columns each. Project images are the exception. They are centered, because the work is the object being shown, like a piece hung on a wall, while text stays flush left for reading. Nothing is centered.</p>
+      <h3>Grid</h3>
+      <p>Everything sits on a column grid, twelve columns on a wide screen, six on a tablet and four on a phone. Every left edge starts on a column line, so the page feels ordered before anyone can say why. Columns hold things, and gutters only space them.</p>
 
       <h3>Measure</h3>
-      <p>Running text spans six of the twelve columns, about 68 characters a line. Robert Bringhurst calls 66 characters ideal, within a comfortable range of 45 to 75. Lines much longer than that tire the eye, and much shorter ones break the rhythm of reading.</p>
+      <p>Paragraphs span six of the twelve columns, about 66 characters a line, the length Robert Bringhurst calls ideal. Longer lines tire the eye. Shorter lines break the rhythm of reading.</p>
 
       <h3>Type</h3>
-      <p>Six sizes, each with one job. A new size needs a new job, not a new mood.</p>
-<pre>--fs-label: 13px;   /* captions, metadata */
---fs-body: 16px;    /* all running text */
---fs-large: 18px;   /* summaries and intros */
---fs-title: 20px;   /* section titles, card heads */
---fs-display: clamp(1.75rem, 3.6vw, 2.5rem);  /* page titles */
---fs-hero: clamp(2.75rem, 7vw, 5.75rem);      /* home headline only */</pre>
-      <p><code>clamp(2.75rem, 7vw, 5.75rem)</code> means “7 percent of the window width, but never smaller than 2.75rem or larger than 5.75rem.” That one line is why the headline fills a laptop screen and still fits on a phone. <code>rem</code> is the browser’s base text size, usually 16 pixels.</p>
+      <p>Six sizes, each with one job. Captions, body text, intros, section titles, page titles, and one large headline on the home page. A new size needs a new job, not a new mood. Hierarchy comes from size, position and weight, not from adding styles.</p>
 
       <h3>Space</h3>
-      <p>Every distance is one of nine steps, all multiples of 4px. Few visitors will measure it, but they feel it as calm and order before they can name it.</p>
-<pre>--s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px; --s5: 24px;
---s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;</pre>
+      <p>Every distance is a step of 4 pixels, from 4 to 96. Few people will measure it, but everyone feels it as calm and order. Space separates. Lines divide only what truly needs dividing.</p>
 
-      <h3>Things to try</h3>
-      <ul>
-        <li>Set <code>--card-span</code> to 3 for four projects to a row, or 6 for two.</li>
-        <li>Change the card shape by editing <code>aspect-ratio: 4 / 3</code> in <code>.card__media</code>. Try <code>1 / 1</code> or <code>3 / 4</code>.</li>
-        <li>Open your browser’s developer tools (right-click, Inspect), select any element and edit its styles live. Nothing is saved, so experiment freely, then copy what you like into style.css.</li>
+      <h3>Alignment</h3>
+      <p>Text is set flush left with a ragged right edge, which gives the eye one place to start every line. The work itself is centered, like a piece hung on a wall.</p>
+
+      <h3>Color</h3>
+      <p>Black, white, gray and one accent. Give color one job, and it becomes easy to read. Here the accent marks links and the one word in the headline that changes.</p>
+
+      <h3>Images</h3>
+      <p>Let the work lead. Show it large and crop it with care. Describe every image for people who can’t see it. Compress your files, because a slow site loses reviewers before the first image appears.</p>
+
+      <h3>Motion</h3>
+      <p>One purposeful motion, like the changing word in the headline, is memorable. More becomes noise. Always respect visitors who turn motion off.</p>
+
+      <p class="guide-note">Further reading. Josef Müller-Brockmann, <em>Grid Systems in Graphic Design</em>. Robert Bringhurst, <em>The Elements of Typographic Style</em>. Ellen Lupton, <em>Thinking with Type</em>.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <section class="guide-section" id="build">
+    <h2>5. Build it</h2>
+    <div>
+      <p>You don’t need to write code to make a good portfolio. Choose the way of building that leaves you the most time for the work.</p>
+      <ul class="dots">
+        <li><strong>A site builder</strong> such as Readymag, Cargo or Framer. The principles above apply inside any tool.</li>
+        <li><strong>HTML and CSS by hand</strong>, if you want to learn how the web works. Start with one page.</li>
+        <li><strong>An AI assistant.</strong> Describe what you want in design terms, the grid, the measure, the type sizes, and check every result in the browser. You are the designer. The AI is a tool.</li>
       </ul>
-      <p class="guide-note">Further reading. Josef Müller-Brockmann, <em>Grid Systems in Graphic Design</em>. Robert Bringhurst, <em>The Elements of Typographic Style</em>.</p>
+
+      <h3>How this example is built</h3>
+      <p>Each project lives in its own small text file, separate from the layout. The pages read those files and place them on the grid. Keeping content apart from design is what lets one design hold any number of projects. It is worth learning whatever tool you use.</p>
+      <p>Technical notes for anyone who opens the code are in the README file in the repository.</p>
+
+      <h3>The PDF</h3>
+      <p>Many companies still ask for a PDF portfolio and a PDF resume. Make them from the same content as your site, so the three never disagree. Keep the PDF short, one project per page, with a link to the full process online.</p>
     </div>
   </section>
 
   <!-- ===================================================== -->
-  <section class="guide-section" id="level-4">
-    <h2>Level 4, structure</h2>
+  <section class="guide-section" id="send">
+    <h2>6. Before you send it</h2>
     <div>
-      <h3>How a page gets built</h3>
-      <ol>
-        <li>The browser loads an HTML file, for example <code>project.html?p=tamara</code>.</li>
-        <li><code>js/site.js</code> reads settings.json, sets your colors and builds the menu and footer.</li>
-        <li><code>js/pages.js</code> looks at <code>data-page</code> on the body tag and runs the matching function. For a project, it reads <code>content/projects/tamara.json</code>.</li>
-        <li>Each block is turned into HTML by the function with the same name in the <code>Blocks</code> section of site.js.</li>
-      </ol>
-
-      <h3>Make a new block type</h3>
-      <p>Say you want a block that shows a color palette. Add a function to <code>Blocks</code> in site.js, a style to style.css, then use it in any project file.</p>
-<pre>// site.js, inside Blocks
-palette(b) {
-  return `&lt;div class="b-palette"&gt;${
-    b.colors.map(c =&gt; `&lt;span style="background:${c}"&gt;&lt;/span&gt;`).join("")
-  }&lt;/div&gt;`;
-},
-
-/* style.css */
-.b-palette { display: flex; height: 8rem; }
-.b-palette span { flex: 1; }
-
-// tamara.json
-{ "type": "palette", "colors": ["#c8202f", "#ffffff", "#111111"] }</pre>
-
-      <h3>A completely custom page</h3>
-      <p>For a project that needs a layout the blocks can’t make, write it by hand. Copy <code>about.html</code>, delete the script tag for pages.js, keep site.js so the menu still appears, and write your own HTML inside <code>&lt;main&gt;</code>. Then link to that file from a card or a text block.</p>
-    </div>
-  </section>
-
-  <!-- ===================================================== -->
-  <section class="guide-section" id="publish">
-    <h2>Publish</h2>
-    <div>
-      <h3>GitHub Pages</h3>
-      <ol>
-        <li>In your repository on github.com, open Settings, then Pages.</li>
-        <li>Under “Build and deployment,” choose “Deploy from a branch,” pick <code>main</code> and the root folder, and save.</li>
-        <li>After a minute your site is live at <code>your-username.github.io/repository-name/portfolio/</code>. Every later commit updates it automatically.</li>
-      </ol>
-      <p>You can connect your own domain in the same settings screen.</p>
-
-      <h3>Your PDFs</h3>
-      <p>Many companies still ask for a PDF. Open <code>print.html</code> in your browser, choose File, then Print, then Save as PDF. Set the layout to landscape, margins to none, and turn on background graphics. Save it into <code>files</code> with the name used in settings.json. Do the same with <code>resume.html</code>, in portrait, for your resume. Regenerate both every time you change a project.</p>
-    </div>
-  </section>
-
-  <!-- ===================================================== -->
-  <section class="guide-section" id="reviewers">
-    <h2>What reviewers look for</h2>
-    <div>
-      <p>Most reviewers spend less than a minute on a portfolio before deciding whether to look closer. Design for that minute.</p>
-      <ul>
-        <li><strong>Lead with your best work.</strong> The first two projects decide whether anyone sees the rest. Six strong projects beat ten uneven ones.</li>
-        <li><strong>Make the summary do the work.</strong> One sentence per project that says what it is and why it’s interesting. Many reviewers read only that.</li>
-        <li><strong>Show how you think.</strong> Sketches, rejected directions and the reason you changed course tell a studio more than the final image. That is why every project here has a process section.</li>
-        <li><strong>Say what you did.</strong> On group work, always name your role.</li>
-        <li><strong>Keep it fast.</strong> Compress your images and test on your phone.</li>
-        <li><strong>Make contact easy.</strong> Email, resume and LinkedIn should never be more than one click away.</li>
-        <li><strong>Leave nothing unfinished.</strong> Replace every placeholder and check every link before you send the address to anyone.</li>
+      <ul class="dots">
+        <li>Every placeholder is replaced with real work.</li>
+        <li>Every link works, including email, resume and LinkedIn.</li>
+        <li>Every image has a description.</li>
+        <li>It reads well on a phone.</li>
+        <li>It loads quickly on a slow connection.</li>
+        <li>Someone other than you has proofread every word.</li>
       </ul>
     </div>
   </section>

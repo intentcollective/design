@@ -1,13 +1,28 @@
-# Portfolio template
+# Example portfolio
 
-An example portfolio for an emerging graphic designer, built as a model for students. The designer, Sena Hart, is fictional.
+An example portfolio site for an emerging graphic designer, made as a teaching model. The designer, Gromit Forger, is fictional.
 
-- **Works** (`index.html`) opens with a large type statement, then the project list.
-- **Project pages** (`project.html?p=name`) show the process for each project, built from blocks.
-- **Resume** (`resume.html`) is a web resume with a PDF download.
-- **About** (`about.html`) is a short letter and a few personal details.
-- **PDF portfolio** (`print.html`) prints to a landscape PDF.
+Open `guide.html` in a browser for the process and design principles behind it. This file covers only the technical side.
 
-All content lives in `content/`. Open `guide.html` in the browser for the full instructions, from changing your name to writing your own layouts.
+## How it is built
 
-To preview locally, run `python3 -m http.server 8000` in this folder and visit `http://localhost:8000`.
+Plain HTML, CSS and JavaScript. No framework and no build step.
+
+- `content/` holds all the words and settings as JSON files. `settings.json` sets the name, headline, menu, colors and the order of projects. Each project is one file in `content/projects/`.
+- `index.html`, `project.html`, `about.html` and `resume.html` are empty frames. `js/site.js` and `js/pages.js` read the content files and build each page.
+- A project page is a list of blocks (text, image, gallery, video, quote, compare, placeholder, spacer), rendered in order by the `Blocks` functions in `js/site.js`.
+- `css/style.css` holds the whole design. The tokens at the top set the grid (12, 6 and 4 columns), the type sizes and the spacing steps.
+- `print.html` lays out the PDF portfolio. `resume.html` is the source of the resume PDF. Print either page to PDF from the browser and save it into `files/`.
+- `.pages.yml` at the top of the repository lets [Pages CMS](https://pagescms.org) edit the content files through forms.
+
+## Preview locally
+
+Browsers block the content files when a page is opened straight from disk, so run a small server in this folder and visit `http://localhost:8000`.
+
+```
+python3 -m http.server 8000
+```
+
+## Publish
+
+Turn on GitHub Pages for the repository (Settings, then Pages, deploy from the `main` branch). The site appears under `/portfolio/`.
