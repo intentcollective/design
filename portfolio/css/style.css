@@ -269,9 +269,9 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 
 .lead { max-width: var(--measure-wide); font-size: var(--fs-large); line-height: 1.55; }
 
-/* A link that does something: text color, underlined in the accent. */
-.action { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
-.action:hover { color: var(--accent); }
+/* A link that does something: a quiet underline that brightens on hover. */
+.action { color: var(--fg); border-bottom: 1px solid var(--muted); padding-bottom: 1px; transition: border-color 0.2s; }
+.action:hover { border-color: var(--fg); }
 
 /* =========================================================
    6. Works page
@@ -389,7 +389,8 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 .b-text { max-width: var(--measure); }
 .b-text h2 { font-size: var(--fs-title); font-weight: 500; line-height: 1.25; margin-bottom: var(--s3); }
 .b-text__body p + p { margin-top: var(--s4); }
-.b-text__body a { border-bottom: 1px solid var(--accent); }
+.b-text__body a { border-bottom: 1px solid var(--muted); }
+.b-text__body a:hover { border-color: var(--fg); }
 
 /* Image widths, measured in columns.
      full    all 12 columns
@@ -680,7 +681,7 @@ figcaption {
    ========================================================= */
 .guide-toc { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s6); font-size: var(--fs-label); }
 .guide-toc a { color: var(--muted); border-bottom: 1px solid var(--line); }
-.guide-toc a:hover { color: var(--fg); border-color: var(--accent); }
+.guide-toc a:hover { color: var(--fg); border-color: var(--fg); }
 
 .guide-section { margin-top: var(--s9); padding-top: var(--s4); border-top: 2px solid var(--line); scroll-margin-top: var(--s9); }
 .guide-section > h2 { font-size: var(--fs-display); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: var(--s6); }
@@ -694,7 +695,8 @@ figcaption {
 .guide-section ol { list-style-position: outside; }
 .guide-section ol li::marker { color: var(--muted); }
 .guide-section li + li { margin-top: var(--s2); }
-.guide-section a { border-bottom: 1px solid var(--accent); }
+.guide-section a { border-bottom: 1px solid var(--muted); }
+.guide-section a:hover { border-color: var(--fg); }
 
 .guide code, .guide pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.85em; }
 .guide code { background: var(--line); padding: 0.1em 0.35em; border-radius: 2px; }
