@@ -125,7 +125,7 @@ const Stars = {
     const all = this.found().length === this.total;
     // A new find gets a glint and a chime. A star found before just shows.
     if (fresh) this.chime();
-    this.box(`
+    const dialog = this.box(`
       <div class="stella-box__win${fresh ? " is-new" : ""}">
         <span class="stella-box__badge">${this.svg(n, 64, true)}<span class="glint" aria-hidden="true"></span></span>
         <div>
@@ -133,6 +133,84 @@ const Stars = {
           <p class="stella-box__note">${all ? "All eight. Imperial Scholar." : "Take a screenshot to claim it."}</p>
         </div>
       </div>`);
+    // When the box closes, a new star flies into the collection.
+    if (fresh) {
+      const badge = dialog.querySelector(".stella-box__badge");
+      let from = null;
+      const remember = () => { from = badge.getBoundingClientRect(); };
+      setTimeout(remember, 750);
+      dialog.addEventListener("cancel", remember, { once: true });
+      dialog.querySelector("[data-close]").addEventListener("pointerdown", remember, { once: true });
+      dialog.addEventListener("close", () => this.flyHome(n, from), { once: true });
+    }
+  },
+
+  /* The collection slides up at the bottom of the screen,
+     wherever the student is, and the star flies into its
+     numbered slot. The page itself never moves. */
+  flyHome(n, from) {
+    const list = this.found();
+    const bar = document.createElement("div");
+    bar.className = "stella-bar";
+    bar.setAttribute("aria-hidden", "true");
+    bar.innerHTML = Array.from({ length: this.total }, (_, i) => {
+      const k = i + 1;
+      const filled = list.includes(k) && k !== n;
+      return `<span class="stella-bar__slot" data-slot="${k}">${filled ? this.svg(k, 28) : this.outline(28)}</span>`;
+    }).join("");
+    document.body.appendChild(bar);
+    requestAnimationFrame(() => bar.classList.add("is-up"));
+
+    const slot = bar.querySelector(`[data-slot="${n}"]`);
+    const land = () => {
+      slot.innerHTML = `<span class="is-pop">${this.svg(n, 28)}</span><span class="glint is-on"></span>`;
+      this.tick();
+      setTimeout(() => {
+        bar.classList.remove("is-up");
+        setTimeout(() => bar.remove(), 500);
+      }, 1600);
+    };
+
+    const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (calm) return setTimeout(land, 300);
+
+    // Wait for the bar to rise, then fly.
+    setTimeout(() => {
+      const to = slot.getBoundingClientRect();
+      const start = from && from.width ? from : { left: innerWidth / 2 - 32, top: innerHeight / 2 - 32, width: 64, height: 64 };
+      const flyer = document.createElement("div");
+      flyer.className = "stella-flyer";
+      flyer.innerHTML = this.svg(n, 64);
+      flyer.style.left = start.left + "px";
+      flyer.style.top = start.top + "px";
+      document.body.appendChild(flyer);
+      const dx = to.left + to.width / 2 - (start.left + 32);
+      const dy = to.top + to.height / 2 - (start.top + 32);
+      const scale = 28 / 64;
+      flyer.animate([
+        { transform: "translate(0, 0) scale(1) rotate(0)" },
+        { transform: `translate(${dx * 0.45}px, ${Math.min(dy * 0.2, -80)}px) scale(0.9) rotate(200deg)`, offset: 0.45 },
+        { transform: `translate(${dx}px, ${dy}px) scale(${scale}) rotate(360deg)` }
+      ], { duration: 800, easing: "cubic-bezier(0.5, 0, 0.3, 1)", fill: "forwards" })
+        .onfinish = () => { flyer.remove(); land(); };
+    }, 350);
+  },
+
+  /* A single soft note when the star lands. */
+  tick() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = 2093;
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.32);
+      setTimeout(() => ctx.close(), 600);
+    } catch (e) {}
   },
 
   quiz(n, header = "") {
