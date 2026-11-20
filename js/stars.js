@@ -156,7 +156,7 @@ const Stars = {
       </div>
       ${all ? "" : `
       <form class="stella-case__code">
-        <input type="text" autocomplete="off" placeholder="Found a star in a PDF? Enter its code" aria-label="Star code">
+        <input type="text" autocomplete="off" placeholder="Have a code word? Enter it here" aria-label="Star code">
         <button type="submit">Add</button>
       </form>`}`;
     const form = el.querySelector("form");
