@@ -936,3 +936,8 @@ figcaption {
 .stella-case.is-complete { padding-top: var(--s4); }
 .stella-case__code { flex: none; width: min(100%, 360px); max-width: none; }
 .stella-case { border-top-width: 2px; }
+/* Star 4 sits bottom left on the resume, on the motto's baseline. */
+@media print {
+  .cv .print-star { grid-column: 1 / span 4; grid-row: calc(var(--rows) + 2); align-self: last baseline; align-items: baseline; }
+  .cv .print-star .star { align-self: center; }
+}
