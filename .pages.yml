@@ -36,6 +36,7 @@ content:
       - { name: cover, label: Cover image, type: image }
       - { name: coverAlt, label: Cover description, type: string, description: "Describe the image for people who can't see it." }
       - { name: hideCover, label: Hide the cover on the project page, type: boolean, description: "For example when a video opens the page" }
+      - { name: color, label: Placeholder color, type: string, description: "Fills empty image boxes until you add your images" }
       - { name: coverPosition, label: Cover crop position, type: select, options: { values: [center, top, bottom, left, right] } }
       - name: blocks
         label: Page blocks

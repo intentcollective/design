@@ -4,6 +4,8 @@ An example portfolio site for an emerging graphic designer, made as a teaching m
 
 Open `guide.html` in a browser for the process and design principles behind it. This file covers only the technical side.
 
+A blank version to start from is in `../starter`. It shares this folder's `css/` and `js/` files. When you change one, copy it to the other.
+
 ## How it is built
 
 Plain HTML, CSS and JavaScript. No framework and no build step.

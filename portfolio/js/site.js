@@ -192,8 +192,8 @@ const Blocks = {
   },
 
   image(b) {
-    if (!b.src) return Blocks.placeholder({ label: b.caption || b.alt || "Image", ratio: b.ratio });
     const width = ["full", "wide", "narrow"].includes(b.width) ? b.width : "narrow";
+    if (!b.src) return `<figure class="b-figure b-figure--${width}">${Blocks.placeholder({ label: b.caption || b.alt || "Image", ratio: b.ratio })}</figure>`;
     const padded = b.background ? " b-figure--padded" : "";
     const bg = b.background ? ` style="background:${esc(b.background)}"` : "";
     return `

@@ -46,7 +46,9 @@ const Pages = {
     const projects = await Pages.loadProjects(s.works);
     document.getElementById("grid").innerHTML = projects.map(({ slug, data: p }) => `
       <a class="card reveal" href="project.html?p=${encodeURIComponent(slug)}">
-        <div class="card__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}" loading="lazy" style="object-position:${esc(p.coverPosition || "center")}"></div>
+        ${p.cover
+          ? `<div class="card__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}" loading="lazy" style="object-position:${esc(p.coverPosition || "center")}"></div>`
+          : `<div class="card__media card__media--blank" style="--hue:${esc(p.color || "var(--line)")}"><span>Cover image</span></div>`}
         <h2 class="card__title">${esc(p.title)}</h2>
         <p class="card__meta">${esc(p.discipline)}</p>
       </a>`).join("");
@@ -99,13 +101,15 @@ const Pages = {
     const facts = [["Subject", p.subject], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v);
 
     main.innerHTML = `
-      <article>
+      <article${p.color ? ` class="has-hue" style="--hue:${esc(p.color)}"` : ""}>
         <header class="project-head wrap cols">
           <h1 class="page-title">${esc(p.title)}</h1>
           <p class="lead">${esc(p.summary)}</p>
           <dl class="facts cols">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         </header>
-        ${p.cover && !p.hideCover ? `<div class="project-cover wrap"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}"></div>` : ""}
+        ${p.hideCover ? "" : p.cover
+          ? `<div class="project-cover wrap"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}"></div>`
+          : `<div class="project-cover wrap"><div class="b-placeholder b-placeholder--cover"><span><strong>Cover image</strong>${esc(p.coverAlt || "Your strongest image of the finished work")}</span></div></div>`}
         <div class="blocks wrap">${Blocks.render(p.blocks)}</div>
         <div class="wrap" id="after"></div>
       </article>`;
@@ -176,7 +180,7 @@ const Pages = {
       ? `<img src="${esc(a.portrait)}" alt="${esc(a.portraitAlt)}">`
       : Blocks.placeholder({ label: "Portrait. A simple, well-lit photo of you, or you at work.", ratio: "4/5" });
     document.querySelector("main").innerHTML = `
-      <section class="page about wrap">
+      <section class="page about wrap${a.color ? " has-hue" : ""}"${a.color ? ` style="--hue:${esc(a.color)}"` : ""}>
         <h1 class="page-title">About</h1>
         <div class="about-head cols">
           <div class="about-head__portrait">${portrait}</div>
@@ -212,7 +216,9 @@ const Pages = {
       const facts = [["Subject", p.subject], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v);
       return `
         <section class="sheet">
-          <div class="sheet__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}"></div>
+          <div class="sheet__media">${p.cover
+            ? `<img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}">`
+            : `<div class="sheet__blank" style="background:${esc(p.color || "#ddd")}"></div>`}</div>
           <div class="sheet__text">
             <h2>${esc(p.title)}</h2>
             <p class="sheet__summary">${esc(p.summary)}</p>
