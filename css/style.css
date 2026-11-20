@@ -853,6 +853,7 @@ figcaption {
 
 /* The rules at the end of guide.html */
 .guide-section--stella { border-top-color: var(--gold); }
+.stella-title { color: var(--gold); }
 .stella-example { margin: var(--s5) 0; padding: var(--s5); background: var(--gold); color: var(--gold-ink); font-size: var(--fs-label); }
 .stella-example__state + .stella-example__state { margin-top: var(--s5); }
 .stella-example__label { margin-bottom: var(--s2); color: var(--gold-muted); }
