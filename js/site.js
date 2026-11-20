@@ -200,6 +200,13 @@ function esc(value = "") {
     .replace(/"/g, "&quot;");
 }
 
+/* Tie one-letter words like “a” and “I” to the word after them
+   with a non-breaking space, so a line never ends on one. An old
+   typesetting rule. */
+function tie(value = "") {
+  return String(value).replace(/(^|[\s(“"])([aAI])\s+/g, "$1$2\u00a0");
+}
+
 /* A tiny bit of formatting for text blocks:
      *italic*   **bold**   [link text](https://...)
    A blank line starts a new paragraph. */
@@ -207,7 +214,7 @@ function richText(value = "") {
   return value
     .split(/\n\s*\n/)
     .map(paragraph => {
-      let html = esc(paragraph.trim())
+      let html = esc(tie(paragraph.trim()))
         .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
         .replace(/\*(.+?)\*/g, "<em>$1</em>")
         .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')

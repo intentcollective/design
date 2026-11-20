@@ -30,7 +30,7 @@ const Pages = {
     main.innerHTML = `
       <section class="hero wrap cols">
         <h1 class="hero__headline" aria-label="${esc(spoken)}">${lines}</h1>
-        <p class="hero__intro">${esc(s.intro)}</p>
+        <p class="hero__intro">${esc(tie(s.intro))}</p>
       </section>
       <section class="works wrap" id="works">
         <div class="works__bar cols">
@@ -187,7 +187,7 @@ const Pages = {
       <section class="page about wrap${a.color ? " has-hue" : ""}"${a.color ? ` style="--hue:${esc(a.color)}"` : ""}>
         <h1 class="page-title">About</h1>
         <div class="about-head cols">
-          <p class="lead">${esc(a.lead)}</p>
+          <p class="lead">${esc(tie(a.lead))}</p>
         </div>
         <div class="blocks">
           ${Blocks.render(a.blocks)}
@@ -267,7 +267,7 @@ const Pages = {
       <section class="deck deck--cover">
         <div class="deck__name"><h1>${esc(s.name)}</h1><p>${esc(s.role)}</p></div>
         <ul class="deck__contact">${contact.map(c => `<li>${esc(c)}</li>`).join("")}</ul>
-        <p class="deck__statement">${esc(s.statement || s.intro)}</p>
+        <p class="deck__statement">${esc(tie(s.statement || s.intro))}</p>
         <p class="deck__label">Selected Work</p>
       </section>
       ${pages}`;
