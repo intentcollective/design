@@ -1,0 +1,64 @@
+{
+  "title": "Octavia",
+  "discipline": "Motion, Film",
+  "summary": "A short film about a city that hangs on a net, told through the rings of a fallen tree.",
+  "subject": "Motion Design II, Linguistic Translation",
+  "tools": "Premiere Pro, After Effects",
+  "role": "Direction and editing, in a team of three",
+  "cover": "images/projects/octavia/cover.jpg",
+  "coverAlt": "Film still of a cut tree stump with the words The net will only last so long",
+  "hideCover": true,
+  "blocks": [
+    {
+      "type": "video",
+      "url": "https://vimeo.com/88666098",
+      "caption": "Final film."
+    },
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Take the same city exercise into time. Under ninety seconds, no voiceover, type allowed."
+    },
+    {
+      "type": "text",
+      "heading": "The city",
+      "body": "Octavia is a spider web city stretched over an abyss. Its people know the net will only last so long, and they live with that every day.\n\nI looked for something real that holds the same tension between strength and an end date. I found it in a cut tree."
+    },
+    {
+      "type": "placeholder",
+      "label": "Storyboard. Scan of the hand-drawn frames, with timing notes.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I shot the stump in one afternoon at three focal lengths, then built the edit around a single sentence that appears a few words at a time. The type sits inside the rings, so the reading pace follows the growth of the tree."
+    },
+    {
+      "type": "gallery",
+      "columns": 2,
+      "images": [
+        {
+          "src": "",
+          "alt": "Location scouting still one"
+        },
+        {
+          "src": "",
+          "alt": "Location scouting still two"
+        }
+      ],
+      "caption": "Location scouting. Replace with stills of the places you tested before choosing one."
+    },
+    {
+      "type": "image",
+      "src": "images/projects/octavia/cover.jpg",
+      "alt": "Film still with type set across the tree rings",
+      "width": "wide"
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "The hardest decision was length. My first cut ran three times longer and said less. Cutting it down forced every shot to carry the idea."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "title": "Zobeide",
+  "discipline": "Book, Object",
+  "summary": "A book that refuses to stay a book. Calvino’s text cut into strips and rebuilt as the maze it describes.",
+  "subject": "Typography III, Linguistic Translation",
+  "tools": "InDesign, laser cutter, studio lighting",
+  "cover": "images/projects/zobeide/cover.jpg",
+  "coverAlt": "White paper strips printed with text, stacked into a tangled structure",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Turn your city into a book. The format is open, but the text has to stay readable somewhere."
+    },
+    {
+      "type": "text",
+      "heading": "The city",
+      "body": "Zobeide was built by men who all dreamed of the same woman running through a city at night. They built streets to trap her, and she never came back. The city is a trap made out of a dream."
+    },
+    {
+      "type": "placeholder",
+      "label": "Dummy books. Photos of the first two conventional bound versions, before the strip idea.",
+      "ratio": "3/2"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I set the passage as one long line of type, printed it on heavy stock and cut it into sticks. Each stick carries a fragment.\n\nStacked together they form a structure your eyes can wander through but never read in order, the same way the men of Zobeide walk streets that lead nowhere."
+    },
+    {
+      "type": "placeholder",
+      "label": "Cutting and assembly. Two or three photos of the strips being cut and joined.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "image",
+      "src": "images/projects/zobeide/detail-strip.jpg",
+      "alt": "Close-up of a paper strip reading spot where they had lost the fugitive’s trail",
+      "width": "narrow",
+      "background": "#efefed",
+      "caption": "Fragments stay readable up close."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "My first two dummies were good books with weak ideas. The breakthrough came when I stopped protecting the format.\n\nPhotography became part of the design. The lighting decides which words a viewer finds first."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "portrait": "",
+  "portraitAlt": "Portrait of Your Name",
+  "color": "#ff8fb8",
+  "lead": "Open with one line in your own voice. Who are you, in a sentence?",
+  "blocks": [
+    {
+      "type": "text",
+      "body": "Where do you come from, and how did you find design? Two short paragraphs.\n\nBe specific. One detail only you could write is worth more than a list of adjectives."
+    },
+    {
+      "type": "text",
+      "heading": "How I work",
+      "body": "What do you care about in your work? What do you do that others don’t?"
+    },
+    {
+      "type": "text",
+      "heading": "What I’m looking for",
+      "body": "The kind of role and team you want, the work that interests you most, when you are available and where you can work."
+    },
+    {
+      "type": "text",
+      "heading": "Outside the studio",
+      "body": "Two or three things you do when you are not designing. Choose the ones that say something about how you see the world."
+    }
+  ]
+}

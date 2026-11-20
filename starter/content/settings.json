@@ -1,0 +1,62 @@
+{
+  "name": "Your Name",
+  "role": "Graphic Designer",
+  "location": "City, State",
+  "email": "you@example.com",
+  "linkedin": "https://www.linkedin.com/",
+  "website": "yourname.com",
+  "headline": [
+    "I make",
+    "{rotate}",
+    "that say something."
+  ],
+  "rotatingWords": [
+    "posters",
+    "books",
+    "identities",
+    "films"
+  ],
+  "intro": "Write one or two sentences about who you are and what your work is about. End with your year, school and degree.",
+  "menu": [
+    {
+      "label": "Works",
+      "link": "index.html"
+    },
+    {
+      "label": "Resume",
+      "link": "files/your-name-resume.pdf",
+      "newTab": true
+    },
+    {
+      "label": "About",
+      "link": "about.html"
+    },
+    {
+      "label": "in",
+      "fullName": "LinkedIn",
+      "badge": true,
+      "link": "https://www.linkedin.com/",
+      "newTab": true
+    }
+  ],
+  "works": [
+    "project-one",
+    "project-two",
+    "project-three",
+    "project-four",
+    "project-five",
+    "project-six"
+  ],
+  "resumePdf": "files/your-name-resume.pdf",
+  "portfolioPdf": "files/your-name-portfolio.pdf",
+  "theme": {
+    "background": "#000000",
+    "text": "#f2f2f0",
+    "muted": "#8a8a86",
+    "line": "#2a2a2a",
+    "accent": "#ff6fa8",
+    "font": "DM Sans",
+    "googleFont": false
+  },
+  "showGuideLink": false
+}

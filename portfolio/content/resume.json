@@ -1,0 +1,116 @@
+{
+  "expertise": [
+    "Visual communication without saying a word",
+    "Typography, editorial and motion design",
+    "Quiet problem solving under deadline"
+  ],
+  "sections": [
+    {
+      "title": "Work experience",
+      "items": [
+        {
+          "where": "SCAD Exhibitions Office",
+          "place": "Savannah GA",
+          "when": "25–Present",
+          "what": "Student Gallery Assistant",
+          "details": [
+            "Hangs shows, prints the wall labels and keeps the gallery in order between exhibitions"
+          ]
+        },
+        {
+          "where": "Top Bun Bakery",
+          "place": "Wigan UK",
+          "when": "23–25",
+          "what": "Bakery Assistant",
+          "details": [
+            "Up at four to bake the bread. Redrew the price signs because nobody else would"
+          ]
+        },
+        {
+          "where": "Anti-Pesto Humane Pest Control",
+          "place": "Wigan UK",
+          "when": "22–23",
+          "what": "Night Watch Assistant",
+          "details": [
+            "Guarded the village vegetables overnight and caught every rabbit gently"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Education",
+      "items": [
+        {
+          "where": "Savannah College of Art and Design",
+          "place": "Savannah GA",
+          "when": "23–27",
+          "what": "BFA | Graphic Design, expected June 2027",
+          "details": [
+            "Minor in Film and Television"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Activities",
+      "items": [
+        {
+          "where": "Wensleydale Type Club",
+          "place": "Savannah GA",
+          "when": "24–Present",
+          "what": "Founder",
+          "details": [
+            "Weekly lettering sessions. Cheese provided."
+          ]
+        },
+        {
+          "where": "Eden Academy Art Day",
+          "place": "Berlint Ostania",
+          "when": "25",
+          "what": "Volunteer Teacher",
+          "details": [
+            "Taught poster making to first graders. One of them seemed to read my mind."
+          ]
+        }
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "title": "Design",
+      "list": "Typography, editorial, identity systems, information design, motion"
+    },
+    {
+      "title": "Tools",
+      "list": "InDesign, Illustrator, Photoshop, After Effects, Premiere Pro, Figma, HTML and CSS"
+    },
+    {
+      "title": "Making",
+      "list": "Risograph, letterpress, bookbinding, laser cutting, model railways laid at speed"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Golden Carrot",
+      "note": "Best poster",
+      "when": "25"
+    },
+    {
+      "name": "Stella Star",
+      "note": "Art Day",
+      "when": "25"
+    },
+    {
+      "name": "Type Show",
+      "note": "Selected",
+      "when": "25"
+    },
+    {
+      "name": "Dean’s List",
+      "note": "SCAD",
+      "when": "23–26"
+    }
+  ],
+  "availability": "Available June 2027",
+  "motto": "I don’t say much. The work does."
+}
