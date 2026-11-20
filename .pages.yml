@@ -2,7 +2,7 @@
 # Pages CMS configuration
 # ---------------------------------------------------------
 # Pages CMS (https://pagescms.org) reads this file and turns
-# the JSON files in portfolio/content into simple forms.
+# the JSON files in content into simple forms.
 # Sign in at app.pagescms.org with GitHub, open this
 # repository, and edit. Every save is a commit to GitHub.
 #
@@ -10,7 +10,7 @@
 # =========================================================
 
 media:
-  input: portfolio/images      # where uploads are saved in the repo
+  input: images      # where uploads are saved in the repo
   output: images               # how the path is written into content
   categories: [image, video]
 
@@ -20,7 +20,7 @@ content:
   - name: projects
     label: Projects
     type: collection
-    path: portfolio/content/projects
+    path: content/projects
     format: json
     filename: "{primary}.json"
     view:
@@ -104,7 +104,7 @@ content:
   - name: settings
     label: Site settings
     type: file
-    path: portfolio/content/settings.json
+    path: content/settings.json
     format: json
     fields:
       - { name: name, label: Your name, type: string }
@@ -148,7 +148,7 @@ content:
   - name: about
     label: About page
     type: file
-    path: portfolio/content/about.json
+    path: content/about.json
     format: json
     fields:
       - { name: portrait, label: Portrait, type: image }
@@ -167,7 +167,7 @@ content:
   - name: resume
     label: Resume
     type: file
-    path: portfolio/content/resume.json
+    path: content/resume.json
     format: json
     fields:
       - { name: expertise, label: Expertise, type: string, list: true }
