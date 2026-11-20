@@ -156,7 +156,7 @@ const Site = {
     const footer = document.createElement("footer");
     footer.className = "site-footer";
     const links = [];
-    if (s.email) links.push(`<a href="mailto:${esc(s.email)}">${esc(s.email)}</a>`);
+    if (s.email) links.push(`<span>${esc(s.email)}</span>`);
     if (s.portfolioPdf) links.push(`<a href="${esc(s.portfolioPdf)}" target="_blank" rel="noopener">PDF portfolio</a>`);
     if (s.showGuideLink) links.push(`<a href="guide.html">Portfolio guide</a>`);
     footer.innerHTML = `

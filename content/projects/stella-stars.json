@@ -24,6 +24,11 @@
       "ratio": "16/9"
     },
     {
+      "type": "text",
+      "heading": "Process",
+      "body": "I collected one term of awards from three classes into a single table. A bar chart and a ladder both ranked the students, and both felt like a scoreboard. Drawing each student as a constellation kept the system readable without turning the children into numbers."
+    },
+    {
       "type": "placeholder",
       "label": "Rejected directions. A bar chart and a ladder, with a note on why both felt too cold.",
       "ratio": "3/2"

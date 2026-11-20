@@ -149,25 +149,32 @@ const Pages = {
         ${(it.details || []).length ? `<ul class="dots cv-item__details">${it.details.map(d => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}
       </div>`;
     const contact = [
-      s.email, s.linkedin && s.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), s.website, r.availability
+      s.email, s.linkedin && s.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), s.website
     ].filter(Boolean);
+
+    // Both columns share one set of rows. The side sections line up
+    // with the last main sections, so Awards starts on the same line
+    // as Activities and Contact on the same line as Skills.
+    const main = [
+      `<h1 class="cv__name">${esc(s.name)}</h1>`,
+      r.expertise ? `<section>${label("Expertise")}<ul class="cv__expertise">${r.expertise.map(x => `<li>${esc(x)}</li>`).join("")}</ul></section>` : "",
+      ...(r.sections || []).map(sec => `<section>${label(sec.title)}${(sec.items || []).map(item).join("")}</section>`),
+      r.skills ? `<section>${label("Skills")}<dl class="cv__skills">${r.skills.map(k => `<div><dt>${esc(k.title)}</dt><dd>${esc(k.list)}</dd></div>`).join("")}</dl></section>` : ""
+    ].filter(Boolean);
+    const side = [
+      r.awards ? `<section>${label("Awards")}<dl class="cv__awards">${r.awards.map(a => `<div><dt>${esc(a.name)}</dt><dd>${esc(a.note)}</dd><dd>${esc(a.when)}</dd></div>`).join("")}</dl></section>` : "",
+      `<section>${label("Contact")}<ul class="cv__contact">${contact.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>`
+    ].filter(Boolean);
+    const first = Math.max(main.length - side.length, 1);
 
     document.querySelector("main").innerHTML = `
       <section class="page wrap">
         <div class="page__actions no-print" style="margin-top:0;margin-bottom:var(--s7)">
           ${s.resumePdf ? `<a class="action" href="${esc(s.resumePdf)}" target="_blank" rel="noopener">Download resume PDF</a>` : ""}
         </div>
-        <article class="cv cols">
-          <div class="cv__main">
-            <h1 class="cv__name">${esc(s.name)}</h1>
-            ${r.expertise ? `<section>${label("Expertise")}<ul class="cv__expertise">${r.expertise.map(x => `<li>${esc(x)}</li>`).join("")}</ul></section>` : ""}
-            ${(r.sections || []).map(sec => `<section>${label(sec.title)}${(sec.items || []).map(item).join("")}</section>`).join("")}
-            ${r.skills ? `<section>${label("Skills")}<dl class="cv__skills">${r.skills.map(k => `<div><dt>${esc(k.title)}</dt><dd>${esc(k.list)}</dd></div>`).join("")}</dl></section>` : ""}
-          </div>
-          <aside class="cv__side">
-            ${r.awards ? `<section>${label("Awards")}<dl class="cv__awards">${r.awards.map(a => `<div><dt>${esc(a.name)}</dt><dd>${esc(a.note)}</dd><dd>${esc(a.when)}</dd></div>`).join("")}</dl></section>` : ""}
-            <section>${label("Contact")}<ul class="cv__contact">${contact.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>
-          </aside>
+        <article class="cv cols" style="--rows:${main.length}">
+          ${main.map((m, i) => `<div class="cv__main" style="grid-row:${i + 1}">${m}</div>`).join("")}
+          ${side.map((m, i) => `<div class="cv__side" style="grid-row:${first + i + 1}">${m}</div>`).join("")}
           ${r.motto ? `<p class="cv__motto">${esc(r.motto)}</p>` : ""}
         </article>
       </section>`;
@@ -191,7 +198,7 @@ const Pages = {
           <section class="b-text">
             <h2>Contact</h2>
             <div class="page__actions" style="margin-top:0">
-              ${s.email ? `<a class="action" href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : ""}
+              ${s.email ? `<span>${esc(s.email)}</span>` : ""}
               ${s.linkedin ? `<a class="action" href="${esc(s.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : ""}
               ${s.resumePdf ? `<a class="action" href="${esc(s.resumePdf)}" target="_blank" rel="noopener">Resume PDF</a>` : ""}
             </div>
@@ -202,7 +209,7 @@ const Pages = {
   },
 
   /* ---------- PDF portfolio (print.html) ----------
-     A 16:9 landscape deck. A cover, then one page for every
+     An 11 by 6.25 in landscape deck. A cover, then one page for every
      project, numbered, with its title, tools, a short
      description and four images. In Chrome choose File,
      Print, Save as PDF, and turn on background graphics. The
@@ -258,7 +265,7 @@ const Pages = {
 
     document.querySelector("main").innerHTML = `
       <div class="print-help wrap">
-        <p><strong>This page becomes your PDF portfolio.</strong> In Chrome choose File, then Print, then Save as PDF, and turn on background graphics. The 16:9 page size is set for you. Save the file into the <code>files</code> folder with the name set in settings.json.</p>
+        <p><strong>This page becomes your PDF portfolio.</strong> In Chrome choose File, then Print, then Save as PDF, and turn on background graphics. The 11 × 6.25 in page size is set for you. Save the file into the <code>files</code> folder with the name set in settings.json.</p>
       </div>
       <section class="deck deck--cover">
         <div class="deck__name"><h1>${esc(s.name)}</h1><p>${esc(s.role)}</p></div>

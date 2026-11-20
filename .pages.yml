@@ -202,5 +202,4 @@ content:
           - { name: name, label: Award, type: string }
           - { name: note, label: For, type: string }
           - { name: when, label: Year, type: string }
-      - { name: availability, label: Availability, type: string }
       - { name: motto, label: Line at the foot of the page, type: string }
