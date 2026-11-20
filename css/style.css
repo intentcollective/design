@@ -16,20 +16,26 @@
 
 /* ---------- Fonts ----------
    The font files live in /fonts so the site works offline
-   and does not depend on another company's server.
-   "font-weight: 100 1000" means one variable file covers
-   every weight from thin to black. */
+   and does not depend on another company's server. They are
+   the same files the Intent Collective site uses.
+   "font-weight: 400 700" means one variable file covers
+   every weight from regular to bold. The file also holds
+   DM Sans's optical sizes, so big headlines automatically
+   get the cut drawn for display, which is already tight.
+   Large type therefore needs only light negative tracking.
+   ss01 gives the traditional teardrop quotes, apostrophe
+   and comma (turned on in body below). */
 @font-face {
   font-family: "DM Sans";
-  src: url("../fonts/dm-sans.woff2") format("woff2");
-  font-weight: 100 1000;
+  src: url("../fonts/DMSans-Roman.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "DM Sans";
-  src: url("../fonts/dm-sans-italic.woff2") format("woff2");
-  font-weight: 100 1000;
+  src: url("../fonts/DMSans-Italic.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: italic;
   font-display: swap;
 }
@@ -115,6 +121,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font);
+  font-feature-settings: "ss01" 1;
   font-size: var(--fs-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -305,7 +312,7 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
   font-size: var(--fs-hero);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.02em;
 }
 
 /* Each line sits in a box with overflow hidden, and the text
