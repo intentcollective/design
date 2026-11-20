@@ -154,7 +154,7 @@ const Site = {
     if (s.showGuideLink) links.push(`<a href="guide.html">Portfolio guide</a>`);
     footer.innerHTML = `
       <div class="wrap"><div class="cols">
-        <p>&copy; ${new Date().getFullYear()} ${esc(s.name)}</p>
+        <p>${s.colophon ? `<a href="${esc(s.colophon)}">` : ""}&copy; ${new Date().getFullYear()} ${esc(s.name)}${s.colophon ? "</a>" : ""}</p>
         <nav aria-label="Footer">${links.join("")}</nav>
       </div></div>`;
     document.body.appendChild(footer);
