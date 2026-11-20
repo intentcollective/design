@@ -581,12 +581,9 @@ figcaption {
 .page__actions { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s5); }
 
 .about-head { row-gap: var(--s5); }
-.about-head__portrait { grid-column: 1 / span 4; }
-.about-head__portrait img, .about-head__portrait .b-placeholder { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; max-height: none; }
-.about-head .lead { grid-column: 5 / span 8; max-width: none; font-size: var(--fs-display); line-height: 1.2; letter-spacing: -0.02em; font-weight: 500; }
+.about-head .lead { grid-column: 1 / span 10; max-width: none; font-size: var(--fs-display); line-height: 1.2; letter-spacing: -0.02em; font-weight: 500; }
 .about .blocks { margin-top: var(--s8); }
 @media screen and (max-width: 1023px) {
-  .about-head__portrait { grid-column: 1 / span 3; }
   .about-head .lead { grid-column: 1 / -1; }
 }
 

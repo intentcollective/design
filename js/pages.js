@@ -183,14 +183,10 @@ const Pages = {
   /* ---------- About ---------- */
   async about(s) {
     const a = await Site.load("content/about.json");
-    const portrait = a.portrait
-      ? `<img src="${esc(a.portrait)}" alt="${esc(a.portraitAlt)}">`
-      : Blocks.placeholder({ label: "Portrait. A simple, well-lit photo of you, or you at work.", ratio: "4/5" });
     document.querySelector("main").innerHTML = `
       <section class="page about wrap${a.color ? " has-hue" : ""}"${a.color ? ` style="--hue:${esc(a.color)}"` : ""}>
         <h1 class="page-title">About</h1>
         <div class="about-head cols">
-          <div class="about-head__portrait">${portrait}</div>
           <p class="lead">${esc(a.lead)}</p>
         </div>
         <div class="blocks">

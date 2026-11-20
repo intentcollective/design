@@ -151,8 +151,6 @@ content:
     path: content/about.json
     format: json
     fields:
-      - { name: portrait, label: Portrait, type: image }
-      - { name: portraitAlt, label: Portrait description, type: string }
       - { name: lead, label: Opening line, type: text }
       - name: blocks
         label: Sections
