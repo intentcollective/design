@@ -593,54 +593,74 @@ figcaption {
 
 /* =========================================================
    11. print.html, the PDF portfolio
-   Each .sheet is one landscape page on its own 12-column
-   grid. On screen they stack like slides. When printed,
-   each one becomes a PDF page.
+   A 16:9 deck, 1920 by 1080 pixels per page, on a grid of
+   12 columns. On screen the pages stack. When printed, each
+   one becomes a PDF page.
    ========================================================= */
 .print-help { margin-top: var(--s7); margin-bottom: var(--s7); color: var(--muted); }
 .print-help p { max-width: var(--measure); }
 .print-help strong { color: var(--fg); font-weight: 500; }
 
-.sheet {
-  --gutter: 0.12in;
-  width: 11in;
-  height: 8.5in;
+.deck {
+  --m: 80px;                              /* page margin */
+  width: 1920px;
+  height: 1080px;
   margin: 0 auto var(--s6);
-  padding: 0.6in;
+  padding: 70px var(--m) var(--m);
   background: #fff;
   color: #111;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--gutter);
+  grid-template-rows: auto 1fr;
+  column-gap: 24px;
   overflow: hidden;
-  font-size: 9.5pt;
-  line-height: 1.5;
+  font-size: 22px;
+  line-height: 1.45;
 }
-.sheet--cover { grid-template-rows: 1fr auto; }
-.sheet--cover h1 { grid-column: 1 / span 10; font-size: 56pt; font-weight: 500; letter-spacing: -0.045em; line-height: 1; align-self: end; }
-.sheet--cover h1 em { font-style: normal; color: var(--accent); }
-.sheet--cover > div { grid-column: 1 / -1; }
-.sheet__intro { max-width: 5.2in; font-size: 12pt; margin-top: 0.3in; color: #444; }
-.sheet__footer { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 0.35in; padding-top: 0.12in; border-top: 1px solid #ccc; color: #555; font-size: 8.5pt; }
 
-.sheet__media { grid-column: 1 / span 7; display: flex; align-items: flex-start; overflow: hidden; }
-.sheet__media img { max-width: 100%; max-height: 7.3in; object-fit: contain; }
-.sheet__blank { width: 100%; aspect-ratio: 4 / 3; }
-.sheet__text { grid-column: 8 / span 5; display: flex; flex-direction: column; }
-.sheet__text h2 { font-size: 22pt; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 0.12in; }
-.sheet__summary { font-size: 11pt; line-height: 1.45; }
-.sheet__facts { margin: 0.2in 0; padding-top: 0.1in; border-top: 1px solid #ccc; font-size: 8.5pt; }
-.sheet__facts div { display: grid; grid-template-columns: 0.8in 1fr; }
-.sheet__facts dt { color: #777; }
-.sheet__body h3 { font-size: 9.5pt; font-weight: 600; margin-top: 0.12in; }
-.sheet__body p { margin-top: 0.03in; }
-.sheet__link { margin-top: auto; font-size: 8.5pt; color: #777; }
+/* Cover: black, name and contact at the top, statement at the foot. */
+.deck--cover { background: #000; color: #fff; grid-template-rows: auto 1fr auto; }
+.deck__name { grid-column: 1 / span 4; }
+.deck__name h1 { font-size: 52px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+.deck__name p { font-size: 32px; }
+.deck__contact { grid-column: 5 / span 4; list-style: none; margin: 6px 0 0; padding: 0; font-size: 20px; line-height: 1.8; }
+.deck__statement { grid-column: 7 / span 6; grid-row: 3; font-size: 22px; line-height: 1.45; }
+.deck__label { grid-column: 1 / span 4; grid-row: 3; align-self: end; font-size: 26px; }
+
+/* Project opener: title, tools, text, then two images. */
+.deck__title { grid-column: 1 / span 4; font-size: 46px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
+.deck__tools { grid-column: 5 / span 2; list-style: none; margin: 6px 0 0; padding: 0; font-size: 20px; line-height: 1.8; }
+.deck__text { grid-column: 7 / span 6; margin-top: 6px; }
+
+.deck__row {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  margin-top: 40px;
+  min-height: 0;
+}
+.deck__row figure { flex: 1 1 0; min-width: 0; height: 100%; display: flex; align-items: flex-end; }
+.deck__row--opener figure:first-child { flex: 0 1 34%; }
+.deck__row img, .deck__box { width: 100%; max-height: 100%; object-fit: contain; }
+.deck--images { grid-template-rows: 1fr; }
+.deck--images .deck__row { margin-top: 0; align-items: center; }
+.deck--images figure { align-items: center; }
+
+/* Placeholder boxes take the project's color, like on the site. */
+.deck__box {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  background: color-mix(in srgb, var(--hue) 45%, #fff);
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+}
+.deck__box--cover { background: var(--hue); color: rgba(255, 255, 255, 0.85); }
 
 @media print {
-  /* A named page size, used only by the portfolio sheets,
-     so the resume still prints on portrait Letter paper. */
-  @page sheet { size: 11in 8.5in; margin: 0; }
-  .sheet { page: sheet; margin: 0; break-after: page; }
+  @page deck { size: 1920px 1080px; margin: 0; }
+  .deck { page: deck; margin: 0; break-after: page; }
   body[data-page="print"] { background: #fff; }
   .print-help { display: none; }
 }

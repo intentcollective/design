@@ -101,6 +101,7 @@ content:
       - { name: headline, label: Header lines, type: string, list: true, description: "One big line each. Write {rotate} on its own line to show the changing words." }
       - { name: rotatingWords, label: Changing words, type: string, list: true }
       - { name: intro, label: Intro under the header, type: text }
+      - { name: statement, label: Statement for the PDF cover, type: text }
       - name: menu
         label: Menu
         type: object

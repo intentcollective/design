@@ -10,6 +10,8 @@
   "rotatingWords": ["books", "posters", "signs", "typefaces", "films"],
   "intro": "Gromit Forger is a graphic designer who never says a word and lets the work do the talking. Identity, editorial, motion, information design and type. Senior, BFA Graphic Design, SCAD.",
 
+  "statement": "I believe a design should explain itself without a word of help. Clarity comes from structure, and character comes from craft. As a graphic design senior at SCAD with a minor in film and television, I work across identity, editorial, motion, information design and type. Every project starts with a close look at the people it is for and ends with a system they can use without instructions. I don’t say much, so I make sure the work does.",
+
   "menu": [
     { "label": "Works", "link": "index.html" },
     { "label": "Resume", "link": "files/gromit-forger-resume.pdf", "newTab": true },

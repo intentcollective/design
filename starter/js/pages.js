@@ -202,49 +202,61 @@ const Pages = {
   },
 
   /* ---------- PDF portfolio (print.html) ----------
-     Open print.html, then File > Print > Save as PDF.
-     Choose landscape, no margins, and turn on
-     "Background graphics". */
+     A 16:9 landscape deck. A cover, then for every project an
+     opening page (title, tools, a short description and two
+     images) and a page of more images. In Chrome choose File,
+     Print, Save as PDF, and turn on background graphics. The
+     page size is set by the stylesheet. */
   async print(s) {
     const projects = await Pages.loadProjects(s.works);
-    const site = s.website || (location.origin + location.pathname.replace(/print\.html$/, ""));
-    const headline = (s.headline || []).join(" ").replace("{rotate}", `<em>${esc((s.rotatingWords || [""])[0])}</em>`);
+    const contact = [s.website, s.linkedin && s.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), s.email].filter(Boolean);
+
+    // One image, or a colored box when the image isn't there yet.
+    const picture = (item, p, isCover) => item.src
+      ? `<img src="${esc(item.src)}" alt="${esc(item.label)}">`
+      : `<div class="deck__box${isCover ? " deck__box--cover" : ""}" style="--hue:${esc(p.color || "#888")};aspect-ratio:${esc(item.ratio || "4/3")}"><span>${esc(item.label)}</span></div>`;
+
+    // Every image in a project, in order: cover first, then the rest.
+    const images = p => {
+      const list = [{ src: p.cover, label: p.coverAlt || "Cover image", ratio: "4/3" }];
+      (p.blocks || []).forEach(b => {
+        if (b.type === "image") list.push({ src: b.src, label: b.caption || b.alt || "Image", ratio: b.ratio });
+        if (b.type === "placeholder") list.push({ src: "", label: b.label, ratio: b.ratio });
+        if (b.type === "gallery") (b.images || []).forEach(im => list.push({ src: im.src, label: im.alt, ratio: b.ratio }));
+      });
+      return list;
+    };
 
     const pages = projects.map(({ data: p }) => {
-      // The first three titled text blocks become the short story for the PDF.
-      const texts = (p.blocks || []).filter(b => b.type === "text" && b.heading).slice(0, 3);
-      const facts = [["Subject", p.subject], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v);
+      const all = images(p);
+      const idea = (p.blocks || []).find(b => b.type === "text" && /idea/i.test(b.heading || ""));
+      const text = [p.summary, idea ? idea.body.split(/\n\s*\n/)[0] : ""].filter(Boolean).join(" ");
+      const tools = (p.tools || "").split(",").map(t => t.trim()).filter(Boolean);
+      const rest = all.slice(2, 6);
       return `
-        <section class="sheet">
-          <div class="sheet__media">${p.cover
-            ? `<img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}">`
-            : `<div class="sheet__blank" style="background:${esc(p.color || "#ddd")}"></div>`}</div>
-          <div class="sheet__text">
-            <h2>${esc(p.title)}</h2>
-            <p class="sheet__summary">${esc(p.summary)}</p>
-            <dl class="sheet__facts">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-            <div class="sheet__body">${texts.map(b => `<h3>${esc(b.heading)}</h3>${richText(b.body.split(/\n\s*\n/)[0])}`).join("")}</div>
-            <p class="sheet__link">Full process and sketches at ${esc(site)}</p>
-          </div>
-        </section>`;
+        <section class="deck">
+          <h2 class="deck__title">${esc(p.title)}</h2>
+          <ul class="deck__tools">${tools.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+          <p class="deck__text">${esc(text)}</p>
+          <div class="deck__row deck__row--opener">${all.slice(0, 2).map((item, n) => `<figure>${picture(item, p, n === 0)}</figure>`).join("")}</div>
+        </section>
+        ${rest.length ? `
+        <section class="deck deck--images">
+          <div class="deck__row">${rest.map(item => `<figure>${picture(item, p, false)}</figure>`).join("")}</div>
+        </section>` : ""}`;
     }).join("");
 
     document.querySelector("main").innerHTML = `
       <div class="print-help wrap">
-        <p><strong>This page becomes your PDF portfolio.</strong> In your browser choose File, then Print, then Save as PDF. Set the layout to landscape, margins to none, and turn on background graphics. Save the file into the <code>files</code> folder with the name set in settings.json.</p>
+        <p><strong>This page becomes your PDF portfolio.</strong> In Chrome choose File, then Print, then Save as PDF, and turn on background graphics. The 16:9 page size is set for you. Save the file into the <code>files</code> folder with the name set in settings.json.</p>
       </div>
-      <section class="sheet sheet--cover">
-        <h1>${headline}</h1>
-        <div>
-          <p class="sheet__intro">${esc(s.intro)}</p>
-          <div class="sheet__footer"><span>${esc(s.name)}, ${esc(s.role)}</span><span>${esc(s.email)}</span><span>${esc(site)}</span></div>
-        </div>
+      <section class="deck deck--cover">
+        <div class="deck__name"><h1>${esc(s.name)}</h1><p>${esc(s.role)}</p></div>
+        <ul class="deck__contact">${contact.map(c => `<li>${esc(c)}</li>`).join("")}</ul>
+        <p class="deck__statement">${esc(s.statement || s.intro)}</p>
+        <p class="deck__label">Portfolio Works</p>
       </section>
-      ${pages}
-      <section class="sheet sheet--cover">
-        <h1>Thank you.</h1>
-        <div><div class="sheet__footer"><span>${esc(s.name)}</span><span>${esc(s.email)}</span><span>${esc(s.linkedin)}</span></div></div>
-      </section>`;
+      ${pages}`;
   }
 };
 
