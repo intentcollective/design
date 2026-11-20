@@ -149,7 +149,7 @@ const Pages = {
         ${(it.details || []).length ? `<ul class="dots cv-item__details">${it.details.map(d => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}
       </div>`;
     const contact = [
-      s.email, s.linkedin && s.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), s.website
+      s.website, s.linkedin && s.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), s.email
     ].filter(Boolean);
 
     // Both columns share one set of rows. The side sections line up
