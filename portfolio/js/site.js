@@ -51,7 +51,6 @@ const Site = {
       throw err;
     }
     this.applyTheme();
-    if (this.settings.showGrid) document.documentElement.classList.add("show-grid");
     this.buildNav();
     this.buildFooter();
     return this.settings;
@@ -61,7 +60,7 @@ const Site = {
   applyTheme() {
     const t = this.settings.theme || {};
     const root = document.documentElement.style;
-    const map = { background: "--bg", text: "--fg", muted: "--muted", line: "--line", accent: "--accent", gridLine: "--grid-line" };
+    const map = { background: "--bg", text: "--fg", muted: "--muted", line: "--line", accent: "--accent" };
     for (const key in map) if (t[key]) root.setProperty(map[key], t[key]);
 
     if (t.font) {
