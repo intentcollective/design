@@ -463,11 +463,6 @@ figcaption {
   .section > div, .section > dl, .section > p { grid-column: 1 / -1; }
 }
 
-.resume-item + .resume-item { margin-top: var(--s5); }
-.resume-item__top { display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
-.resume-item__what { font-weight: 500; }
-.resume-item__when, .resume-item__where { color: var(--muted); }
-
 /* Lists use the midpoint, hung outside the text edge, so
    every item's text starts on one clean line. */
 .dots { list-style: none; margin: var(--s2) 0 0; padding: 0; line-height: 1.45; }
@@ -475,9 +470,55 @@ figcaption {
 .dots li + li { margin-top: var(--s1); }
 .dots li::before { content: "·"; position: absolute; right: calc(100% + 0.4em); color: var(--muted); }
 
-.skills > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: var(--s4); }
-.skills > div + div { margin-top: var(--s2); }
-.skills dt { color: var(--muted); }
+/* ---------- The CV (resume.html, the source of the resume PDF)
+   The name and main sections take the right 8 columns. Awards,
+   clients and contact sit at the bottom of the left 3. */
+.cv { row-gap: var(--s6); align-items: end; }
+.cv__main { grid-column: 5 / span 8; }
+.cv__side { grid-column: 1 / span 3; grid-row: 1; padding-right: var(--s5); }
+.cv__motto { grid-column: 5 / span 8; font-size: var(--fs-label); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+.cv__name { font-size: var(--fs-display); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: var(--s6); }
+
+/* Section labels: small capitals over a thin rule. */
+.cv__label {
+  margin: var(--s6) 0 var(--s3);
+  padding-bottom: var(--s1);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cv section:first-of-type .cv__label { margin-top: 0; }
+.cv__side section + section .cv__label { margin-top: var(--s6); }
+
+.cv ul { list-style: none; margin: 0; padding: 0; }
+.cv__expertise { font-weight: 500; }
+
+.cv-item + .cv-item { margin-top: var(--s4); }
+.cv-item__head { display: grid; grid-template-columns: minmax(0, 1fr) 9rem 6rem; gap: var(--s3); align-items: baseline; }
+.cv-item__where { font-weight: 600; }
+.cv-item__place, .cv-item__when { font-size: var(--fs-label); color: var(--muted); }
+.cv-item__details { margin-top: var(--s1) !important; font-style: italic; line-height: 1.45; }
+
+.cv__skills > div { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: var(--s3); }
+.cv__skills > div + div { margin-top: var(--s1); }
+.cv__skills dt { color: var(--muted); }
+
+.cv__awards > div { display: grid; grid-template-columns: 7em minmax(0, 1fr) 3.5em; gap: var(--s2); }
+.cv__awards dd:last-child { text-align: right; }
+.cv__awards dd:last-child { color: var(--muted); }
+.cv__clients { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--s3); }
+.cv__side { font-size: var(--fs-label); line-height: 1.6; }
+
+@media screen and (max-width: 1023px) {
+  .cv__main, .cv__motto { grid-column: 1 / -1; }
+  .cv__side { grid-column: 1 / -1; grid-row: auto; }
+  .cv-item__head { grid-template-columns: minmax(0, 1fr) auto; }
+  .cv-item__place { display: none; }
+}
 
 .page__actions { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s5); }
 
@@ -512,14 +553,18 @@ figcaption {
   html, body { background: #fff !important; color: #111; }
   .site-nav, .site-footer, .page__actions, .no-print { display: none !important; }
   .page { padding-top: 0; }
-  .section { margin-top: 14pt; padding-top: 6pt; border-top-width: 1px; break-inside: avoid; }
-  .section > h2 { grid-column: 1 / span 2; }
-  .section > div, .section > dl, .section > p { grid-column: 3 / -1; }
-  .resume-item + .resume-item { margin-top: 7pt; }
-  .dots { margin-top: 2pt; }
+  /* The CV fits on one Letter page. */
+  body[data-page="resume"] { line-height: 1.4; }
+  .cv { row-gap: 12pt; }
+  .cv__side { grid-column: 1 / span 4; padding-right: 0.25in; }
+  .cv__name { margin-bottom: 14pt; }
+  .cv__label { margin: 13pt 0 5pt; }
+  .cv__side section + section .cv__label { margin-top: 13pt; }
+  .cv-item + .cv-item { margin-top: 5pt; }
+  .cv-item__details { margin-top: 1pt !important; line-height: 1.35; }
+  .cv-item__head { grid-template-columns: minmax(0, 1fr) 1.1in 0.7in; }
+  .cv__skills > div { grid-template-columns: 0.8in minmax(0, 1fr); }
   .dots li + li { margin-top: 0; }
-  .skills > div + div { margin-top: 1pt; }
-  .print-only { display: block !important; margin-top: 6pt; }
 }
 
 /* =========================================================

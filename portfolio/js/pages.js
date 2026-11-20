@@ -128,45 +128,45 @@ const Pages = {
 
   /* ---------- Resume ----------
      Not linked in the menu. The menu opens the PDF, and this
-     page is what the PDF is made from. */
+     page is what the PDF is made from. The layout follows a
+     classic CV: the name and main sections on the right,
+     awards, clients and contact in a column on the left. */
   async resume(s) {
     const r = await Site.load("content/resume.json");
+    const label = text => `<h2 class="cv__label">${esc(text)}</h2>`;
+    const item = it => `
+      <div class="cv-item">
+        <div class="cv-item__head">
+          <span class="cv-item__where">${esc(it.where)}</span>
+          <span class="cv-item__place">${esc(it.place || "")}</span>
+          <span class="cv-item__when">${esc(it.when || "")}</span>
+        </div>
+        ${it.what ? `<div class="cv-item__what">${esc(it.what)}</div>` : ""}
+        ${(it.details || []).length ? `<ul class="dots cv-item__details">${it.details.map(d => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}
+      </div>`;
+    const contact = [
+      s.email, s.linkedin && s.linkedin.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""), s.website, r.availability
+    ].filter(Boolean);
+
     document.querySelector("main").innerHTML = `
       <section class="page wrap">
-        <h1 class="page-title">${esc(s.name)}<br><span style="color:var(--muted)">${esc(s.role)}</span></h1>
-        <p class="lead">${esc(r.summary)}</p>
-        <p class="print-only" style="display:none">${esc(s.email)}, ${esc(s.location)}</p>
-        <div class="page__actions">
+        <div class="page__actions no-print" style="margin-top:0;margin-bottom:var(--s7)">
           ${s.resumePdf ? `<a class="action" href="${esc(s.resumePdf)}" target="_blank" rel="noopener">Download resume PDF</a>` : ""}
-          ${s.email ? `<a class="action" href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : ""}
         </div>
-
-        ${(r.sections || []).map(sec => `
-          <section class="section cols">
-            <h2>${esc(sec.title)}</h2>
-            <div>${(sec.items || []).map(item => `
-              <div class="resume-item">
-                <div class="resume-item__top">
-                  <span class="resume-item__what">${esc(item.what)}</span>
-                  <span class="resume-item__when">${esc(item.when)}</span>
-                </div>
-                <div class="resume-item__where">${esc(item.where)}</div>
-                ${item.details ? `<ul class="dots">${item.details.map(d => `<li>${esc(d)}</li>`).join("")}</ul>` : ""}
-              </div>`).join("")}
-            </div>
-          </section>`).join("")}
-
-        ${r.skills ? `
-          <section class="section cols">
-            <h2>Skills</h2>
-            <dl class="skills">${r.skills.map(k => `<div><dt>${esc(k.title)}</dt><dd>${esc(k.list)}</dd></div>`).join("")}</dl>
-          </section>` : ""}
-
-        ${r.availability ? `
-          <section class="section cols no-print">
-            <h2>Availability</h2>
-            <p>${esc(r.availability)}</p>
-          </section>` : ""}
+        <article class="cv cols">
+          <div class="cv__main">
+            <h1 class="cv__name">${esc(s.name)}</h1>
+            ${r.expertise ? `<section>${label("Expertise")}<ul class="cv__expertise">${r.expertise.map(x => `<li>${esc(x)}</li>`).join("")}</ul></section>` : ""}
+            ${(r.sections || []).map(sec => `<section>${label(sec.title)}${(sec.items || []).map(item).join("")}</section>`).join("")}
+            ${r.skills ? `<section>${label("Skills")}<dl class="cv__skills">${r.skills.map(k => `<div><dt>${esc(k.title)}</dt><dd>${esc(k.list)}</dd></div>`).join("")}</dl></section>` : ""}
+          </div>
+          <aside class="cv__side">
+            ${r.awards ? `<section>${label("Awards")}<dl class="cv__awards">${r.awards.map(a => `<div><dt>${esc(a.name)}</dt><dd>${esc(a.note)}</dd><dd>${esc(a.when)}</dd></div>`).join("")}</dl></section>` : ""}
+            ${r.clients ? `<section>${label("Clients")}<ul class="cv__clients">${r.clients.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>` : ""}
+            <section>${label("Contact")}<ul class="cv__contact">${contact.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>
+          </aside>
+          ${r.motto ? `<p class="cv__motto">${esc(r.motto)}</p>` : ""}
+        </article>
       </section>`;
   },
 

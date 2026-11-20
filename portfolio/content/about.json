@@ -1,21 +1,26 @@
 {
   "portrait": "",
   "portraitAlt": "Portrait of Gromit Forger",
-  "lead": "Hi, I’m Gromit. I design things that make people read twice.",
+  "lead": "Hi, I’m Gromit. I don’t say much. I design things that make people read twice.",
   "blocks": [
     {
       "type": "text",
-      "body": "I came to graphic design through writing. In my first year at SCAD I kept turning typography assignments into short stories, until a professor told me to stop fighting it and design the story instead. Since then most of my work starts with a sentence and ends as a poster, a book or a film.\n\nWhat I care about is the moment a viewer realizes the form is saying something the words alone can’t. A circle of greetings that becomes a calendar. A book you can’t read in order. I like making that moment, and I like being clear about how I got there, which is why every project on this site shows the process along with the result."
+      "body": "I grew up in a busy family. My father works long hours at a job he can’t really talk about. My mother works at City Hall and is much stronger than she looks. My little sister always seems to know what I’m thinking. Somebody had to keep the house running, so I learned early to notice what was going wrong and quietly fix it.\n\nI also learned to say things without words. A raised eyebrow, a sign on the fridge, a drawing left on the kitchen table. Graphic design was the obvious next step. Most of my work starts with a sentence and ends as a poster, a book or a film."
+    },
+    {
+      "type": "text",
+      "heading": "How I work",
+      "body": "I like the moment a viewer realizes the form is saying something the words alone can’t. A circle of greetings that becomes a calendar. A book you can’t read in order. I care just as much about showing how I got there, so every project on this site includes the process along with the result."
     },
     {
       "type": "text",
       "heading": "What I’m looking for",
-      "body": "A junior role on a team that cares about ideas, where I can learn from senior designers and still bring my own voice to the work. Editorial, cultural and brand projects interest me most. I’m available from June 2026 and happy to relocate to New York or Chicago."
+      "body": "A junior role on a team that cares about ideas, where I can learn from senior designers and bring my own voice to the work. Editorial, cultural and brand projects interest me most. I graduate in June 2027 and I’m happy to relocate to New York or Chicago."
     },
     {
       "type": "text",
       "heading": "Outside the studio",
-      "body": "I run a small risograph zine about bus stops. I collect old train timetables for their typography. I’m slowly learning Korean so I can read my grandmother’s letters without help, and I bake bread most Sundays, with mixed results."
+      "body": "I bake bread most mornings, a habit from a summer at a bakery in Wigan. I build model railways, sometimes at speed. I run a lettering club where the cheese is as important as the type. And I walk Bond, our family dog, who always seems to know where we’re going before I do."
     }
   ]
 }

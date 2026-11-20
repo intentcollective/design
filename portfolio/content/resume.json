@@ -1,38 +1,41 @@
 {
-  "summary": "Graphic designer working where language turns into image. I make posters, books and short films that turn ideas into systems people can read. Looking for a junior designer role at a studio or in-house team that values concept as much as craft.",
-  "availability": "Available June 2026. Open to New York and Chicago.",
+  "expertise": [
+    "Visual communication without saying a word",
+    "Typography, editorial and motion design",
+    "Quiet problem solving under deadline"
+  ],
 
   "sections": [
     {
-      "title": "Experience",
+      "title": "Work experience",
       "items": [
         {
-          "what": "Design Intern",
-          "where": "Field Office Studio, Chicago",
-          "when": "Summer 2025",
-          "details": [
-            "Designed exhibition graphics and wayfinding for a 6,000 square foot gallery show",
-            "Built a type specimen system used across the studio’s client pitches",
-            "Prepared print files and checked proofs with two local printers"
-          ]
-        },
-        {
+          "where": "SCAD Exhibitions Office",
+          "place": "Savannah GA",
+          "when": "25–Present",
           "what": "Graphic Design Assistant",
-          "where": "SCAD Exhibitions Office, Savannah",
-          "when": "2024 to 2026",
-          "details": [
-            "Designed posters, invitations and social graphics for twelve student exhibitions",
-            "Kept the office’s template library consistent with the university brand"
-          ]
+          "details": ["Designs posters, invitations and social graphics for student exhibitions"]
         },
         {
-          "what": "Freelance Designer",
-          "where": "Independent",
-          "when": "2023 to present",
-          "details": [
-            "Identity and packaging for two small food businesses in Savannah",
-            "Album artwork and lyric videos for local musicians"
-          ]
+          "where": "Top Bun Bakery",
+          "place": "Wigan UK",
+          "when": "25",
+          "what": "Brand Design Intern",
+          "details": ["Redesigned the identity, bread bags and delivery van, and kept the ovens on whenever the owner got distracted by a new invention"]
+        },
+        {
+          "where": "Anti-Pesto Humane Pest Control",
+          "place": "Wigan UK",
+          "when": "24",
+          "what": "Design Assistant",
+          "details": ["Designed the van livery, the uniforms and an illustrated field guide to every rabbit in the village"]
+        },
+        {
+          "where": "Berlint City Hall",
+          "place": "Berlint Ostania",
+          "when": "24",
+          "what": "Public Information Design Intern",
+          "details": ["Rebuilt the forms and wayfinding so citizens found the right office on the first try"]
         }
       ]
     },
@@ -40,37 +43,55 @@
       "title": "Education",
       "items": [
         {
-          "what": "BFA Graphic Design, minor in Creative Writing",
           "where": "Savannah College of Art and Design",
-          "when": "2022 to 2026",
-          "details": [
-            "Dean’s List, six quarters",
-            "Senior Showcase, selected work, 2026"
-          ]
+          "place": "Savannah GA",
+          "when": "23–27",
+          "what": "BFA | Graphic Design, expected June 2027",
+          "details": ["Minor in Film and Television"]
         }
       ]
     },
     {
-      "title": "Recognition",
+      "title": "Activities",
       "items": [
         {
-          "what": "Student Typography Exhibition, selected",
-          "where": "Tamara poster",
-          "when": "2025"
+          "where": "Wensleydale Type Club",
+          "place": "Savannah GA",
+          "when": "24–Present",
+          "what": "Founder",
+          "details": ["Weekly lettering sessions. Cheese provided."]
         },
         {
-          "what": "Motion Design Screening, finalist",
-          "where": "Octavia film",
-          "when": "2025"
+          "where": "Eden Academy Art Day",
+          "place": "Berlint Ostania",
+          "when": "25",
+          "what": "Volunteer Teacher",
+          "details": ["Taught poster making to first graders. One of them seemed to read my mind."]
         }
       ]
     }
   ],
 
   "skills": [
-    { "title": "Design", "list": "Typography, editorial design, identity systems, information design, motion, art direction" },
-    { "title": "Tools", "list": "InDesign, Illustrator, Photoshop, After Effects, Premiere Pro, Figma, HTML and CSS basics" },
-    { "title": "Making", "list": "Risograph, letterpress, bookbinding, laser cutting, studio photography" },
-    { "title": "Languages", "list": "English, conversational Korean" }
-  ]
+    { "title": "Design", "list": "Typography, editorial, identity systems, information design, motion" },
+    { "title": "Tools", "list": "InDesign, Illustrator, Photoshop, After Effects, Premiere Pro, Figma, HTML and CSS" },
+    { "title": "Making", "list": "Risograph, letterpress, bookbinding, laser cutting, model railways laid at speed" }
+  ],
+
+  "awards": [
+    { "name": "Golden Carrot", "note": "Best poster", "when": "25" },
+    { "name": "Stella Star", "note": "Art Day", "when": "25" },
+    { "name": "Type Show", "note": "Selected", "when": "25" },
+    { "name": "Dean’s List", "note": "SCAD", "when": "23–26" }
+  ],
+
+  "clients": [
+    "Top Bun Bakery", "Anti-Pesto",
+    "Wash ’n’ Go", "Tottington Hall",
+    "Berlint City Hall", "Eden Academy",
+    "Bondman Fans", "and more"
+  ],
+
+  "availability": "Available June 2027",
+  "motto": "I don’t say much. The work does."
 }

@@ -3,18 +3,18 @@
   "role": "Graphic Designer",
   "location": "Savannah, Georgia",
   "email": "hello@example.com",
-  "linkedin": "https://www.linkedin.com/",
+  "linkedin": "https://www.linkedin.com/in/myautumnsky/",
   "website": "gromitforger.design",
 
   "headline": ["I build", "{rotate}", "out of words."],
   "rotatingWords": ["cities", "books", "films", "posters", "arguments"],
-  "intro": "Gromit Forger is a graphic designer working where language turns into image. Posters, books and short films about how meaning moves. BFA Graphic Design, SCAD, 2026.",
+  "intro": "Gromit Forger is a graphic designer who never says a word and lets the work do the talking. Posters, books and short films about how meaning moves. Senior, BFA Graphic Design, SCAD.",
 
   "menu": [
     { "label": "Works", "link": "index.html" },
     { "label": "Resume", "link": "files/gromit-forger-resume.pdf", "newTab": true },
     { "label": "About", "link": "about.html" },
-    { "label": "in", "fullName": "LinkedIn", "badge": true, "link": "https://www.linkedin.com/", "newTab": true }
+    { "label": "in", "fullName": "LinkedIn", "badge": true, "link": "https://www.linkedin.com/in/myautumnsky/", "newTab": true }
   ],
 
   "works": [
