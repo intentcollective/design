@@ -930,3 +930,9 @@ figcaption {
 .stella-final__title { font-size: clamp(14px, 4vw, 22px); }
 .stella-final__row { gap: 2px; }
 .stella-final__row svg { width: clamp(11px, 3.2vw, 19px); height: clamp(11px, 3.2vw, 19px); }
+/* The collection sits on the left under its own gold rule,
+   stars on one line and the code field below. */
+.stella-case { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: var(--s3); padding-top: var(--s4); border-top: 1px solid var(--gold); }
+.stella-case.is-complete { padding-top: var(--s4); }
+.stella-case__code { flex: none; width: min(100%, 360px); max-width: none; }
+.stella-case { border-top-width: 2px; }
