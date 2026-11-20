@@ -162,9 +162,21 @@ const Stars = {
     requestAnimationFrame(() => bar.classList.add("is-up"));
 
     const slot = bar.querySelector(`[data-slot="${n}"]`);
+    const complete = list.length === this.total;
     const land = () => {
       slot.innerHTML = `<span class="is-pop">${this.svg(n, 28)}</span><span class="glint is-on"></span>`;
       this.tick();
+      // The eighth star: every slot glints in turn, climbing a
+      // scale, then the finale opens.
+      if (complete) {
+        const notes = [1046.5, 1174.7, 1318.5, 1396.9, 1568, 1760, 1975.5, 2093];
+        bar.querySelectorAll(".stella-bar__slot").forEach((el, i) => setTimeout(() => {
+          el.insertAdjacentHTML("beforeend", `<span class="glint is-on"></span>`);
+          this.tick(notes[i]);
+        }, 500 + i * 140));
+        setTimeout(() => { bar.classList.remove("is-up"); setTimeout(() => bar.remove(), 500); this.finale(); }, 500 + 8 * 140 + 500);
+        return;
+      }
       setTimeout(() => {
         bar.classList.remove("is-up");
         setTimeout(() => bar.remove(), 500);
@@ -197,13 +209,31 @@ const Stars = {
   },
 
   /* A single soft note when the star lands. */
-  tick() {
+  /* The finale, once, when the eighth star is claimed. */
+  finale() {
+    const row = Array.from({ length: this.total }, () => this.svg(0, 14, true)).join("");
+    const dialog = this.box(`
+      <div class="stella-final__star">
+        <svg class="stella-final__bg" viewBox="0 0 100 95" aria-hidden="true"><polygon points="50,0 61.8,34.3 97.6,34.5 68.9,55.9 79.4,90.5 50,69.7 20.6,90.5 31.1,55.9 2.4,34.5 38.2,34.3"/></svg>
+        <div class="stella-final__in">
+          <p class="stella-final__cheer">Elegant!</p>
+          <p class="stella-final__title">Imperial Scholar.</p>
+          <p class="stella-final__row">${row}</p>
+        </div>
+      </div>
+      <p class="stella-final__msg">All eight stars, found. You read to the end, looked closely, got curious, and got in touch. That’s what reviewers notice. Take a screenshot and show it to Henry.</p>`);
+    dialog.classList.add("stella-final");
+    dialog.addEventListener("close", () => dialog.classList.remove("stella-final"), { once: true });
+    this.chime();
+  },
+
+  tick(freq = 2093) {
     try {
       const ctx = new (window.AudioContext || window.webkitAudioContext)();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
       osc.type = "sine";
-      osc.frequency.value = 2093;
+      osc.frequency.value = freq;
       gain.gain.setValueAtTime(0.1, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
       osc.connect(gain).connect(ctx.destination);

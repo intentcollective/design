@@ -906,3 +906,27 @@ figcaption {
 .stella-flyer { position: fixed; z-index: 1001; width: 64px; height: 64px; line-height: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .stella-bar { transition: none; } .glint.is-on { animation: none; } }
 @media print { .stella-bar, .stella-flyer { display: none; } }
+
+/* The finale. A big gold star holds the headline, and the
+   message sits below it on the dimmed page. */
+.stella-box.stella-final { width: min(360px, calc(100vw - 2 * var(--margin))); padding: 0; background: none; color: var(--fg); overflow: visible; }
+.stella-final__star { position: relative; width: 100%; aspect-ratio: 1 / 0.95; animation: star-land 0.9s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+.stella-final__bg { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--gold); }
+.stella-final__in { position: absolute; left: 0; right: 0; top: 41%; text-align: center; color: var(--gold-ink); }
+.stella-final__cheer { font-size: 30px; font-weight: 700; line-height: 1; }
+.stella-final__title { margin-top: var(--s2); font-size: var(--fs-body); font-weight: 500; }
+.stella-final__row { display: flex; justify-content: center; gap: 3px; margin-top: var(--s4); }
+.stella-final__msg { margin-top: var(--s5); font-size: var(--fs-body); line-height: 1.55; }
+.stella-final .stella-box__close { color: var(--gold); border-bottom-color: var(--gold); }
+@media (prefers-reduced-motion: reduce) { .stella-final__star { animation: none; } }
+.stella-box.stella-final::backdrop { background: rgba(0, 0, 0, 0.94); }
+/* The finale star nearly fills the screen. */
+.stella-box.stella-final { width: min(620px, calc(100vw - 16px), 90vh); max-height: none; }
+.stella-final__cheer { font-size: clamp(32px, 10vw, 60px); }
+.stella-final__title { font-size: clamp(15px, 4.6vw, 24px); }
+.stella-final__row svg { width: clamp(14px, 4.6vw, 26px); height: clamp(14px, 4.6vw, 26px); }
+.stella-final__msg, .stella-final .stella-box__close { max-width: 380px; margin-left: auto; margin-right: auto; }
+.stella-final__in { top: 40%; }
+.stella-final__title { font-size: clamp(14px, 4vw, 22px); }
+.stella-final__row { gap: 2px; }
+.stella-final__row svg { width: clamp(11px, 3.2vw, 19px); height: clamp(11px, 3.2vw, 19px); }
