@@ -941,3 +941,6 @@ figcaption {
   .cv .print-star { grid-column: 1 / span 4; grid-row: calc(var(--rows) + 2); align-self: last baseline; align-items: baseline; }
   .cv .print-star .star { align-self: center; }
 }
+/* Star 6 ink, lifted so it reads on a phone screen as a faint line. */
+.ink { color: #3d3d3b; }
+.ink .star polygon { fill: #3d3d3b; }
