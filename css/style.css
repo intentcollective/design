@@ -312,7 +312,7 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
   font-size: var(--fs-hero);
   font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;   /* the display cut is already spaced for this size */
 }
 
 /* Each line sits in a box with overflow hidden, and the text
