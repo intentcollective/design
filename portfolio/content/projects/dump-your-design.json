@@ -4,7 +4,8 @@
   "summary": "A manifesto about letting ideas go, written as a definition of digestion.",
   "subject": "Visual Rhetoric",
   "tools": "Photoshop, InDesign, studio lighting",
-  "cover": "images/projects/dump-your-design/cover.jpg",
+  "color": "#3a9fd6",
+  "cover": "",
   "coverAlt": "Photo of a fish in a toilet bowl under the words Dump Your Design",
   "blocks": [
     {
@@ -19,7 +20,7 @@
     },
     {
       "type": "image",
-      "src": "images/projects/dump-your-design/detail-text.jpg",
+      "src": "",
       "alt": "Definition of digestion with words crossed out and replaced by design terms",
       "width": "narrow",
       "caption": "A textbook definition of digestion, edited by hand."

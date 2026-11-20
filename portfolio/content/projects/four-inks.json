@@ -4,7 +4,8 @@
   "summary": "Ten weeks of studio work, measured in process ink and drawn as a grid of dots.",
   "subject": "Information Design",
   "tools": "Illustrator, Google Sheets",
-  "cover": "images/projects/four-inks/cover.jpg",
+  "color": "#e4007c",
+  "cover": "",
   "coverAlt": "Poster with a grid of large cyan, magenta, yellow and black circles surrounded by small dots",
   "blocks": [
     {
@@ -29,7 +30,7 @@
     },
     {
       "type": "image",
-      "src": "images/projects/four-inks/detail-dots.jpg",
+      "src": "",
       "alt": "Close-up of the dot grid",
       "width": "narrow",
       "caption": "Up close, each small dot is one print."

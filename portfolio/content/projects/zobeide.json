@@ -4,7 +4,8 @@
   "summary": "A book that refuses to stay a book. Calvino’s text cut into strips and rebuilt as the maze it describes.",
   "subject": "Typography III, Linguistic Translation",
   "tools": "InDesign, laser cutter, studio lighting",
-  "cover": "images/projects/zobeide/cover.jpg",
+  "color": "#e6e3dc",
+  "cover": "",
   "coverAlt": "White paper strips printed with text, stacked into a tangled structure",
   "blocks": [
     {
@@ -34,7 +35,7 @@
     },
     {
       "type": "image",
-      "src": "images/projects/zobeide/detail-strip.jpg",
+      "src": "",
       "alt": "Close-up of a paper strip reading spot where they had lost the fugitive’s trail",
       "width": "narrow",
       "background": "#efefed",

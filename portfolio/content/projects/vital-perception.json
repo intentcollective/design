@@ -4,7 +4,8 @@
   "summary": "A manifesto poster arguing that design starts beneath the surface, built on an X-ray of my own jaw.",
   "subject": "Design Studio I, Metaphoric Manifesto",
   "tools": "Photoshop, InDesign",
-  "cover": "images/projects/vital-perception/cover.jpg",
+  "color": "#d8332b",
+  "cover": "",
   "coverAlt": "Black poster with an X-ray of a human jaw and the words Vital Perception in red",
   "blocks": [
     {
@@ -29,7 +30,7 @@
     },
     {
       "type": "image",
-      "src": "images/projects/vital-perception/detail-text.jpg",
+      "src": "",
       "alt": "Close-up of the title and the four-line manifesto",
       "width": "narrow",
       "caption": "Four lines, set like a note on a chart."

@@ -5,13 +5,13 @@
   "subject": "Motion Design II, Linguistic Translation",
   "tools": "Premiere Pro, After Effects",
   "role": "Direction and editing, in a team of three",
-  "cover": "images/projects/octavia/cover.jpg",
+  "color": "#8f877b",
+  "cover": "",
   "coverAlt": "Film still of a cut tree stump with the words The net will only last so long",
-  "hideCover": true,
   "blocks": [
     {
       "type": "video",
-      "url": "https://vimeo.com/88666098",
+      "url": "",
       "caption": "Final film."
     },
     {
@@ -51,7 +51,7 @@
     },
     {
       "type": "image",
-      "src": "images/projects/octavia/cover.jpg",
+      "src": "",
       "alt": "Film still with type set across the tree rings",
       "width": "wide"
     },
