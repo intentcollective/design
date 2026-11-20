@@ -947,3 +947,8 @@ figcaption {
   100% { transform: scale(1) rotate(0); }
 }
 @media (prefers-reduced-motion: reduce) { .stella-final__star { animation: none; } }
+
+/* The guide and the story are pages to read through, so their
+   titles take the headline size of the home page. */
+.page-title--big { font-size: var(--fs-hero); line-height: 1; letter-spacing: 0; margin-bottom: var(--s7); }
+.page .page-title--big { margin-bottom: var(--s7); }
