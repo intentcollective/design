@@ -615,7 +615,7 @@ figcaption {
   /* The text row has a fixed height, so the images start at the
      same line on every page. Keep each description to about
      80 words so it fits. */
-  grid-template-rows: 170px 1fr auto;
+  grid-template-rows: 190px 1fr auto;
   gap: 40px 24px;
   overflow: hidden;
   font-size: 22px;
@@ -629,7 +629,9 @@ figcaption {
    same six-column measure as the site's paragraphs. */
 .deck__head { grid-column: 1 / span 6; }
 .deck__title { font-size: 44px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
-.deck__tools { margin-top: 12px; color: #555; }
+.deck__facts { margin-top: 16px; font-size: 18px; line-height: 1.5; }
+.deck__facts div { display: grid; grid-template-columns: 110px 1fr; }
+.deck__facts dt { color: #888; }
 .deck__text { grid-column: 7 / span 6; }
 
 .deck__cover { grid-column: 1 / span 6; min-height: 0; }

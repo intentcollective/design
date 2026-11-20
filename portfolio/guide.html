@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Asks search engines not to list this example site. -->
 <meta name="robots" content="noindex">
-<script>try{if(localStorage.getItem("unlocked")===null)document.documentElement.classList.add("is-locked")}catch(e){}</script>
+<script>try{if(sessionStorage.getItem("unlocked")===null||(performance.getEntriesByType("navigation")[0]||{}).type==="reload")document.documentElement.classList.add("is-locked")}catch(e){}</script>
 <title>Making a portfolio site as an emerging graphic designer</title>
 <meta name="description" content="The process and principles behind this example portfolio.">
 <link rel="preload" href="fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
@@ -20,17 +20,34 @@
   <p class="guide-note" style="margin-top:var(--s5);max-width:var(--measure-wide)">This site is never meant to be copied, not its code, not its look and not its words. It is a generic example of the parts every portfolio needs, the site map, the visual structure and the path a reviewer takes through the work. Study those decisions, then design a site that looks like you.</p>
 
   <nav class="guide-toc" aria-label="Guide contents">
-    <a href="#reader">1. Know your reader</a>
-    <a href="#choose">2. Choose the work</a>
-    <a href="#story">3. Tell each story</a>
-    <a href="#principles">4. Design principles</a>
-    <a href="#build">5. Build it</a>
-    <a href="#send">6. The final checklist</a>
+    <a href="#literacy">1. Tools and design literacy</a>
+    <a href="#reader">2. Know your audience</a>
+    <a href="#choose">3. Choose the work</a>
+    <a href="#story">4. Tell each story</a>
+    <a href="#principles">5. Design principles</a>
+    <a href="#build">6. The PDF portfolio</a>
+    <a href="#send">7. The final checklist</a>
   </nav>
 
   <!-- ===================================================== -->
+  <section class="guide-section" id="literacy">
+    <h2>1. Tools and design literacy</h2>
+    <div>
+      <p>You don’t need to be a programmer to make a good portfolio site. But knowing how a website is built in the proper, traditional way is part of your design literacy. HTML, CSS, JavaScript, wireframes and Figma all matter. Use this project to raise your web design skills as far as you can.</p>
+
+      <h3>Use AI as your main tool</h3>
+      <p>AI can build most of your site. You don’t have to write HTML and CSS by hand, but being able to read code helps you decide what needs to be done, in what way, and how to say it to the AI. Without that literacy, you hand your design integrity over to the tool.</p>
+      <p>Become fluent in your tools, knowing they will keep changing. Never be defined by a tool, and never let it design for you.</p>
+
+      <h3>Templates and site builders</h3>
+      <p>Readymag, Framer, Cargo, Wix, Squarespace and WordPress are template and CMS models from an earlier era, and they matter less in this one. They are still worth studying, together with other designers’ portfolio sites, to learn what a strong portfolio looks like.</p>
+      <p>Browse with intent. Looking through existing designs without knowing what you are looking for, the way most people scroll Pinterest, is how copying starts. Copying is a plain violation of your own design ethos.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
   <section class="guide-section" id="reader">
-    <h2>1. Know your reader</h2>
+    <h2>2. Know your audience</h2>
     <div>
       <h3>You are an applicant</h3>
       <p>A portfolio site for an emerging designer is not a showcase of your personality. It is evidence of your capability and experience, made for people deciding whether to hire you for an entry-level role on their design team.</p>
@@ -51,7 +68,7 @@
 
   <!-- ===================================================== -->
   <section class="guide-section" id="choose">
-    <h2>2. Choose the work</h2>
+    <h2>3. Choose the work</h2>
     <div>
       <ul class="dots">
         <li><strong>Eight to twelve projects.</strong> Reviewers won’t look at all of them, but the number still matters. It shows how much you can do. Every one has to be finished and strong.</li>
@@ -65,7 +82,7 @@
 
   <!-- ===================================================== -->
   <section class="guide-section" id="story">
-    <h2>3. Tell each story</h2>
+    <h2>4. Tell each story</h2>
     <div>
       <h3>Prove it’s yours</h3>
       <p>In the age of AI, anyone can produce a polished image in seconds. That makes it harder, and more important, to prove your design literacy. Show what only a designer can show. Your strategy, your intent, how you write a brief, and a process you can repeat as a method.</p>
@@ -92,7 +109,7 @@
 
   <!-- ===================================================== -->
   <section class="guide-section" id="principles">
-    <h2>4. Design principles</h2>
+    <h2>5. Design principles</h2>
     <div>
       <p>Your portfolio is a design project. It should show the same care as your work, then get out of its way.</p>
       <p>These are principles, not a style. Every one of them can be met with a look completely different from this example, and yours should be.</p>
@@ -127,28 +144,16 @@
 
   <!-- ===================================================== -->
   <section class="guide-section" id="build">
-    <h2>5. Build it</h2>
+    <h2>6. The PDF portfolio</h2>
     <div>
-      <p>You don’t need to write code to make a good portfolio. Choose the way of building that leaves you the most time for the work.</p>
-      <ul class="dots">
-        <li><strong>A site builder</strong> such as Readymag, Cargo or Framer. The principles above apply inside any tool.</li>
-        <li><strong>HTML and CSS by hand</strong>, if you want to learn how the web works. Start with one page.</li>
-        <li><strong>An AI assistant.</strong> Describe what you want in design terms, the grid, the measure, the type sizes, and check every result in the browser. You are the designer. The AI is a tool.</li>
-      </ul>
-
-      <h3>How this example is built</h3>
-      <p>Each project lives in its own small text file, separate from the layout. The pages read those files and place them on the grid. Keeping content apart from design is what lets one design hold any number of projects. It is worth learning whatever tool you use.</p>
-      <p>A blank starter version is in the same repository, in the <code>starter</code> folder. Every image there is a colored box that says what belongs in it, and every paragraph says what to write instead of telling Gromit’s story. Technical notes for anyone who opens the code are in the README files.</p>
-
-      <h3>The PDF</h3>
       <p>Many companies still ask for a PDF portfolio and a PDF resume. Make them from the same content as your site, so the three never disagree.</p>
-      <p>Set the portfolio as a 16:9 landscape deck, the shape of a screen, because that is where it will be read. Open with a cover that has your name, contact details and a short statement of what you believe design should do. Give each project one page, numbered, because a PDF is read page by page. Put the title, the tools and a short description at the top, and the images below, on the same grid as your site. Line up the tops of the text and the tops of the images so every page feels like part of one book. Let the images carry it. The full process lives on your site.</p>
+      <p>Set the portfolio as a 16:9 landscape deck, the shape of a screen, because that is where it will be read. Open with a cover that has your name, contact details and a short statement of what you believe design should do. Give each project one page, numbered, because a PDF is read page by page. Put the title, the discipline, format and tools, and a short description at the top, and the images below, on the same grid as your site. Line up the tops of the text and the tops of the images so every page feels like part of one book. Let the images carry it. The full process lives on your site.</p>
     </div>
   </section>
 
   <!-- ===================================================== -->
   <section class="guide-section" id="send">
-    <h2>6. The final checklist</h2>
+    <h2>7. The final checklist</h2>
     <div>
       <ul class="dots">
         <li>Every link works, including email, resume and LinkedIn.</li>

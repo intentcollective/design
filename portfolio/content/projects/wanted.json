@@ -1,27 +1,32 @@
 {
   "title": "Wanted",
-  "discipline": "Visual Communication & Poster Design",
-  "format": "Three posters, 11 × 17 in, letterpress",
+  "discipline": "Experience & Interaction Design",
+  "format": "Mobile app and responsive website, 32 screens",
+  "tools": "Figma, Illustrator, Claude AI",
   "color": "#8a4a40",
-  "summary": "Three wanted posters for a penguin who keeps escaping, each one designed with less information than the last.",
-  "tools": "Illustrator, Photoshop",
+  "summary": "An app and a website that help a village report sightings of an escaped penguin, so anyone can file a report in under thirty seconds.",
   "cover": "",
-  "coverAlt": "Three wanted posters for a penguin, from detailed to almost empty",
+  "coverAlt": "App screens with a map of penguin sightings and one large report button",
   "blocks": [
     {
       "type": "text",
       "heading": "The brief",
-      "body": "Design a series of three posters that changes one variable from poster to poster."
+      "body": "Design a digital service for a real problem in a small community, on the phone and on the web."
     },
     {
       "type": "text",
       "heading": "The idea",
-      "body": "Every time Feathers McGraw escapes, the police know less about him. The posters lose information the same way. The first is full of detail, and the third is a silhouette and a single word."
+      "body": "Every time Feathers McGraw escapes, the police get dozens of vague phone calls and lose a day. People don’t need a form. They need one button, a photo and their location. The app does the rest and puts every sighting on one shared map."
     },
     {
       "type": "placeholder",
-      "label": "Research. Old wanted posters and police notices from local archives.",
+      "label": "User research. Notes from interviews with neighbors, shopkeepers and two police officers.",
       "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I mapped the journey from the moment someone spots the penguin to the moment the police respond. Paper wireframes came first, then a clickable prototype in Figma. Testing with eight neighbors showed that the first version asked too many questions, so I cut the report to three steps."
     },
     {
       "type": "gallery",
@@ -30,18 +35,26 @@
       "images": [
         {
           "src": "",
-          "alt": "Poster one"
+          "alt": "User flow"
         },
         {
           "src": "",
-          "alt": "Poster two"
+          "alt": "Paper wireframes"
         },
         {
           "src": "",
-          "alt": "Poster three"
+          "alt": "Figma prototype"
         }
       ],
-      "caption": "The series, from the most information to the least."
+      "caption": "From the user flow to paper wireframes to the tested prototype."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "wide",
+      "ratio": "16/9",
+      "caption": "The app. Report, map and alerts."
     },
     {
       "type": "image",
@@ -49,12 +62,12 @@
       "alt": "",
       "width": "narrow",
       "ratio": "3/2",
-      "caption": "Letterpress detail of the word Wanted in wood type."
+      "caption": "The website, the same map on a desktop screen."
     },
     {
       "type": "text",
       "heading": "Reflection",
-      "body": "The third poster turned out the strongest, which surprised me. Next time I would start from the emptiest version and add only what is needed."
+      "body": "The biggest improvement came from taking things away. Next time I would test the paper wireframes with the police too, since they read every report."
     }
   ]
 }

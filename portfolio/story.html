@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<script>try{if(localStorage.getItem("unlocked")===null)document.documentElement.classList.add("is-locked")}catch(e){}</script>
+<script>try{if(sessionStorage.getItem("unlocked")===null||(performance.getEntriesByType("navigation")[0]||{}).type==="reload")document.documentElement.classList.add("is-locked")}catch(e){}</script>
 <title>The story of Gromit Forger</title>
 <meta name="description" content="The story behind this example portfolio.">
 <link rel="preload" href="fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
@@ -62,7 +62,7 @@
       <p>“Cracking” is Wallace’s favorite word, and cheese is his favorite food. In <em>A Grand Day Out</em> (1989) he builds a rocket to the moon because he believes it is made of cheese.</p>
 
       <h3>Wanted</h3>
-      <p>Feathers McGraw, the silent penguin thief from <em>The Wrong Trousers</em>, who returns in <em>Vengeance Most Fowl</em> (2024). He hides in plain sight with a rubber glove on his head, passing as a chicken. Posters that know less and less about him felt right.</p>
+      <p>Feathers McGraw, the silent penguin thief from <em>The Wrong Trousers</em>, who returns in <em>Vengeance Most Fowl</em> (2024). He hides in plain sight with a rubber glove on his head, passing as a chicken. An app that helps a whole village report where he was last seen felt right.</p>
 
       <h3>Bondman</h3>
       <p>The cartoon spy hero Anya adores in <em>Spy × Family</em>. A magazine for his youngest fans had to work for readers who can’t read yet.</p>

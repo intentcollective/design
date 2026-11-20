@@ -243,7 +243,7 @@ const Pages = {
         <section class="deck">
           <div class="deck__head">
             <h2 class="deck__title">${n + 1}. ${esc(p.title)}</h2>
-            <p class="deck__tools">${esc(p.tools || "")}</p>
+            <dl class="deck__facts">${[["Discipline", p.discipline], ["Format", p.format], ["Tools", p.tools], ["Role", p.role]].filter(([, v]) => v).map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
           </div>
           <p class="deck__text">${esc(text)}</p>
           <div class="deck__cover">${picture(cover, p, true)}</div>
