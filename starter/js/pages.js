@@ -251,6 +251,8 @@ const Pages = {
             <div class="deck__main">${main ? picture(main, p, false) : ""}</div>
             ${small.map(item => `<div>${picture(item, p, false)}</div>`).join("")}
           </div>
+          <p class="deck__folio">${esc(s.name)} Portfolio</p>
+          <p class="deck__folio">${esc(s.website || "")}</p>
         </section>`;
     }).join("");
 

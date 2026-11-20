@@ -613,7 +613,7 @@ figcaption {
   /* The text row has a fixed height, so the images start at the
      same line on every page. Keep each description to about
      80 words so it fits. */
-  grid-template-rows: 170px 1fr;
+  grid-template-rows: 170px 1fr auto;
   gap: 40px 24px;
   overflow: hidden;
   font-size: 22px;
@@ -640,6 +640,10 @@ figcaption {
   min-height: 0;
 }
 .deck__main { grid-column: 1 / -1; }
+
+/* The folio runs along the foot of every project page, so a
+   forwarded PDF always says whose work it is. */
+.deck__folio { grid-column: span 6; margin-top: -8px; font-size: 16px; color: #777; }
 .deck__right > div { min-height: 0; }
 .deck img, .deck__box { width: 100%; height: 100%; object-fit: cover; }
 
@@ -656,7 +660,7 @@ figcaption {
 .deck__box--cover { background: var(--hue); color: rgba(255, 255, 255, 0.85); }
 
 /* Cover: black, on the same columns as the project pages. */
-.deck--cover { background: #000; color: #fff; }
+.deck--cover { background: #000; color: #fff; grid-template-rows: auto 1fr; }
 .deck__name { grid-column: 1 / span 6; }
 .deck__name h1 { font-size: 44px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
 .deck__name p { margin-top: 8px; color: #aaa; }
