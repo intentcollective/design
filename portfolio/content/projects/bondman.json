@@ -1,0 +1,65 @@
+{
+  "title": "Bondman",
+  "discipline": "Illustration, Editorial",
+  "color": "#4f74d9",
+  "summary": "A children’s magazine for fans of a cartoon spy, designed so a six-year-old can find every game without help.",
+  "subject": "Editorial Design I",
+  "tools": "InDesign, Procreate",
+  "cover": "",
+  "coverAlt": "Magazine cover with a cartoon spy and bold, easy navigation",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Design one issue of a magazine for readers who can’t read well yet."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "Young readers navigate by picture and color long before they read words. Every section has its own color and its own symbol, so a child can say “the blue pages” and find the puzzles."
+    },
+    {
+      "type": "placeholder",
+      "label": "Research. Reading sessions with first graders, and notes on what they pointed at first.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I tested three covers with a class of first graders. They ignored the title and went straight for the character’s face, so the final cover gives the face most of the page and keeps the words short."
+    },
+    {
+      "type": "gallery",
+      "columns": 3,
+      "ratio": "4/5",
+      "images": [
+        {
+          "src": "",
+          "alt": "Cover A"
+        },
+        {
+          "src": "",
+          "alt": "Cover B"
+        },
+        {
+          "src": "",
+          "alt": "Cover C"
+        }
+      ],
+      "caption": "Three covers, tested with readers aged five to seven."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "wide",
+      "ratio": "3/2",
+      "caption": "Spreads from the puzzle section."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "Children are honest reviewers. Next time I would bring them in at the sketch stage, not after the first draft."
+    }
+  ]
+}

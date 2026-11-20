@@ -1,0 +1,45 @@
+{
+  "title": "Stella Stars",
+  "discipline": "Information Design",
+  "color": "#f2c230",
+  "summary": "A poster that shows how one elite school rewards and punishes its students, drawn as a night sky.",
+  "subject": "Information Design",
+  "tools": "Illustrator, Google Sheets",
+  "cover": "",
+  "coverAlt": "Poster of a night sky where every star and bolt marks one award",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Collect a real system of rules and make it understandable at a glance."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "Eden Academy gives Stella stars for excellence and Tonitrus bolts for bad behavior. Eight stars make an Imperial Scholar, and eight bolts mean expulsion. A sky was the natural form. Stars rise, bolts strike, and every student becomes a constellation."
+    },
+    {
+      "type": "placeholder",
+      "label": "Raw data. The table of awards by class and term.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "placeholder",
+      "label": "Rejected directions. A bar chart and a ladder, with a note on why both felt too cold.",
+      "ratio": "3/2"
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "narrow",
+      "ratio": "3/2",
+      "caption": "Up close, each mark carries the student’s class and term."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "The sky made the system look fair and beautiful, which it is not. The final version adds one quiet line of text that says so."
+    }
+  ]
+}

@@ -400,8 +400,6 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 .b-figure--wide   { width: var(--measure-wide); }
 .b-figure--narrow { width: var(--measure); }
 .b-figure img, .b-figure video { width: 100%; height: auto; }
-.b-figure--padded { padding: var(--s7); }
-@media screen and (max-width: 640px) { .b-figure--padded { padding: var(--s5); } }
 
 figcaption {
   max-width: var(--measure);
@@ -471,22 +469,6 @@ figcaption {
   color: #111;
 }
 .b-placeholder--cover strong { color: #111; }
-
-/* Before and after comparison slider */
-.b-compare__stage { position: relative; overflow: hidden; }
-.b-compare__stage img { width: 100%; }
-.b-compare__after { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--pos, 50%)); }
-.b-compare__after img { height: 100%; object-fit: cover; }
-.b-compare__stage::after {
-  content: "";
-  position: absolute; top: 0; bottom: 0; left: var(--pos, 50%);
-  width: 2px; background: var(--fg);
-}
-.b-compare input { width: 100%; margin-top: var(--s3); accent-color: var(--accent); }
-
-.b-spacer--small { height: var(--s4); }
-.b-spacer--medium { height: var(--s8); }
-.b-spacer--large { height: calc(var(--s9) * 2); }
 
 /* Previous on the left, next on the right, because moving
    forward reads left to right. */

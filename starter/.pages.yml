@@ -37,9 +37,7 @@ content:
       - { name: role, label: Role, type: string, description: "Group projects only. What you did on the team." }
       - { name: cover, label: Cover image, type: image }
       - { name: coverAlt, label: Cover description, type: string, description: "Describe the image for people who can't see it." }
-      - { name: hideCover, label: Hide the cover on the project page, type: boolean, description: "For example when a video opens the page" }
       - { name: color, label: Placeholder color, type: string, description: "Fills empty image boxes until you add your images" }
-      - { name: coverPosition, label: Cover crop position, type: select, options: { values: [center, top, bottom, left, right] } }
       - name: blocks
         label: Page blocks
         type: block
@@ -57,8 +55,8 @@ content:
               - { name: src, label: Image, type: image }
               - { name: alt, label: Description, type: string }
               - { name: width, label: Width, type: select, options: { values: [full, wide, narrow] }, description: "full is 12 columns, wide 8, narrow 6" }
-              - { name: background, label: Background color, type: string, description: "Optional, for example #efefed" }
               - { name: caption, label: Caption, type: string }
+              - { name: ratio, label: Placeholder shape, type: string, description: "Used until you add the image, for example 3/2" }
           - name: gallery
             label: Gallery
             fields:
@@ -78,31 +76,17 @@ content:
               - { name: url, label: "Vimeo or YouTube link, or an .mp4 file path", type: string }
               - { name: width, label: Width, type: select, options: { values: [wide, full] } }
               - { name: ratio, label: Ratio, type: string, description: "16/9 unless your video is a different shape" }
-              - { name: autoplay, label: Autoplay silently (mp4 only), type: boolean }
               - { name: caption, label: Caption, type: string }
           - name: quote
             label: Quote
             fields:
               - { name: text, label: Quote, type: text }
               - { name: cite, label: Who said it, type: string }
-          - name: compare
-            label: Before and after
-            fields:
-              - { name: before, label: Before image, type: image }
-              - { name: beforeAlt, label: Before description, type: string }
-              - { name: after, label: After image, type: image }
-              - { name: afterAlt, label: After description, type: string }
-              - { name: caption, label: Caption, type: string }
           - name: placeholder
             label: Placeholder
             fields:
               - { name: label, label: What goes here, type: text }
               - { name: ratio, label: Ratio, type: string }
-          - name: spacer
-            label: Spacer
-            fields:
-              - { name: size, label: Size, type: select, options: { values: [small, medium, large] } }
-
   # ---------- Site settings ----------
   - name: settings
     label: Site settings
@@ -136,7 +120,6 @@ content:
         label: Theme
         type: object
         fields:
-          - { name: background, label: Background color, type: string }
           - { name: text, label: Text color, type: string }
           - { name: muted, label: Secondary text color, type: string }
           - { name: line, label: Line color, type: string }

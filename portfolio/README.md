@@ -12,7 +12,7 @@ Plain HTML, CSS and JavaScript. No framework and no build step.
 
 - `content/` holds all the words and settings as JSON files. `settings.json` sets the name, headline, menu, colors and the order of projects. Each project is one file in `content/projects/`.
 - `index.html`, `project.html`, `about.html` and `resume.html` are empty frames. `js/site.js` and `js/pages.js` read the content files and build each page.
-- A project page is a list of blocks (text, image, gallery, video, quote, compare, placeholder, spacer), rendered in order by the `Blocks` functions in `js/site.js`.
+- A project page is a list of blocks (text, image, gallery, video, quote and placeholder), rendered in order by the `Blocks` functions in `js/site.js`.
 - `css/style.css` holds the whole design. The tokens at the top set the grid (12, 6 and 4 columns), the type sizes and the spacing steps.
 - `print.html` lays out the PDF portfolio. `resume.html` is the source of the resume PDF. Print either page to PDF from the browser and save it into `files/`.
 - `.pages.yml` at the top of the repository lets [Pages CMS](https://pagescms.org) edit the content files through forms.

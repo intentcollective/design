@@ -1,0 +1,63 @@
+{
+  "title": "The Wrong Trousers",
+  "discipline": "Motion, Title Design",
+  "color": "#9aa9a2",
+  "summary": "A title sequence for a chase on a model railway, where the type lays its own track one frame ahead of the train.",
+  "subject": "Motion Design II",
+  "tools": "After Effects, Premiere Pro, a model railway",
+  "role": "Direction and editing, in a team of three",
+  "cover": "",
+  "coverAlt": "Film still of letters laid like railway track in front of a toy train",
+  "blocks": [
+    {
+      "type": "video",
+      "url": "",
+      "caption": "Final title sequence."
+    },
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "In a team, design a title sequence under sixty seconds for a film of your choice."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "A chase where someone lays track in front of a moving train is already a typographic problem. Every letter has to arrive just in time. We made the credits the track."
+    },
+    {
+      "type": "placeholder",
+      "label": "Storyboard. The hand-drawn frames, with timing notes for each credit.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "We shot the train on a tabletop layout and built the type in After Effects to match the camera. My part was direction and the edit. I cut the sequence to the rhythm of the wheels, so each name lands on a beat."
+    },
+    {
+      "type": "gallery",
+      "columns": 3,
+      "ratio": "16/9",
+      "images": [
+        {
+          "src": "",
+          "alt": "Track test"
+        },
+        {
+          "src": "",
+          "alt": "Type on track"
+        },
+        {
+          "src": "",
+          "alt": "Final frame"
+        }
+      ],
+      "caption": "From the first track test to the final frame."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "Working as three meant agreeing on timing early. Next time we would lock the music before shooting, not after."
+    }
+  ]
+}

@@ -47,7 +47,7 @@ const Pages = {
     document.getElementById("grid").innerHTML = projects.map(({ slug, data: p }) => `
       <a class="card reveal" href="project.html?p=${encodeURIComponent(slug)}">
         ${p.cover
-          ? `<div class="card__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}" loading="lazy" style="object-position:${esc(p.coverPosition || "center")}"></div>`
+          ? `<div class="card__media"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}" loading="lazy"></div>`
           : `<div class="card__media card__media--blank" style="--hue:${esc(p.color || "var(--line)")}"><span>Cover image</span></div>`}
         <h2 class="card__title">${esc(p.title)}</h2>
         <p class="card__meta">${esc(p.discipline)}</p>
@@ -107,7 +107,7 @@ const Pages = {
           <p class="lead">${esc(p.summary)}</p>
           <dl class="facts cols">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         </header>
-        ${p.hideCover ? "" : p.cover
+        ${p.cover
           ? `<div class="project-cover wrap"><img src="${esc(p.cover)}" alt="${esc(p.coverAlt)}"></div>`
           : `<div class="project-cover wrap"><div class="b-placeholder b-placeholder--cover"><span><strong>Cover image</strong>${esc(p.coverAlt || "Your strongest image of the finished work")}</span></div></div>`}
         <div class="blocks wrap">${Blocks.render(p.blocks)}</div>

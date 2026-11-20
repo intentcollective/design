@@ -1,0 +1,45 @@
+{
+  "title": "Cracking Cheese",
+  "discipline": "Poster, Manifesto",
+  "color": "#f3e3a1",
+  "summary": "A design manifesto that argues ideas get better with age, written as a guide to ripening cheese.",
+  "subject": "Design Studio I, Metaphoric Manifesto",
+  "tools": "Photoshop, InDesign, studio lighting",
+  "cover": "",
+  "coverAlt": "Poster of a wheel of cheese with the manifesto set around its rind",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Write a personal design manifesto and express it through one metaphor from outside design."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "Students rush ideas to critique. Cheese teaches patience. A good idea needs time, the right conditions and someone to turn it now and then."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "wide",
+      "ratio": "3/2",
+      "caption": "The manifesto set around the rind, one line for each stage of ripening."
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "The manifesto began as two pages and ended as five lines. I photographed the cheese myself and set the text around the rind, so you turn the poster to read it, the way a cheesemaker turns a wheel."
+    },
+    {
+      "type": "placeholder",
+      "label": "Photo shoot. Lighting tests and the cheeses that didn’t make it.",
+      "ratio": "3/2"
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "Critique asked whether the joke would win over the idea. Plain, careful typography kept it serious enough to be read."
+    }
+  ]
+}

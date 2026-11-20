@@ -240,11 +240,9 @@ const Blocks = {
   image(b) {
     const width = ["full", "wide", "narrow"].includes(b.width) ? b.width : "narrow";
     if (!b.src) return `<figure class="b-figure b-figure--${width}">${Blocks.placeholder({ label: b.caption || b.alt || "Image", ratio: b.ratio })}</figure>`;
-    const padded = b.background ? " b-figure--padded" : "";
-    const bg = b.background ? ` style="background:${esc(b.background)}"` : "";
     return `
       <figure class="b-figure b-figure--${width}">
-        <div class="${padded}"${bg}><img src="${esc(b.src)}" alt="${esc(b.alt)}" loading="lazy"></div>
+        <img src="${esc(b.src)}" alt="${esc(b.alt)}" loading="lazy">
         ${b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : ""}
       </figure>`;
   },
@@ -277,8 +275,7 @@ const Blocks = {
       player = `<iframe src="https://www.youtube-nocookie.com/embed/${youtube[1]}" allow="autoplay; fullscreen; picture-in-picture" loading="lazy" title="${esc(b.caption || "Video")}"></iframe>`;
     } else if (url) {
       // A video file in your own images folder (.mp4).
-      const auto = b.autoplay ? " autoplay muted loop playsinline" : " controls";
-      player = `<video src="${esc(url)}"${auto}></video>`;
+      player = `<video src="${esc(url)}" controls></video>`;
     } else {
       return Blocks.placeholder({ label: b.caption || "Video", ratio: b.ratio });
     }
@@ -293,28 +290,8 @@ const Blocks = {
     return `<blockquote class="b-quote">${esc(b.text)}${b.cite ? `<cite>${esc(b.cite)}</cite>` : ""}</blockquote>`;
   },
 
-  /* Before and after: drag the slider to compare two images. */
-  compare(b) {
-    if (!b.before || !b.after) return Blocks.placeholder({ label: b.caption || "Before and after comparison" });
-    return `
-      <figure class="b-figure b-figure--wide b-compare">
-        <div class="b-compare__stage">
-          <img src="${esc(b.before)}" alt="${esc(b.beforeAlt || "Before")}" loading="lazy">
-          <div class="b-compare__after"><img src="${esc(b.after)}" alt="${esc(b.afterAlt || "After")}" loading="lazy"></div>
-        </div>
-        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after"
-          oninput="this.previousElementSibling.style.setProperty('--pos', this.value + '%')">
-        ${b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : ""}
-      </figure>`;
-  },
-
-  /* A dashed box that marks where something still needs to go. */
+  /* A box that marks where an image still needs to go. */
   placeholder(b) {
     return `<div class="b-placeholder" style="--ratio:${esc(b.ratio || "16/9")}"><span><strong>Placeholder</strong>${esc(b.label || "Add an image here")}</span></div>`;
-  },
-
-  spacer(b) {
-    const size = ["small", "medium", "large"].includes(b.size) ? b.size : "medium";
-    return `<div class="b-spacer--${size}" aria-hidden="true"></div>`;
   }
 };

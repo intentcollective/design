@@ -1,0 +1,65 @@
+{
+  "title": "Thorn Princess",
+  "discipline": "Type Design",
+  "color": "#b8476b",
+  "summary": "A display typeface that looks elegant from a distance and turns sharp up close.",
+  "subject": "Type Design",
+  "tools": "Glyphs, pencil and tracing paper",
+  "cover": "",
+  "coverAlt": "Large letters of a display typeface with small thorn-like serifs",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Design the uppercase and lowercase of a display typeface with a clear personality."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "Some people are kinder and stronger than they look. I wanted letters that read as graceful at poster size and reveal small, sharp thorns where the serifs would be."
+    },
+    {
+      "type": "placeholder",
+      "label": "Sketches. Pencil drawings of the key letters, n, o, H and O.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I drew the control letters by hand, then built the full set in Glyphs. The thorns were the hard part. Too many and the type looked angry, too few and the idea disappeared. The final set has thorns only at the ends of strokes."
+    },
+    {
+      "type": "gallery",
+      "columns": 3,
+      "ratio": "4/5",
+      "images": [
+        {
+          "src": "",
+          "alt": "Version one"
+        },
+        {
+          "src": "",
+          "alt": "Version two"
+        },
+        {
+          "src": "",
+          "alt": "Final"
+        }
+      ],
+      "caption": "The thorn, from too much to just enough."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "wide",
+      "ratio": "16/9",
+      "caption": "The full character set."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "Spacing took longer than drawing. Next time I would space the letters early, because it changed how every shape felt."
+    }
+  ]
+}

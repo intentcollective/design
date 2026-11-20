@@ -1,0 +1,65 @@
+{
+  "title": "Operation Strix",
+  "discipline": "Book, Editorial",
+  "color": "#5f8f75",
+  "summary": "A field manual for a spy who has to pass as an ordinary father, designed so the secrets hide in plain sight.",
+  "subject": "Editorial Design II",
+  "tools": "InDesign, Risograph",
+  "cover": "",
+  "coverAlt": "An ordinary parenting handbook with a hidden second text in its margins",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Design a book whose form changes how it is read."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "From the outside it is a dull parenting handbook. Inside, a second text runs in the margins in a second ink that appears only under a red lens. One book, two readers."
+    },
+    {
+      "type": "placeholder",
+      "label": "Research. Real field manuals, school handbooks and how each one organizes instructions.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "The hard part was making the parenting advice good enough to stand alone. If it read as a disguise, the book failed. I wrote and set both texts together, spread by spread, so every page holds two honest readings."
+    },
+    {
+      "type": "gallery",
+      "columns": 2,
+      "ratio": "3/2",
+      "images": [
+        {
+          "src": "",
+          "alt": "Spread with the lens"
+        },
+        {
+          "src": "",
+          "alt": "Spread without the lens"
+        }
+      ],
+      "caption": "The same spread, with and without the red lens."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "narrow",
+      "ratio": "3/2",
+      "caption": "Risograph proofs of the hidden margin ink."
+    },
+    {
+      "type": "quote",
+      "text": "A good disguise has to be true."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "Readers found the second text faster than I expected, and that was the lesson. Hiding something well is a typography problem, not a printing trick."
+    }
+  ]
+}

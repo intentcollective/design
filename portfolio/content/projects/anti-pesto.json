@@ -1,0 +1,65 @@
+{
+  "title": "Anti-Pesto",
+  "discipline": "Signage, Wayfinding",
+  "color": "#6fae4a",
+  "summary": "Signs that guide visitors through a village vegetable show and ask them, politely, not to feed the rabbits.",
+  "subject": "Environmental Graphic Design",
+  "tools": "Illustrator, SketchUp, vinyl cutter",
+  "cover": "",
+  "coverAlt": "Green directional signs among vegetable stalls at a village show",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Design a temporary wayfinding system for an outdoor event of your choice."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "A vegetable show is a maze of stalls that changes every year. The system had to be cheap, quick to install and readable from across a muddy field. Arrows and numbers do the work, and the illustrations add the warmth."
+    },
+    {
+      "type": "placeholder",
+      "label": "Site plan. The show layout with every decision point marked.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I walked the site with a clipboard and marked every place a visitor might stop and wonder. Each stop became a sign. Mockups at full size showed that the first type was too thin to read at ten meters."
+    },
+    {
+      "type": "gallery",
+      "columns": 3,
+      "ratio": "4/5",
+      "images": [
+        {
+          "src": "",
+          "alt": "Thin"
+        },
+        {
+          "src": "",
+          "alt": "Regular"
+        },
+        {
+          "src": "",
+          "alt": "Bold"
+        }
+      ],
+      "caption": "Type tests at ten meters."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "wide",
+      "ratio": "3/2",
+      "caption": "Signs installed on the day of the show."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "No one got lost and no rabbits were harmed. Next year I would add a printed map, because older visitors asked for one."
+    }
+  ]
+}

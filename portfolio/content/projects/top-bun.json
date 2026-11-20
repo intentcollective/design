@@ -1,0 +1,73 @@
+{
+  "title": "Top Bun",
+  "discipline": "Identity, Packaging",
+  "color": "#d9a35f",
+  "summary": "An identity for a family bakery in Wigan that has to work at four in the morning, on a paper bag, in floury hands.",
+  "subject": "Brand Identity, client project",
+  "tools": "Illustrator, InDesign, letterpress",
+  "cover": "",
+  "coverAlt": "Bread bags, a shop sign and a delivery van in the Top Bun identity",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Give a small bakery an identity it can afford to use every day, on bags, labels, a shop sign and one delivery van."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "Bakers mark their loaves by hand with a single cut. I built the identity from that gesture. One scored line becomes the logo, the pattern on the bags and the stripe on the van."
+    },
+    {
+      "type": "placeholder",
+      "label": "Research. Old bakery signs, bread scores and paper bags from three local shops.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "I tested the mark at the size of a price sticker first, because that is where most people meet it. Anything that failed at two centimeters was cut. The type came last, a sturdy sans that survives a cheap printer and a greasy thumb."
+    },
+    {
+      "type": "gallery",
+      "columns": 3,
+      "ratio": "4/5",
+      "images": [
+        {
+          "src": "",
+          "alt": "Early marks"
+        },
+        {
+          "src": "",
+          "alt": "Sticker test"
+        },
+        {
+          "src": "",
+          "alt": "Bag pattern"
+        }
+      ],
+      "caption": "From sketches to the sticker test to the bag pattern."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "wide",
+      "ratio": "3/2",
+      "caption": "The identity on bags, labels and the shop sign."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "narrow",
+      "ratio": "3/2",
+      "caption": "The van stripe, the same scored line at full size."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "The owner was often busy with a new invention, so the system had to run without me. Next time I would write the one-page guide first and design the identity to fit it."
+    }
+  ]
+}

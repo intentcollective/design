@@ -1,0 +1,73 @@
+{
+  "title": "Project Nine",
+  "discipline": "Editorial",
+  "color": "#6fa3ff",
+  "summary": "One sentence that says what this is and why it matters. Many reviewers read only this.",
+  "subject": "Class, client or competition",
+  "tools": "Software and materials",
+  "cover": "",
+  "coverAlt": "Your strongest image of the finished work. On the Works page it is cropped to 4:3.",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "What were you asked to do? One or two sentences."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "What insight shaped your answer? This is the most important paragraph on the page, so make it specific.\n\nA second short paragraph can explain why the idea fits the brief."
+    },
+    {
+      "type": "placeholder",
+      "label": "Research. What you collected, read, photographed or visited.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "text",
+      "heading": "Process",
+      "body": "How did the idea develop? Name one direction you rejected, and why. Reviewers learn the most about you here."
+    },
+    {
+      "type": "gallery",
+      "columns": 3,
+      "ratio": "4/5",
+      "images": [
+        {
+          "src": "",
+          "alt": "Sketch"
+        },
+        {
+          "src": "",
+          "alt": "First iteration"
+        },
+        {
+          "src": "",
+          "alt": "Second iteration"
+        }
+      ],
+      "caption": "Sketches and iterations, in the order they happened."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "wide",
+      "ratio": "3/2",
+      "caption": "The finished work in context. A photo of the real object, or a convincing mockup."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "narrow",
+      "ratio": "1/1",
+      "caption": "A detail. A close-up that rewards a second look."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "What worked, and what would you do differently? Two or three sentences."
+    }
+  ]
+}

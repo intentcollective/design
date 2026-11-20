@@ -7,8 +7,8 @@
   "website": "gromitforger.design",
 
   "headline": ["I build", "{rotate}", "out of words."],
-  "rotatingWords": ["cities", "books", "films", "posters", "arguments"],
-  "intro": "Gromit Forger is a graphic designer who never says a word and lets the work do the talking. Posters, books and short films about how meaning moves. Senior, BFA Graphic Design, SCAD.",
+  "rotatingWords": ["books", "posters", "signs", "typefaces", "films"],
+  "intro": "Gromit Forger is a graphic designer who never says a word and lets the work do the talking. Identity, editorial, motion, information design and type. Senior, BFA Graphic Design, SCAD.",
 
   "menu": [
     { "label": "Works", "link": "index.html" },
@@ -18,12 +18,15 @@
   ],
 
   "works": [
-    "tamara",
-    "octavia",
-    "zobeide",
-    "vital-perception",
-    "four-inks",
-    "dump-your-design"
+    "top-bun",
+    "operation-strix",
+    "the-wrong-trousers",
+    "stella-stars",
+    "cracking-cheese",
+    "wanted",
+    "bondman",
+    "anti-pesto",
+    "thorn-princess"
   ],
 
   "resumePdf": "files/gromit-forger-resume.pdf",

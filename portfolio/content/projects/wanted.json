@@ -1,0 +1,60 @@
+{
+  "title": "Wanted",
+  "discipline": "Poster Series",
+  "color": "#e3352b",
+  "summary": "Three wanted posters for a penguin who keeps escaping, each one designed with less information than the last.",
+  "subject": "Typography III",
+  "tools": "Illustrator, letterpress",
+  "cover": "",
+  "coverAlt": "Three wanted posters for a penguin, from detailed to almost empty",
+  "blocks": [
+    {
+      "type": "text",
+      "heading": "The brief",
+      "body": "Design a series of three posters that changes one variable from poster to poster."
+    },
+    {
+      "type": "text",
+      "heading": "The idea",
+      "body": "Every time Feathers McGraw escapes, the police know less about him. The posters lose information the same way. The first is full of detail, and the third is a silhouette and a single word."
+    },
+    {
+      "type": "placeholder",
+      "label": "Research. Old wanted posters and police notices from local archives.",
+      "ratio": "16/9"
+    },
+    {
+      "type": "gallery",
+      "columns": 3,
+      "ratio": "4/5",
+      "images": [
+        {
+          "src": "",
+          "alt": "Poster one"
+        },
+        {
+          "src": "",
+          "alt": "Poster two"
+        },
+        {
+          "src": "",
+          "alt": "Poster three"
+        }
+      ],
+      "caption": "The series, from the most information to the least."
+    },
+    {
+      "type": "image",
+      "src": "",
+      "alt": "",
+      "width": "narrow",
+      "ratio": "3/2",
+      "caption": "Letterpress detail of the word Wanted in wood type."
+    },
+    {
+      "type": "text",
+      "heading": "Reflection",
+      "body": "The third poster turned out the strongest, which surprised me. Next time I would start from the emptiest version and add only what is needed."
+    }
+  ]
+}

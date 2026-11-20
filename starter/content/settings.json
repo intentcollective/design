@@ -45,7 +45,10 @@
     "project-three",
     "project-four",
     "project-five",
-    "project-six"
+    "project-six",
+    "project-seven",
+    "project-eight",
+    "project-nine"
   ],
   "resumePdf": "files/your-name-resume.pdf",
   "portfolioPdf": "files/your-name-portfolio.pdf",
