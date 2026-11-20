@@ -512,12 +512,14 @@ figcaption {
 .page { padding-top: var(--s8); }
 .page .page-title { margin-bottom: var(--s5); }
 
-/* Lists use the midpoint, hung outside the text edge, so
-   every item's text starts on one clean line. */
+/* Lists use the midpoint, hung optically. The point halfway
+   between the midpoint and the first letter sits on the text
+   edge above, so the item is set in a little and the midpoint
+   hangs out by the same amount. */
 .dots { list-style: none; margin: var(--s2) 0 0; padding: 0; line-height: 1.45; }
-.dots li { position: relative; }
+.dots li { position: relative; padding-left: 0.3em; }
 .dots li + li { margin-top: var(--s1); }
-.dots li::before { content: "·"; position: absolute; right: calc(100% + 0.4em); color: var(--muted); }
+.dots li::before { content: "·"; position: absolute; left: -0.55em; width: 0.5em; text-align: center; color: var(--muted); }
 
 /* ---------- The CV (resume.html, the source of the resume PDF)
    The name and main sections take the right 8 columns, Awards
