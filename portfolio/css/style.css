@@ -705,7 +705,18 @@ figcaption {
 /* =========================================================
    12. guide.html
    ========================================================= */
-.guide-toc { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s6); font-size: var(--fs-label); }
+/* The contents sit on the grid. Seven links can't share twelve
+   columns evenly, so each takes three, four to a row. */
+.guide-toc {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: var(--s2);
+  margin-top: var(--s6);
+  font-size: var(--fs-label);
+}
+.guide-toc a { grid-column: span 3; justify-self: start; }
+@media screen and (max-width: 640px) { .guide-toc a { grid-column: span 2; } }
 .guide-toc a { color: var(--muted); border-bottom: 1px solid var(--line); }
 .guide-toc a:hover { color: var(--fg); border-color: var(--fg); }
 
