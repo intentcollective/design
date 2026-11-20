@@ -194,8 +194,9 @@ const Pages = {
           <section class="b-text">
             <h2>Contact</h2>
             <div class="page__actions" style="margin-top:0">
-              ${s.email ? `<span>${esc(s.email)}</span>` : ""}
+              ${s.website ? `<span>${esc(s.website)}</span>` : ""}
               ${s.linkedin ? `<a class="action" href="${esc(s.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : ""}
+              ${s.email ? `<span>${esc(s.email)}</span>` : ""}
               ${s.resumePdf ? `<a class="action" href="${esc(s.resumePdf)}" target="_blank" rel="noopener">Resume PDF</a>` : ""}
             </div>
           </section>
