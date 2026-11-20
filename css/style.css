@@ -359,6 +359,14 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
   .works__bar .label, .works__bar .action { grid-column: 1 / -1; }
 }
 
+/* On a phone, tighten the opening so the top of the first
+   card peeks above the fold, a hint that there is more below. */
+@media screen and (max-width: 640px) {
+  .hero { padding-top: var(--s6); padding-bottom: var(--s6); }
+  .hero__intro { margin-top: var(--s5); }
+  .works__bar { padding-bottom: var(--s4); }
+}
+
 /* A field of cards, each 4 columns wide: three to a row on a
    wide screen, two on a tablet, one on a phone. */
 .works__grid { row-gap: var(--s7); }
