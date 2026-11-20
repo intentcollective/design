@@ -168,8 +168,7 @@ content:
     path: portfolio/content/resume.json
     format: json
     fields:
-      - { name: summary, label: Summary, type: text }
-      - { name: availability, label: Availability, type: string }
+      - { name: expertise, label: Expertise, type: string, list: true }
       - name: sections
         label: Sections
         type: object
@@ -181,9 +180,10 @@ content:
             type: object
             list: true
             fields:
-              - { name: what, label: Title or position, type: string }
-              - { name: where, label: Where, type: string }
-              - { name: when, label: When, type: string }
+              - { name: where, label: Organization or school, type: string }
+              - { name: place, label: City, type: string }
+              - { name: when, label: Years, type: string }
+              - { name: what, label: Position or degree, type: string }
               - { name: details, label: Details, type: string, list: true }
       - name: skills
         label: Skills
@@ -192,3 +192,13 @@ content:
         fields:
           - { name: title, label: Group, type: string }
           - { name: list, label: Skills, type: string }
+      - name: awards
+        label: Awards
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Award, type: string }
+          - { name: note, label: For, type: string }
+          - { name: when, label: Year, type: string }
+      - { name: availability, label: Availability, type: string }
+      - { name: motto, label: Line at the foot of the page, type: string }

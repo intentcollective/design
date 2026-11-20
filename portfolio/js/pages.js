@@ -162,7 +162,6 @@ const Pages = {
           </div>
           <aside class="cv__side">
             ${r.awards ? `<section>${label("Awards")}<dl class="cv__awards">${r.awards.map(a => `<div><dt>${esc(a.name)}</dt><dd>${esc(a.note)}</dd><dd>${esc(a.when)}</dd></div>`).join("")}</dl></section>` : ""}
-            ${r.clients ? `<section>${label("Clients")}<ul class="cv__clients">${r.clients.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>` : ""}
             <section>${label("Contact")}<ul class="cv__contact">${contact.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>
           </aside>
           ${r.motto ? `<p class="cv__motto">${esc(r.motto)}</p>` : ""}
@@ -183,14 +182,16 @@ const Pages = {
           <div class="about-head__portrait">${portrait}</div>
           <p class="lead">${esc(a.lead)}</p>
         </div>
-        <div class="blocks">${Blocks.render(a.blocks)}</div>
-        <div class="section cols">
-          <h2>Contact</h2>
-          <div class="page__actions" style="margin-top:0">
-            ${s.email ? `<a class="action" href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : ""}
-            ${s.linkedin ? `<a class="action" href="${esc(s.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : ""}
-            ${s.resumePdf ? `<a class="action" href="${esc(s.resumePdf)}" target="_blank" rel="noopener">Resume PDF</a>` : ""}
-          </div>
+        <div class="blocks">
+          ${Blocks.render(a.blocks)}
+          <section class="b-text">
+            <h2>Contact</h2>
+            <div class="page__actions" style="margin-top:0">
+              ${s.email ? `<a class="action" href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : ""}
+              ${s.linkedin ? `<a class="action" href="${esc(s.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>` : ""}
+              ${s.resumePdf ? `<a class="action" href="${esc(s.resumePdf)}" target="_blank" rel="noopener">Resume PDF</a>` : ""}
+            </div>
+          </section>
         </div>
       </section>`;
     Site.reveal();
