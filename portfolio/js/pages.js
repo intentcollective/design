@@ -202,9 +202,9 @@ const Pages = {
   },
 
   /* ---------- PDF portfolio (print.html) ----------
-     A 16:9 landscape deck. A cover, then for every project an
-     opening page (title, tools, a short description and two
-     images) and a page of more images. In Chrome choose File,
+     A 16:9 landscape deck. A cover, then one page for every
+     project, numbered, with its title, tools, a short
+     description and four images. In Chrome choose File,
      Print, Save as PDF, and turn on background graphics. The
      page size is set by the stylesheet. */
   async print(s) {
@@ -214,36 +214,40 @@ const Pages = {
     // One image, or a colored box when the image isn't there yet.
     const picture = (item, p, isCover) => item.src
       ? `<img src="${esc(item.src)}" alt="${esc(item.label)}">`
-      : `<div class="deck__box${isCover ? " deck__box--cover" : ""}" style="--hue:${esc(p.color || "#888")};aspect-ratio:${esc(item.ratio || "4/3")}"><span>${esc(item.label)}</span></div>`;
+      : `<div class="deck__box${isCover ? " deck__box--cover" : ""}" style="--hue:${esc(p.color || "#888")}"><span>${esc(item.label)}</span></div>`;
 
     // Every image in a project, in order: cover first, then the rest.
     const images = p => {
-      const list = [{ src: p.cover, label: p.coverAlt || "Cover image", ratio: "4/3" }];
+      const list = [{ src: p.cover, label: p.coverAlt || "Cover image" }];
       (p.blocks || []).forEach(b => {
-        if (b.type === "image") list.push({ src: b.src, label: b.caption || b.alt || "Image", ratio: b.ratio });
-        if (b.type === "placeholder") list.push({ src: "", label: b.label, ratio: b.ratio });
-        if (b.type === "gallery") (b.images || []).forEach(im => list.push({ src: im.src, label: im.alt, ratio: b.ratio }));
+        if (b.type === "image") list.push({ src: b.src, label: b.caption || b.alt || "Image", isImage: true });
+        if (b.type === "placeholder") list.push({ src: "", label: b.label });
+        if (b.type === "gallery") (b.images || []).forEach(im => list.push({ src: im.src, label: im.alt }));
       });
       return list;
     };
 
-    const pages = projects.map(({ data: p }) => {
+    // One page per project. Four columns hold two small images,
+    // stacked. Two large images take four columns each. The title,
+    // tools and text sit above them on the same column lines.
+    const pages = projects.map(({ data: p }, n) => {
       const all = images(p);
+      const cover = all[0];
+      const rest = all.slice(1);
+      const main = rest.find(x => x.isImage) || rest[0];
+      const small = rest.filter(x => x !== main).slice(0, 2);
       const idea = (p.blocks || []).find(b => b.type === "text" && /idea/i.test(b.heading || ""));
       const text = [p.summary, idea ? idea.body.split(/\n\s*\n/)[0] : ""].filter(Boolean).join(" ");
       const tools = (p.tools || "").split(",").map(t => t.trim()).filter(Boolean);
-      const rest = all.slice(2, 6);
       return `
         <section class="deck">
-          <h2 class="deck__title">${esc(p.title)}</h2>
+          <h2 class="deck__title">${n + 1}. ${esc(p.title)}</h2>
           <ul class="deck__tools">${tools.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
           <p class="deck__text">${esc(text)}</p>
-          <div class="deck__row deck__row--opener">${all.slice(0, 2).map((item, n) => `<figure>${picture(item, p, n === 0)}</figure>`).join("")}</div>
-        </section>
-        ${rest.length ? `
-        <section class="deck deck--images">
-          <div class="deck__row">${rest.map(item => `<figure>${picture(item, p, false)}</figure>`).join("")}</div>
-        </section>` : ""}`;
+          <div class="deck__small">${small.map(item => picture(item, p, false)).join("")}</div>
+          <div class="deck__large">${picture(cover, p, true)}</div>
+          <div class="deck__large">${main ? picture(main, p, false) : ""}</div>
+        </section>`;
     }).join("");
 
     document.querySelector("main").innerHTML = `
