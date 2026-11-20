@@ -51,6 +51,7 @@ const Site = {
       throw err;
     }
     this.applyTheme();
+    if (this.settings.showGrid) document.documentElement.classList.add("show-grid");
     this.buildNav();
     this.buildFooter();
     return this.settings;
@@ -60,7 +61,7 @@ const Site = {
   applyTheme() {
     const t = this.settings.theme || {};
     const root = document.documentElement.style;
-    const map = { background: "--bg", text: "--fg", muted: "--muted", line: "--line", accent: "--accent" };
+    const map = { background: "--bg", text: "--fg", muted: "--muted", line: "--line", accent: "--accent", gridLine: "--grid-line" };
     for (const key in map) if (t[key]) root.setProperty(map[key], t[key]);
 
     if (t.font) {
@@ -82,16 +83,19 @@ const Site = {
     const nav = document.createElement("header");
     nav.className = "site-nav";
     nav.innerHTML = `
-      <a class="site-nav__name" href="index.html">${esc(s.name)}</a>
-      <nav aria-label="Main">
-        <ul class="site-nav__menu">
+      <div class="wrap cols">
+        <a class="site-nav__name" href="index.html">${esc(s.name)}</a>
+        <ul class="site-nav__menu" aria-label="Main">
           ${(s.menu || []).map(item => {
             const current = item.link === here || (here === "project.html" && item.link === "index.html");
             const tab = item.newTab ? ' target="_blank" rel="noopener"' : "";
-            return `<li><a href="${esc(item.link)}"${tab}${current ? ' aria-current="page"' : ""}>${esc(item.label)}</a></li>`;
+            const badge = item.badge ? ' class="badge"' : "";
+            // A short label like "in" needs a full name for screen readers.
+            const name = item.fullName ? ` aria-label="${esc(item.fullName)}"` : "";
+            return `<li><a href="${esc(item.link)}"${tab}${badge}${name}${current ? ' aria-current="page"' : ""}>${esc(item.label)}</a></li>`;
           }).join("")}
         </ul>
-      </nav>`;
+      </div>`;
     document.body.prepend(nav);
   },
 
@@ -104,8 +108,10 @@ const Site = {
     if (s.portfolioPdf) links.push(`<a href="${esc(s.portfolioPdf)}" target="_blank" rel="noopener">PDF portfolio</a>`);
     if (s.showGuideLink) links.push(`<a href="guide.html">Template guide</a>`);
     footer.innerHTML = `
-      <p>&copy; ${new Date().getFullYear()} ${esc(s.name)}</p>
-      <nav aria-label="Footer">${links.join("")}</nav>`;
+      <div class="wrap"><div class="cols">
+        <p>&copy; ${new Date().getFullYear()} ${esc(s.name)}</p>
+        <nav aria-label="Footer">${links.join("")}</nav>
+      </div></div>`;
     document.body.appendChild(footer);
   },
 
@@ -180,7 +186,7 @@ const Blocks = {
   text(b) {
     const heading = b.heading ? `<h2>${esc(b.heading)}</h2>` : "";
     return `
-      <section class="b-text${b.heading ? "" : " b-text--no-heading"}">
+      <section class="b-text">
         ${heading}
         <div class="b-text__body">${richText(b.body)}</div>
       </section>`;
@@ -188,7 +194,7 @@ const Blocks = {
 
   image(b) {
     if (!b.src) return Blocks.placeholder({ label: b.caption || b.alt || "Image", ratio: b.ratio });
-    const width = ["full", "wide", "narrow"].includes(b.width) ? b.width : "wide";
+    const width = ["full", "wide", "narrow"].includes(b.width) ? b.width : "narrow";
     const padded = b.background ? " b-figure--padded" : "";
     const bg = b.background ? ` style="background:${esc(b.background)}"` : "";
     return `
@@ -199,16 +205,17 @@ const Blocks = {
   },
 
   gallery(b) {
-    const cols = Math.min(Math.max(Number(b.columns) || 2, 1), 4);
+    const cols = [2, 3, 4].includes(Number(b.columns)) ? Number(b.columns) : 2;
     const ratio = b.ratio ? `--ratio:${esc(b.ratio)};` : "";
     const items = (b.images || []).map(img =>
       img.src
         ? `<img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy">`
         : `<div class="b-placeholder" style="--ratio:${esc(b.ratio || "4/5")}"><span><strong>Placeholder</strong>${esc(img.alt || "Image")}</span></div>`
     ).join("");
+    // Equal shares of the 12 columns: 2 images span 6 each, 3 span 4, 4 span 3.
     return `
       <figure class="b-gallery">
-        <div class="b-gallery__grid" style="--cols:${cols};${ratio}">${items}</div>
+        <div class="b-gallery__grid cols" style="--span:${12 / cols};${ratio}">${items}</div>
         ${b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : ""}
       </figure>`;
   },

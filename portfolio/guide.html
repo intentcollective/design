@@ -16,15 +16,15 @@
      "showGuideLink" to false in settings.json, once your
      site is ready. -->
 
-<main class="page guide">
-  <h1 class="page__title">Make this site<br><span style="color:var(--accent)">your own.</span></h1>
-  <p class="page__lead">This portfolio is a template. Everything you see, from the name in the corner to the color of the links, comes from a few small files you can change without writing code. This guide moves in four levels, from changing your name to building your own layouts. Stop at whichever level you need.</p>
+<main class="page guide wrap">
+  <h1 class="page-title">Make this site<br><span style="color:var(--accent)">your own.</span></h1>
+  <p class="lead">This portfolio is a template. Everything you see, from the name in the corner to the color of the links, comes from a few small files you can change without writing code. This guide moves in four levels, from changing your name to building your own layouts. Stop at whichever level you need.</p>
 
   <nav class="guide-toc" aria-label="Guide contents">
     <a href="#start">Before you start</a>
     <a href="#level-1">1. Settings</a>
     <a href="#level-2">2. Projects</a>
-    <a href="#level-3">3. Style</a>
+    <a href="#level-3">3. Style and the grid</a>
     <a href="#level-4">4. Structure</a>
     <a href="#publish">Publish</a>
     <a href="#reviewers">What reviewers look for</a>
@@ -69,7 +69,7 @@
 
   <!-- ===================================================== -->
   <section class="guide-section" id="level-1">
-    <h2>Level 1<br>Settings</h2>
+    <h2>Level 1, settings</h2>
     <div>
       <p>Open <code>content/settings.json</code>. This one file controls everything that appears on every page.</p>
 <pre>"name": "Sena Hart",
@@ -85,11 +85,13 @@
 
       <h3>The menu</h3>
       <p>Each item in <code>menu</code> has a label and a link. Rename, reorder, add or remove items freely. Set <code>"newTab": true</code> for links that leave your site or open a PDF.</p>
+      <p><code>"badge": true</code> draws an item as a small outlined mark, the way “in” stands for LinkedIn. Give a short label like that a <code>fullName</code>, so screen readers announce “LinkedIn” and not “in.”</p>
       <p>The Resume item links straight to your PDF, because that is the version reviewers save and forward. If you would rather show a web resume, change its link to <code>resume.html</code>. That page is already built from <code>content/resume.json</code>.</p>
 <pre>"menu": [
   { "label": "Works", "link": "index.html" },
   { "label": "Resume", "link": "files/your-name-resume.pdf", "newTab": true },
-  { "label": "Li", "link": "https://www.linkedin.com/in/your-name/", "newTab": true },
+  { "label": "in", "fullName": "LinkedIn", "badge": true,
+    "link": "https://www.linkedin.com/in/your-name/", "newTab": true },
   { "label": "About", "link": "about.html" }
 ],</pre>
 
@@ -111,7 +113,7 @@
 
   <!-- ===================================================== -->
   <section class="guide-section" id="level-2">
-    <h2>Level 2<br>Projects</h2>
+    <h2>Level 2, projects</h2>
     <div>
       <h3>Add a project</h3>
       <ol>
@@ -124,11 +126,9 @@
       <p>These fields fill the header of the project page and the card on the Works page.</p>
 <pre>"title": "Tamara",
 "discipline": "Poster, Lettering",
-"year": "2025",
 "summary": "One sentence. What it is and why it matters.",
 "role": "Concept, lettering, layout",
 "tools": "Illustrator, InDesign",
-"timeline": "4 weeks",
 "context": "Typography III",
 "cover": "images/projects/tamara/cover.jpg",
 "coverAlt": "Describe the image for someone who can’t see it",</pre>
@@ -142,7 +142,7 @@
   "heading": "Process",
   "body": "First paragraph.\n\nSecond paragraph." }</pre></div>
 
-        <div><h4>image</h4><p>Width is <code>full</code> (edge to edge), <code>wide</code> or <code>narrow</code>. A background color adds a frame around the image.</p>
+        <div><h4>image</h4><p>Width is measured in columns. <code>full</code> spans all 12, <code>wide</code> spans 8, and <code>narrow</code> spans 6, the same as the text. A background color adds a frame around the image.</p>
 <pre>{ "type": "image",
   "src": "images/projects/tamara/detail.jpg",
   "alt": "Close-up of the lettering",
@@ -150,7 +150,7 @@
   "background": "#efefed",
   "caption": "Optional caption" }</pre></div>
 
-        <div><h4>gallery</h4><p>Two to four images side by side. <code>ratio</code> crops them all to the same shape.</p>
+        <div><h4>gallery</h4><p>Two, three or four images in a row, sharing the 12 columns equally. <code>ratio</code> crops them all to the same shape.</p>
 <pre>{ "type": "gallery",
   "columns": 3,
   "ratio": "4/5",
@@ -186,37 +186,57 @@
       </div>
 
       <h3>Preparing images</h3>
-      <p>Export images 2000 pixels wide for <code>full</code> and <code>wide</code>, and 1400 pixels for <code>narrow</code> and gallery images. Save photos as JPG at about 80 percent quality. Keep each file under 500 KB if you can, because a slow site loses reviewers before your work appears.</p>
+      <p>Export images 2300 pixels wide for <code>full</code>, 1600 for <code>wide</code>, and 1200 for <code>narrow</code> and gallery images. That is twice their size on screen, so they stay sharp on high-resolution displays. Save photos as JPG at about 80 percent quality. Keep each file under 500 KB if you can, because a slow site loses reviewers before your work appears.</p>
     </div>
   </section>
 
   <!-- ===================================================== -->
   <section class="guide-section" id="level-3">
-    <h2>Level 3<br>Style</h2>
+    <h2>Level 3, style and the grid</h2>
     <div>
-      <p>Open <code>css/style.css</code>. The top of the file holds the tokens, named values used everywhere else. Change one and the whole site follows.</p>
-<pre>:root {
-  --text-hero: clamp(3.25rem, 10.5vw, 11.5rem);
-  --margin: clamp(1.25rem, 4vw, 3rem);
-  --gap: clamp(1.25rem, 3vw, 2.5rem);
-  --grid-columns: 2;
-}</pre>
-      <h3>What clamp() does</h3>
-      <p><code>clamp(3.25rem, 10.5vw, 11.5rem)</code> means “10.5 percent of the window width, but never smaller than 3.25rem or larger than 11.5rem.” That one line is why the header fills a laptop screen and still fits on a phone. <code>rem</code> is the browser’s base text size, usually 16 pixels.</p>
+      <p>Open <code>css/style.css</code>. The site follows the discipline of the printed page, and the top of the file sets that discipline down as tokens, named values used everywhere else. Change one and the whole site follows.</p>
+
+      <h3>The grid</h3>
+      <p>Everything sits on a column grid. Wide screens have 12 columns, tablets 6, and phones 4. Columns hold things, and gutters only space them, so the gutters stay narrow. Turn on <code>showGrid</code> in settings.json to see the columns drawn behind every page.</p>
+<pre>--text-w: 1140px;   /* 12 columns of 84px, 11 gutters of 12px */
+--cols: 12;
+--gutter: 12px;
+--measure-cols: 6;  /* reading text spans 6 columns */
+--wide-cols: 8;     /* intros and wide images span 8 */
+--card-span: 4;     /* each project card spans 4, three to a row */</pre>
+      <p>Every left edge on the site hangs from a column line. The menu takes the last four columns, one item per column. The project facts take four columns each. Nothing is centered.</p>
+
+      <h3>Measure</h3>
+      <p>Running text spans six of the twelve columns, about 68 characters a line. Robert Bringhurst calls 66 characters ideal, within a comfortable range of 45 to 75. Lines much longer than that tire the eye, and much shorter ones break the rhythm of reading.</p>
+
+      <h3>Type</h3>
+      <p>Six sizes, each with one job. A new size needs a new job, not a new mood.</p>
+<pre>--fs-label: 13px;   /* captions, metadata */
+--fs-body: 16px;    /* all running text */
+--fs-large: 18px;   /* summaries and intros */
+--fs-title: 20px;   /* section titles, card heads */
+--fs-display: clamp(1.75rem, 3.6vw, 2.5rem);  /* page titles */
+--fs-hero: clamp(2.75rem, 7vw, 5.75rem);      /* home headline only */</pre>
+      <p><code>clamp(2.75rem, 7vw, 5.75rem)</code> means “7 percent of the window width, but never smaller than 2.75rem or larger than 5.75rem.” That one line is why the headline fills a laptop screen and still fits on a phone. <code>rem</code> is the browser’s base text size, usually 16 pixels.</p>
+
+      <h3>Space</h3>
+      <p>Every distance is one of nine steps, all multiples of 4px. Few visitors will measure it, but they feel it as calm and order before they can name it.</p>
+<pre>--s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px; --s5: 24px;
+--s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;</pre>
 
       <h3>Things to try</h3>
       <ul>
-        <li>Set <code>--grid-columns</code> to 3 for a denser Works page.</li>
-        <li>Change the card shape by editing <code>aspect-ratio: 4 / 5</code> in <code>.card__media</code>. Try <code>1 / 1</code> or <code>3 / 2</code>.</li>
-        <li>Make the header heavier by changing <code>font-weight</code> in <code>.hero__headline</code>.</li>
+        <li>Set <code>--card-span</code> to 3 for four projects to a row, or 6 for two.</li>
+        <li>Change the card shape by editing <code>aspect-ratio: 4 / 3</code> in <code>.card__media</code>. Try <code>1 / 1</code> or <code>3 / 4</code>.</li>
         <li>Open your browser’s developer tools (right-click, Inspect), select any element and edit its styles live. Nothing is saved, so experiment freely, then copy what you like into style.css.</li>
       </ul>
+      <p class="guide-note">Further reading. Josef Müller-Brockmann, <em>Grid Systems in Graphic Design</em>. Robert Bringhurst, <em>The Elements of Typographic Style</em>.</p>
     </div>
   </section>
 
   <!-- ===================================================== -->
   <section class="guide-section" id="level-4">
-    <h2>Level 4<br>Structure</h2>
+    <h2>Level 4, structure</h2>
     <div>
       <h3>How a page gets built</h3>
       <ol>

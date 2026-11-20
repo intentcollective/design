@@ -3,13 +3,15 @@
    ---------------------------------------------------------
    The whole look of the site lives in this one file.
 
-   LEVEL 3 of the guide starts here. The "tokens" below are
-   CSS custom properties (variables). Change a value once and
-   every place that uses it updates.
+   LEVEL 3 of the guide starts here.
 
-   Colors and the typeface are set in content/settings.json,
-   which overrides the color values below when the page loads.
-   Everything else (spacing, type sizes, grid) is set here.
+   The site follows the tradition of the printed page.
+   Everything sits on a column grid, every distance is a
+   measured step, and type has a small set of sizes, each
+   with one job. Change the tokens below and the whole site
+   follows. Colors and the typeface are set in
+   content/settings.json, which overrides the color values
+   here when the page loads.
    ========================================================= */
 
 /* ---------- Fonts ----------
@@ -32,38 +34,78 @@
   font-display: swap;
 }
 
-/* ---------- Tokens ---------- */
+/* =========================================================
+   1. Tokens
+   ========================================================= */
 :root {
-  /* Colors (overridden by settings.json) */
+  /* Color (overridden by settings.json) */
   --bg: #000000;
   --fg: #f2f2f0;
   --muted: #8a8a86;
   --line: #2a2a2a;
   --accent: #ff3b2f;
+  --grid-line: rgba(255, 255, 255, 0.07);
 
-  /* Type */
+  /* Type. Six roles, each with one job.
+       label    13px  captions, metadata, small labels
+       body     16px  all running text
+       large    18px  summaries and intros
+       title    20px  section titles and card heads
+       display        page titles
+       hero           the home page headline only
+     clamp(MIN, PREFERRED, MAX) grows with the window width
+     (vw is 1% of it) but never past MIN or MAX. */
   --font: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --fs-label: 13px;
+  --fs-body: 16px;
+  --fs-large: 18px;
+  --fs-title: 20px;
+  --fs-display: clamp(1.75rem, 3.6vw, 2.5rem);
+  --fs-hero: clamp(2.75rem, 7vw, 5.75rem);
 
-  /* clamp(MIN, PREFERRED, MAX) lets a size grow with the
-     screen width (vw = 1% of the window width) but never
-     smaller than MIN or larger than MAX. */
-  --text-s: 0.875rem;
-  --text-m: 1.0625rem;
-  --text-l: clamp(1.25rem, 2vw, 1.6rem);
-  --text-xl: clamp(2rem, 4.5vw, 3.75rem);
-  --text-hero: clamp(2.75rem, 7vw, 7.25rem);
+  /* Space moves in steps of 4px. Every margin, padding and
+     gap on the site is one of these. */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px; --s5: 24px;
+  --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
 
-  /* Space */
-  --margin: clamp(1.25rem, 4vw, 3rem);   /* page edges */
-  --gap: clamp(1.25rem, 3vw, 2.5rem);    /* between grid items */
-  --section: clamp(4rem, 10vw, 9rem);    /* between big sections */
+  /* The grid. 12 columns of 84px with 12px gutters make a
+     1140px text column. Columns hold things, gutters only
+     space them, so gutters stay narrow. Tablets get 6
+     columns and phones 4 (see the media queries below). */
+  --text-w: 1140px;
+  --margin: var(--s6);
+  --cols: 12;
+  --gutter: var(--s3);
 
-  /* Layout */
-  --grid-columns: 3;     /* project cards per row on large screens */
-  --reading: 36rem;      /* comfortable line length for paragraphs */
+  /* One column, as a share of the text column's width. */
+  --col: calc((100% - (var(--cols) - 1) * var(--gutter)) / var(--cols));
+
+  /* Reading text spans 6 of 12 columns, about 68 characters
+     a line. Lead text and wide images span 8. */
+  --measure-cols: 6;
+  --wide-cols: 8;
+  --measure: calc(var(--measure-cols) * var(--col) + (var(--measure-cols) - 1) * var(--gutter));
+  --measure-wide: calc(var(--wide-cols) * var(--col) + (var(--wide-cols) - 1) * var(--gutter));
+
+  /* How many columns one project card spans. */
+  --card-span: 4;
 }
 
-/* ---------- Base ---------- */
+/* Tablets, 6 columns */
+@media screen and (max-width: 1023px) {
+  :root { --cols: 6; --measure-cols: 4; --wide-cols: 6; --card-span: 3; }
+}
+/* Phones, 4 columns with tighter gutters */
+@media screen and (max-width: 640px) {
+  :root { --cols: 4; --gutter: var(--s2); --measure-cols: 4; --wide-cols: 4; --card-span: 4; --margin: var(--s5); }
+}
+@media screen and (max-width: 374px) {
+  :root { --margin: var(--s4); }
+}
+
+/* =========================================================
+   2. Base
+   ========================================================= */
 *, *::before, *::after { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -73,8 +115,8 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font);
-  font-size: var(--text-m);
-  line-height: 1.55;
+  font-size: var(--fs-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   display: flex;               /* keeps the footer at the bottom */
   flex-direction: column;
@@ -85,60 +127,154 @@ main { flex: 1; }
 
 a { color: inherit; text-decoration: none; }
 img, video, iframe { display: block; max-width: 100%; }
-h1, h2, h3, p, figure, blockquote { margin: 0; }
+h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
+p, li { text-wrap: pretty; }               /* avoids one-word last lines */
+h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
 
-:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* Anyone who has turned off animation in their computer
    settings gets a still site. Always respect this. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-  }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 
-/* ---------- Navigation ---------- */
+/* =========================================================
+   3. The grid
+   ========================================================= */
+
+/* .wrap is the text column. Everything on the page sits
+   inside one, so every left edge lines up. */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--text-w) + 2 * var(--margin));
+  margin: 0 auto;
+  padding: 0 var(--margin);
+}
+
+/* .cols divides a .wrap into the 12 (or 6, or 4) columns.
+   Children choose how many columns to span. */
+.cols {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+/* The grid drawn behind the page: two faint lines per
+   column, the gutter between them empty. Turn it on or off
+   with "showGrid" in settings.json. It is drawn from the
+   same numbers that place the content, so they always
+   line up. */
+.show-grid { background: var(--bg); }
+.show-grid body { background: transparent; }
+.show-grid body::before {
+  content: "";
+  position: fixed;
+  inset: 0 auto 0 50%;
+  transform: translateX(-50%);
+  width: min(100% - 2 * var(--margin), var(--text-w));
+  z-index: -1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(90deg,
+    var(--grid-line) 0 1px,
+    transparent 1px calc(var(--col) - 1px),
+    var(--grid-line) calc(var(--col) - 1px) var(--col),
+    transparent var(--col) calc((100% + var(--gutter)) / var(--cols)));
+}
+
+/* =========================================================
+   4. Navigation and footer
+   ========================================================= */
+
+/* The name takes the first columns. The menu takes the last
+   four, one item per column, each flush left on its
+   column line. */
 .site-nav {
   position: sticky;
   top: 0;
   z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 1.25rem var(--margin);
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  padding: var(--s5) 0;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(12px);
 }
-
-.site-nav__name { font-weight: 600; letter-spacing: -0.01em; }
-
+.site-nav .cols { align-items: baseline; }
+.site-nav__name { grid-column: 1 / span 4; font-weight: 600; }
 .site-nav__menu {
-  display: flex;
-  gap: clamp(1rem, 3vw, 2.25rem);
+  grid-column: span 4 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--gutter);
   list-style: none;
   margin: 0;
   padding: 0;
 }
-
 .site-nav__menu a { color: var(--muted); transition: color 0.2s; }
+
+/* A menu item shown as a small outlined mark, like "in" for
+   LinkedIn. Set "badge": true on the item in settings.json. */
+.site-nav__menu a.badge {
+  display: inline-block;
+  padding: 0 0.3em 0.05em;
+  border: 1.5px solid currentColor;
+  border-radius: 0.28em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
 .site-nav__menu a:hover,
 .site-nav__menu a[aria-current="page"] { color: var(--fg); }
 
-/* ---------- Hero header (Works page) ---------- */
-.hero {
-  /* Short enough that the first row of work peeks in below
-     the header on a laptop screen. Reviewers should see work
-     without having to guess that they need to scroll. */
-  padding: clamp(3rem, 8vh, 6rem) var(--margin) clamp(2rem, 4vw, 3rem);
+@media screen and (max-width: 1023px) {
+  .site-nav__name { grid-column: 1 / span 2; }
+}
+@media screen and (max-width: 640px) {
+  .site-nav__name { grid-column: 1 / -1; margin-bottom: var(--s2); }
+  .site-nav__menu { grid-column: 1 / -1; }
 }
 
-.hero__headline {
-  font-size: var(--text-hero);
+.site-footer {
+  margin-top: var(--s9);
+  padding: var(--s6) 0;
+  font-size: var(--fs-label);
+  color: var(--muted);
+}
+.site-footer .cols { padding-top: var(--s4); border-top: 1px solid var(--line); row-gap: var(--s2); }
+.site-footer p { grid-column: 1 / span 4; }
+.site-footer nav { grid-column: span 4 / -1; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); }
+.site-footer a:hover { color: var(--fg); }
+@media screen and (max-width: 640px) {
+  .site-footer p, .site-footer nav { grid-column: 1 / -1; }
+}
+
+/* =========================================================
+   5. Shared text styles
+   ========================================================= */
+.label { font-size: var(--fs-label); color: var(--muted); line-height: 1.45; }
+
+.page-title {
+  font-size: var(--fs-display);
   font-weight: 500;
-  line-height: 0.9;
-  letter-spacing: -0.055em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.lead { max-width: var(--measure-wide); font-size: var(--fs-large); line-height: 1.55; }
+
+/* A link that does something: text color, underlined in the accent. */
+.action { color: var(--fg); border-bottom: 1px solid var(--accent); padding-bottom: 1px; }
+.action:hover { color: var(--accent); }
+
+/* =========================================================
+   6. Works page
+   ========================================================= */
+.hero { padding-top: var(--s8); padding-bottom: var(--s7); }
+
+.hero__headline {
+  grid-column: 1 / span 10;
+  font-size: var(--fs-hero);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.045em;
 }
 
 /* Each line sits in a box with overflow hidden, and the text
@@ -147,8 +283,8 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 .hero__line > span {
   display: inline-block;
   transform: translateY(105%);
-  animation: rise 1s cubic-bezier(0.2, 0.7, 0.1, 1) forwards;
-  animation-delay: calc(var(--i) * 0.12s + 0.15s);
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) forwards;
+  animation-delay: calc(var(--i) * 0.1s + 0.1s);
 }
 @keyframes rise { to { transform: translateY(0); } }
 
@@ -159,65 +295,37 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 @keyframes word-out { to { transform: translateY(-100%); opacity: 0; } }
 @keyframes word-in  { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
 
-.hero__foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 1.5rem 3rem;
-  margin-top: clamp(1.5rem, 3.5vw, 3rem);
+.hero__intro {
+  grid-column: 1 / -1;
+  max-width: var(--measure);
+  margin-top: var(--s6);
+  font-size: var(--fs-title);
+  line-height: 1.5;
+  color: var(--muted);
   opacity: 0;
-  animation: fade 1s ease 0.9s forwards;
+  animation: fade 0.9s ease 0.6s forwards;
 }
 @keyframes fade { to { opacity: 1; } }
 
-.hero__intro { max-width: 32rem; font-size: var(--text-m); line-height: 1.55; color: var(--muted); }
-.hero__intro strong { color: var(--fg); font-weight: 500; }
-
-.hero__cue { color: var(--muted); font-size: var(--text-s); white-space: nowrap; }
-.hero__cue span { display: inline-block; animation: nudge 2s ease-in-out infinite; }
-@keyframes nudge { 50% { transform: translateY(4px); } }
-
-/* ---------- Works list ---------- */
-.works { padding: 0 var(--margin) var(--section); }
-
+/* The bar above the projects: a count on the left, the PDF
+   link starting on the line of column 9. */
 .works__bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.75rem 2rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--line);
-  margin-bottom: var(--gap);
-  font-size: var(--text-s);
-  color: var(--muted);
+  padding: var(--s4) 0 var(--s5);
+  border-top: 2px solid var(--line);
+  font-size: var(--fs-label);
+  row-gap: var(--s2);
+}
+.works__bar .label { grid-column: 1 / span 4; }
+.works__bar .action { grid-column: span 4 / -1; justify-self: start; }
+@media screen and (max-width: 640px) {
+  .works__bar .label, .works__bar .action { grid-column: 1 / -1; }
 }
 
-.link-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5em;
-  color: var(--fg);
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 2px;
-}
-.link-button:hover { color: var(--accent); }
-
-.works__grid {
-  display: grid;
-  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
-  gap: calc(var(--gap) * 1.2) var(--gap);
-}
-@media screen and (max-width: 900px) { :root { --grid-columns: 2; } }
-
-.card { display: block; }
-
-.card__media {
-  aspect-ratio: 4 / 3;      /* every cover is cropped to the same shape */
-  overflow: hidden;
-  background: var(--line);
-}
+/* A field of cards, each 4 columns wide: three to a row on a
+   wide screen, two on a tablet, one on a phone. */
+.works__grid { row-gap: var(--s7); }
+.card { grid-column: span var(--card-span); display: block; }
+.card__media { aspect-ratio: 4 / 3; overflow: hidden; background: var(--line); }
 .card__media img {
   width: 100%;
   height: 100%;
@@ -225,121 +333,104 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
   transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.1, 1);
 }
 .card:hover .card__media img { transform: scale(1.03); }
+.card__title { margin-top: var(--s3); font-size: var(--fs-body); font-weight: 500; line-height: 1.4; }
+.card__meta { font-size: var(--fs-label); color: var(--muted); }
 
-.card__text { padding-top: 0.65rem; font-size: 0.95rem; line-height: 1.45; }
-.card__title { font-size: 0.95rem; font-weight: 500; }
-.card__meta { color: var(--muted); }
-
-/* Cards fade up as they scroll into view (see pages.js). */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.1, 1); }
+/* Cards and blocks fade up as they scroll into view (see site.js). */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.1, 1); }
 .reveal.is-visible { opacity: 1; transform: none; }
 
-/* ---------- Project page ---------- */
-.project-head { padding: clamp(3rem, 8vw, 7rem) var(--margin) var(--gap); }
+/* =========================================================
+   7. Project page
+   ========================================================= */
+.project-head { padding-top: var(--s8); padding-bottom: var(--s7); }
+.project-head .page-title { grid-column: 1 / -1; }
+.project-head .lead { grid-column: 1 / -1; margin-top: var(--s4); }
 
+/* Role, Tools, Context. Equal parts take equal shares of the
+   grid, so three facts take four columns each. */
+.facts { grid-column: 1 / -1; margin-top: var(--s7); padding-top: var(--s4); border-top: 1px solid var(--line); row-gap: var(--s4); }
+.facts > div { grid-column: span 4; }
+.facts dt { font-size: var(--fs-label); color: var(--muted); }
+@media screen and (max-width: 1023px) { .facts > div { grid-column: span 2; } }
+@media screen and (max-width: 640px)  { .facts > div { grid-column: 1 / -1; } }
 
-.project-head__title {
-  font-size: var(--text-xl);
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
-}
+/* The cover keeps its own proportions and hangs flush left. */
+.project-cover { margin-bottom: var(--s9); }
+.project-cover img { max-height: 86vh; width: auto; }
 
-.project-head__summary {
-  max-width: 38rem;
-  margin-top: 1.25rem;
-  font-size: 1.2rem;
-  line-height: 1.5;
-}
+/* =========================================================
+   8. Blocks (project and about pages)
+   One column, read from top to bottom.
+   ========================================================= */
+.blocks { display: flex; flex-direction: column; gap: var(--s8); }
 
-/* The facts row: Role, Tools, Timeline, Context, Year */
-.facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 1.25rem var(--gap);
-  margin-top: clamp(2rem, 5vw, 3.5rem);
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
-  font-size: var(--text-s);
-}
-.facts dt { color: var(--muted); margin-bottom: 0.25rem; }
-.facts dd { margin: 0; }
-
-.project-cover { padding: 0 var(--margin); margin-bottom: var(--section); }
-.project-cover img { width: 100%; max-height: 90vh; object-fit: contain; }
-
-/* ---------- Blocks (shared by project and about pages) ---------- */
-.blocks {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(3rem, 7vw, 6rem);
-  padding: 0 var(--margin);
-}
-
-/* Text block: heading on the left, paragraphs on the right */
-.b-text {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 1rem var(--gap);
-}
-.b-text h2 { font-size: var(--text-s); font-weight: 500; color: var(--muted); padding-top: 0.35em; }
-.b-text__body { max-width: var(--reading); font-size: var(--text-m); line-height: 1.7; }
-.b-text__body p + p { margin-top: 0.9em; }
+/* Text: a section title, then paragraphs at the reading measure. */
+.b-text { max-width: var(--measure); }
+.b-text h2 { font-size: var(--fs-title); font-weight: 500; line-height: 1.25; margin-bottom: var(--s3); }
+.b-text__body p + p { margin-top: var(--s4); }
 .b-text__body a { border-bottom: 1px solid var(--accent); }
-.b-text--no-heading .b-text__body { grid-column: 2; }
 
-/* Image widths: full edge to edge, wide with margins, narrow centered */
-.b-figure--full { margin: 0 calc(var(--margin) * -1); }
-.b-figure--wide { width: 100%; }
-.b-figure--narrow { width: min(100%, 44rem); margin-inline: auto; }
+/* Image widths, measured in columns.
+     full    all 12 columns
+     wide    8 columns
+     narrow  6 columns, the same as the text */
+.b-figure--full   { width: 100%; }
+.b-figure--wide   { width: var(--measure-wide); }
+.b-figure--narrow { width: var(--measure); }
 .b-figure img, .b-figure video { width: 100%; height: auto; }
-.b-figure--padded { padding: clamp(1.5rem, 6vw, 5rem); }
+.b-figure--padded { padding: var(--s7); }
+@media screen and (max-width: 640px) { .b-figure--padded { padding: var(--s5); } }
 
-figcaption, .b-caption {
-  margin-top: 0.85rem;
-  font-size: var(--text-s);
+figcaption {
+  max-width: var(--measure);
+  margin-top: var(--s3);
+  font-size: var(--fs-label);
+  line-height: 1.45;
   color: var(--muted);
-  padding-inline: 0;
 }
-.b-figure--full figcaption { padding-inline: var(--margin); }
 
-.b-gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(var(--cols, 2), minmax(0, 1fr));
-  gap: calc(var(--gap) * 0.6);
-}
+/* Gallery: images take equal shares of the 12 columns,
+   so 2 images span 6 columns each, 3 span 4, 4 span 3. */
+.b-gallery__grid { row-gap: var(--gutter); }
+.b-gallery__grid > * { grid-column: span var(--span, 6); }
 .b-gallery__grid img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: var(--ratio, auto); }
+@media screen and (max-width: 1023px) { .b-gallery__grid > * { grid-column: span 3; } }
+@media screen and (max-width: 640px)  { .b-gallery__grid > * { grid-column: span 2; } }
 
 .b-video__frame { position: relative; aspect-ratio: var(--ratio, 16 / 9); background: var(--line); }
 .b-video__frame iframe, .b-video__frame video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
+/* Quote: the opening mark hangs outside the column line, as
+   quotation marks hang in fine typesetting, so the text
+   itself stays flush with everything else. */
 .b-quote {
-  max-width: 60rem;
-  font-size: var(--text-xl);
+  position: relative;
+  max-width: var(--measure-wide);
+  font-size: var(--fs-display);
   font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
-.b-quote::before { content: "“"; color: var(--accent); }
-.b-quote::after { content: "”"; color: var(--accent); }
-.b-quote cite { display: block; margin-top: 1.25rem; font-size: var(--text-s); font-style: normal; color: var(--muted); letter-spacing: 0; }
+.b-quote::before { content: "“"; position: absolute; right: 100%; color: var(--muted); }
+.b-quote::after { content: "”"; color: var(--muted); }
+.b-quote cite { display: block; margin-top: var(--s4); font-size: var(--fs-label); font-style: normal; color: var(--muted); letter-spacing: 0; }
 
-/* Placeholder: shows students where process material belongs */
+/* Placeholder: marks where process material still belongs. */
 .b-placeholder {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
   aspect-ratio: var(--ratio, 16 / 9);
-  max-height: 28rem;
+  max-height: 26rem;
   width: 100%;
-  padding: 2rem;
+  padding: var(--s4);
   border: 1px dashed var(--muted);
   color: var(--muted);
-  font-size: var(--text-s);
-  text-align: center;
+  font-size: var(--fs-label);
+  line-height: 1.45;
 }
-.b-placeholder span { max-width: 26rem; }
-.b-placeholder strong { display: block; color: var(--accent); font-weight: 500; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; }
+.b-placeholder span { max-width: 28rem; }
+.b-placeholder strong { display: block; color: var(--fg); font-weight: 500; }
 
 /* Before and after comparison slider */
 .b-compare__stage { position: relative; overflow: hidden; }
@@ -349,233 +440,184 @@ figcaption, .b-caption {
 .b-compare__stage::after {
   content: "";
   position: absolute; top: 0; bottom: 0; left: var(--pos, 50%);
-  width: 2px; background: var(--accent);
+  width: 2px; background: var(--fg);
 }
-.b-compare input { width: 100%; margin-top: 0.75rem; accent-color: var(--accent); }
+.b-compare input { width: 100%; margin-top: var(--s3); accent-color: var(--accent); }
 
-.b-spacer--small { height: 1rem; }
-.b-spacer--medium { height: 4rem; }
-.b-spacer--large { height: 10rem; }
+.b-spacer--small { height: var(--s4); }
+.b-spacer--medium { height: var(--s8); }
+.b-spacer--large { height: calc(var(--s9) * 2); }
 
-/* ---------- Previous and next project ----------
-   Next sits on the right, because moving forward reads
-   left to right. */
-.pager {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin: var(--section) var(--margin) 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
-}
-.pager a { display: block; max-width: 45%; }
-.pager__next { margin-left: auto; text-align: right; }
-.pager small { display: block; color: var(--muted); font-size: var(--text-s); margin-bottom: 0.25rem; }
-.pager strong { font-size: var(--text-l); font-weight: 500; letter-spacing: -0.02em; transition: color 0.2s; }
+/* Previous on the left, next on the right, because moving
+   forward reads left to right. */
+.pager { margin-top: var(--s9); padding-top: var(--s4); border-top: 2px solid var(--line); }
+.pager__prev { grid-column: 1 / span 4; }
+.pager__next { grid-column: span 4 / -1; text-align: right; }
+.pager small { display: block; font-size: var(--fs-label); color: var(--muted); }
+.pager strong { font-size: var(--fs-title); font-weight: 500; transition: color 0.2s; }
 .pager a:hover strong { color: var(--accent); }
-
-/* ---------- Simple pages (Resume, About, Guide) ---------- */
-.page { padding: clamp(3rem, 8vw, 7rem) var(--margin) var(--section); }
-
-.page__title {
-  font-size: var(--text-xl);
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 0.95;
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+@media screen and (max-width: 640px) {
+  .pager__prev { grid-column: 1 / span 2; }
+  .pager__next { grid-column: span 2 / -1; }
 }
 
-.page__lead { max-width: 52rem; font-size: var(--text-l); line-height: 1.4; }
-.page__actions { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-top: 2rem; font-size: var(--text-s); }
+/* =========================================================
+   9. Resume and About
+   ========================================================= */
+.page { padding-top: var(--s8); }
+.page .page-title { margin-bottom: var(--s5); }
 
-.resume-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 1rem var(--gap);
-  margin-top: clamp(3rem, 6vw, 5rem);
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
+/* A section: its label on the first three columns, its
+   content across the next six. */
+.section { margin-top: var(--s8); padding-top: var(--s4); border-top: 2px solid var(--line); row-gap: var(--s3); }
+.section > h2 { grid-column: 1 / span 3; font-size: var(--fs-label); font-weight: 500; color: var(--muted); }
+.section > div, .section > dl, .section > p { grid-column: 4 / span 6; }
+@media screen and (max-width: 1023px) {
+  .section > h2 { grid-column: 1 / -1; }
+  .section > div, .section > dl, .section > p { grid-column: 1 / -1; }
 }
-.resume-section h2 { font-size: var(--text-s); font-weight: 500; color: var(--muted); }
-.resume-item + .resume-item { margin-top: 2rem; }
-.resume-item__top { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+.resume-item + .resume-item { margin-top: var(--s5); }
+.resume-item__top { display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; }
 .resume-item__what { font-weight: 500; }
 .resume-item__when, .resume-item__where { color: var(--muted); }
-.resume-item ul { margin: 0.6rem 0 0; padding-left: 1.1rem; }
-.resume-item li + li { margin-top: 0.25rem; }
-.skills { display: grid; gap: 0.75rem; }
-.skills div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; }
+
+/* Lists use the midpoint, hung outside the text edge, so
+   every item's text starts on one clean line. */
+.dots { list-style: none; margin: var(--s2) 0 0; padding: 0; line-height: 1.45; }
+.dots li { position: relative; }
+.dots li + li { margin-top: var(--s1); }
+.dots li::before { content: "·"; position: absolute; right: calc(100% + 0.4em); color: var(--muted); }
+
+.skills > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: var(--s4); }
+.skills > div + div { margin-top: var(--s2); }
 .skills dt { color: var(--muted); }
-.skills dd { margin: 0; }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: var(--gap);
-  margin-bottom: clamp(3rem, 7vw, 6rem);
-}
-.about-grid .b-placeholder, .about-grid img { aspect-ratio: 4 / 5; width: 100%; object-fit: cover; }
-.about .blocks { padding: 0; }
+.page__actions { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s5); }
 
-/* ---------- Footer ---------- */
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem 2rem;
-  margin-top: var(--section);
-  padding: 2rem var(--margin);
-  border-top: 1px solid var(--line);
-  font-size: var(--text-s);
-  color: var(--muted);
+.about-head { row-gap: var(--s5); }
+.about-head__portrait { grid-column: 1 / span 4; }
+.about-head__portrait img, .about-head__portrait .b-placeholder { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; max-height: none; }
+.about-head .lead { grid-column: 5 / span 8; max-width: none; font-size: var(--fs-display); line-height: 1.2; letter-spacing: -0.02em; font-weight: 500; }
+.about .blocks { margin-top: var(--s8); }
+@media screen and (max-width: 1023px) {
+  .about-head__portrait { grid-column: 1 / span 3; }
+  .about-head .lead { grid-column: 1 / -1; }
 }
-.site-footer nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
-.site-footer a:hover { color: var(--fg); }
 
 /* ---------- Error message (shown when a content file has a mistake) ---------- */
 .load-error {
-  margin: 4rem var(--margin);
-  padding: 1.5rem;
+  margin: var(--s7) auto;
+  width: calc(100% - 2 * var(--margin));
+  max-width: var(--text-w);
+  padding: var(--s5);
   border: 1px solid var(--accent);
-  max-width: 44rem;
 }
-.load-error h2 { color: var(--accent); font-size: var(--text-m); margin-bottom: 0.5rem; }
+.load-error h2 { color: var(--accent); font-size: var(--fs-body); margin-bottom: var(--s2); }
 .load-error code { background: var(--line); padding: 0.1em 0.35em; }
 
-/* ---------- Small screens ----------
-   A media query applies styles only when the condition is
-   true. Here: when the window is 760px wide or narrower. */
-@media screen and (max-width: 760px) {
-  :root { --grid-columns: 1; }
-  .hero { padding-top: 3rem; }
-  .hero__cue { display: none; }
-  .b-text, .resume-section, .about-grid { grid-template-columns: 1fr; }
-  .b-text--no-heading .b-text__body { grid-column: 1; }
-  .b-gallery__grid { grid-template-columns: 1fr 1fr; }
-  .skills div { grid-template-columns: 1fr; gap: 0; }
-}
-
-/* ---------- Printing ----------
+/* =========================================================
+   10. Printing
    When someone prints a page (or saves it as a PDF), these
-   rules switch to black on white and hide the navigation. */
+   rules switch to black on white and hide the navigation.
+   ========================================================= */
 @media print {
-  :root { --bg: #fff; --fg: #111; --muted: #555; --line: #ddd; --text-xl: 30pt; --text-l: 12pt; --text-m: 10pt; --text-s: 9pt; --section: 1.5rem; }
-  body { background: #fff; color: #111; }
+  :root { --bg: #fff; --fg: #111; --muted: #555; --line: #ccc; --fs-display: 26pt; --fs-large: 10.5pt; --fs-body: 9.5pt; --fs-label: 8.5pt; --fs-title: 11pt; --margin: 0px; --gutter: 8px; }
+  html, body { background: #fff !important; color: #111; }
+  .show-grid body::before { display: none; }
   .site-nav, .site-footer, .page__actions, .no-print { display: none !important; }
-  .page { padding: 0; }
-  .resume-section { margin-top: 1.2rem; padding-top: 0.6rem; break-inside: avoid; }
-  .resume-item + .resume-item { margin-top: 0.7rem; }
-  .resume-section { grid-template-columns: 1.3in 1fr; margin-top: 0.8rem; padding-top: 0.5rem; }
-  .resume-item ul { margin-top: 0.2rem; }
-  .resume-item li + li { margin-top: 0; }
-  .skills { gap: 0.2rem; }
-  .skills div { grid-template-columns: 1in 1fr; }
-  .page__lead { font-size: 11pt; }
-  .page__title { margin-bottom: 0.8rem; }
-  .print-only { display: block !important; margin-top: 0.6rem; }
+  .page { padding-top: 0; }
+  .section { margin-top: 14pt; padding-top: 6pt; border-top-width: 1px; break-inside: avoid; }
+  .section > h2 { grid-column: 1 / span 2; }
+  .section > div, .section > dl, .section > p { grid-column: 3 / -1; }
+  .resume-item + .resume-item { margin-top: 7pt; }
+  .dots { margin-top: 2pt; }
+  .dots li + li { margin-top: 0; }
+  .skills > div + div { margin-top: 1pt; }
+  .print-only { display: block !important; margin-top: 6pt; }
 }
-
-.about-grid .page__lead { font-size: clamp(1.6rem, 3.2vw, 2.75rem); line-height: 1.15; letter-spacing: -0.03em; }
 
 /* =========================================================
-   print.html, the PDF portfolio
-   Each .sheet is one landscape page. On screen they stack
-   like slides. When printed, each one becomes a PDF page.
+   11. print.html, the PDF portfolio
+   Each .sheet is one landscape page on its own 12-column
+   grid. On screen they stack like slides. When printed,
+   each one becomes a PDF page.
    ========================================================= */
-.print-help {
-  max-width: 44rem;
-  margin: 3rem var(--margin);
-  color: var(--muted);
-}
+.print-help { margin-top: var(--s7); margin-bottom: var(--s7); color: var(--muted); }
+.print-help p { max-width: var(--measure); }
 .print-help strong { color: var(--fg); font-weight: 500; }
 
 .sheet {
+  --gutter: 0.12in;
   width: 11in;
   height: 8.5in;
-  margin: 0 auto 2rem;
+  margin: 0 auto var(--s6);
   padding: 0.6in;
   background: #fff;
   color: #111;
   display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
   overflow: hidden;
-  font-size: 10pt;
-  line-height: 1.45;
+  font-size: 9.5pt;
+  line-height: 1.5;
 }
 .sheet--cover { grid-template-rows: 1fr auto; }
-.sheet--cover h1 { font-size: 64pt; font-weight: 500; letter-spacing: -0.05em; line-height: 0.92; align-self: end; }
+.sheet--cover h1 { grid-column: 1 / span 10; font-size: 56pt; font-weight: 500; letter-spacing: -0.045em; line-height: 1; align-self: end; }
 .sheet--cover h1 em { font-style: normal; color: var(--accent); }
-.sheet__footer { display: flex; justify-content: space-between; gap: 2rem; padding-top: 0.2in; border-top: 1px solid #ddd; margin-top: 0.35in; color: #555; }
+.sheet--cover > div { grid-column: 1 / -1; }
+.sheet__intro { max-width: 5.2in; font-size: 12pt; margin-top: 0.3in; color: #444; }
+.sheet__footer { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 0.35in; padding-top: 0.12in; border-top: 1px solid #ccc; color: #555; font-size: 8.5pt; }
 
-.sheet--project { grid-template-columns: 1.15fr 1fr; gap: 0.5in; }
-.sheet__media { display: flex; align-items: center; justify-content: center; background: #f2f2f0; overflow: hidden; }
+.sheet__media { grid-column: 1 / span 7; display: flex; align-items: flex-start; overflow: hidden; }
 .sheet__media img { max-width: 100%; max-height: 7.3in; object-fit: contain; }
-.sheet__text { display: flex; flex-direction: column; }
-.sheet__text h2 { font-size: 30pt; font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin: 0.06in 0 0.16in; }
-.sheet__summary { font-size: 12.5pt; line-height: 1.35; }
-.sheet__facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.12in 0.25in; margin: 0.25in 0; padding-top: 0.15in; border-top: 1px solid #ddd; font-size: 8.5pt; }
+.sheet__text { grid-column: 8 / span 5; display: flex; flex-direction: column; }
+.sheet__text h2 { font-size: 22pt; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 0.12in; }
+.sheet__summary { font-size: 11pt; line-height: 1.45; }
+.sheet__facts { margin: 0.2in 0; padding-top: 0.1in; border-top: 1px solid #ccc; font-size: 8.5pt; }
+.sheet__facts div { display: grid; grid-template-columns: 0.8in 1fr; }
 .sheet__facts dt { color: #777; }
-.sheet__facts dd { margin: 0; }
-.sheet__body h3 { font-size: 8.5pt; font-weight: 500; color: #777; margin-top: 0.14in; }
-.sheet__body p { margin-top: 0.04in; }
+.sheet__body h3 { font-size: 9.5pt; font-weight: 600; margin-top: 0.12in; }
+.sheet__body p { margin-top: 0.03in; }
 .sheet__link { margin-top: auto; font-size: 8.5pt; color: #777; }
 
 @media print {
   /* A named page size, used only by the portfolio sheets,
      so the resume still prints on portrait Letter paper. */
   @page sheet { size: 11in 8.5in; margin: 0; }
-  .sheet { page: sheet; }
+  .sheet { page: sheet; margin: 0; break-after: page; }
   body[data-page="print"] { background: #fff; }
   .print-help { display: none; }
-  .sheet { margin: 0; break-after: page; }
 }
 
 /* =========================================================
-   guide.html
+   12. guide.html
    ========================================================= */
-.guide-toc {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.75rem;
-  margin-top: 2.5rem;
-  font-size: var(--text-s);
-}
+.guide-toc { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s6); font-size: var(--fs-label); }
 .guide-toc a { color: var(--muted); border-bottom: 1px solid var(--line); }
 .guide-toc a:hover { color: var(--fg); border-color: var(--accent); }
 
-.guide-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 1rem var(--gap);
-  margin-top: clamp(4rem, 8vw, 7rem);
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--line);
-  scroll-margin-top: 5rem;
-}
-.guide-section > h2 { font-size: var(--text-l); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; }
-.guide-section > div { max-width: 46rem; }
-.guide-section h3 { font-size: var(--text-m); font-weight: 600; margin: 2.25rem 0 0.6rem; }
+.guide-section { margin-top: var(--s9); padding-top: var(--s4); border-top: 2px solid var(--line); scroll-margin-top: var(--s9); }
+.guide-section > h2 { font-size: var(--fs-display); font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: var(--s6); }
+.guide-section > div { max-width: var(--measure); }
+.guide-section h3 { font-size: var(--fs-title); font-weight: 500; line-height: 1.25; margin: var(--s7) 0 var(--s3); }
 .guide-section h3:first-child { margin-top: 0; }
-.guide-section h4 { font-size: var(--text-m); font-weight: 600; color: var(--accent); margin: 0 0 0.3rem; font-family: ui-monospace, Menlo, monospace; }
-.guide-section p + p { margin-top: 0.8rem; }
+.guide-section h4 { font-size: var(--fs-body); font-weight: 600; margin: 0 0 var(--s1); font-family: ui-monospace, Menlo, monospace; }
+.guide-section p + p { margin-top: var(--s3); }
 .guide-section ol, .guide-section ul { padding-left: 1.2rem; }
-.guide-section li + li { margin-top: 0.5rem; }
+.guide-section li + li { margin-top: var(--s2); }
 .guide-section a { border-bottom: 1px solid var(--accent); }
 
 .guide code, .guide pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.85em; }
-.guide code { background: var(--line); padding: 0.1em 0.35em; border-radius: 3px; }
+.guide code { background: var(--line); padding: 0.1em 0.35em; border-radius: 2px; }
 .guide pre {
-  margin: 1rem 0;
-  padding: 1.1rem 1.25rem;
+  margin: var(--s4) 0;
+  padding: var(--s4);
   background: #111;
   border: 1px solid var(--line);
-  border-radius: 4px;
   overflow-x: auto;
   line-height: 1.5;
   color: #d8d8d4;
 }
-.guide-note { padding-left: 1rem; border-left: 2px solid var(--accent); color: var(--muted); }
-.guide-blocks { display: grid; gap: 2rem; margin-top: 1.5rem; }
-
-@media screen and (max-width: 760px) {
-  .guide-section { grid-template-columns: 1fr; }
-}
+.guide-note { padding-left: var(--s4); border-left: 2px solid var(--accent); color: var(--muted); }
+.guide-blocks { display: grid; gap: var(--s6); margin-top: var(--s5); }

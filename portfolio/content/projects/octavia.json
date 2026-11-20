@@ -1,11 +1,9 @@
 {
   "title": "Octavia",
   "discipline": "Motion, Film",
-  "year": "2025",
   "summary": "A short film about a city that hangs on a net, told through the rings of a fallen tree.",
   "role": "Direction, camera, editing, typography",
   "tools": "Premiere Pro, After Effects",
-  "timeline": "5 weeks",
   "context": "Motion Design II, Linguistic Translation",
   "cover": "images/projects/octavia/cover.jpg",
   "coverAlt": "Film still of a cut tree stump with the words The net will only last so long",
@@ -54,7 +52,7 @@
       "type": "image",
       "src": "images/projects/octavia/cover.jpg",
       "alt": "Film still with type set across the tree rings",
-      "width": "full"
+      "width": "wide"
     },
     {
       "type": "text",

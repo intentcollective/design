@@ -13,7 +13,7 @@
   "menu": [
     { "label": "Works", "link": "index.html" },
     { "label": "Resume", "link": "files/sena-hart-resume.pdf", "newTab": true },
-    { "label": "Li", "link": "https://www.linkedin.com/", "newTab": true },
+    { "label": "in", "fullName": "LinkedIn", "badge": true, "link": "https://www.linkedin.com/", "newTab": true },
     { "label": "About", "link": "about.html" }
   ],
 
@@ -34,10 +34,12 @@
     "text": "#f2f2f0",
     "muted": "#8a8a86",
     "line": "#2a2a2a",
+    "gridLine": "rgba(255, 255, 255, 0.07)",
     "accent": "#ff3b2f",
     "font": "DM Sans",
     "googleFont": false
   },
 
+  "showGrid": true,
   "showGuideLink": true
 }

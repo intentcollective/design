@@ -25,15 +25,13 @@ content:
     filename: "{primary}.json"
     view:
       primary: title
-      fields: [title, discipline, year]
+      fields: [title, discipline]
     fields:
       - { name: title, label: Title, type: string, required: true }
       - { name: discipline, label: Discipline, type: string, description: "For example Poster, Typography" }
-      - { name: year, label: Year, type: string }
       - { name: summary, label: One-line summary, type: text, description: "What the project is and why it matters, in one sentence. This is what reviewers read first." }
       - { name: role, label: Role, type: string }
       - { name: tools, label: Tools, type: string }
-      - { name: timeline, label: Timeline, type: string }
       - { name: context, label: Context, type: string, description: "Class, client or competition" }
       - { name: cover, label: Cover image, type: image }
       - { name: coverAlt, label: Cover description, type: string, description: "Describe the image for people who can't see it." }
@@ -54,13 +52,13 @@ content:
             fields:
               - { name: src, label: Image, type: image }
               - { name: alt, label: Description, type: string }
-              - { name: width, label: Width, type: select, options: { values: [full, wide, narrow] } }
+              - { name: width, label: Width, type: select, options: { values: [full, wide, narrow] }, description: "full is 12 columns, wide 8, narrow 6" }
               - { name: background, label: Background color, type: string, description: "Optional, for example #efefed" }
               - { name: caption, label: Caption, type: string }
           - name: gallery
             label: Gallery
             fields:
-              - { name: columns, label: Columns, type: number }
+              - { name: columns, label: Images per row, type: select, options: { values: ["2", "3", "4"] } }
               - { name: ratio, label: Crop ratio, type: string, description: "Optional, for example 4/5 or 1/1" }
               - name: images
                 label: Images
@@ -125,6 +123,8 @@ content:
           - { name: label, label: Label, type: string }
           - { name: link, label: Link, type: string, description: "A page like resume.html or a full web address" }
           - { name: newTab, label: Open in a new tab, type: boolean }
+          - { name: badge, label: Show as an outlined mark, type: boolean, description: "For a short label like in" }
+          - { name: fullName, label: Full name for screen readers, type: string, description: "For example LinkedIn, when the label is in" }
       - { name: works, label: Projects in order, type: string, list: true, description: "The file name of each project, without .json. Drag to reorder. Remove a line to hide a project." }
       - { name: resumePdf, label: Resume PDF, type: file }
       - { name: portfolioPdf, label: Portfolio PDF, type: file }
@@ -136,9 +136,11 @@ content:
           - { name: text, label: Text color, type: string }
           - { name: muted, label: Secondary text color, type: string }
           - { name: line, label: Line color, type: string }
+          - { name: gridLine, label: Grid line color, type: string }
           - { name: accent, label: Accent color, type: string }
           - { name: font, label: Typeface, type: string }
           - { name: googleFont, label: Load typeface from Google Fonts, type: boolean }
+      - { name: showGrid, label: Draw the column grid behind the page, type: boolean }
       - { name: showGuideLink, label: Show template guide link in footer, type: boolean }
 
   # ---------- About ----------
