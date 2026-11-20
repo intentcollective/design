@@ -963,3 +963,7 @@ figcaption {
 .stella-example__code { width: min(100%, 360px); }
 .stella-example__state + .stella-example__state { padding-top: var(--s4); border-top: 1px solid var(--gold-muted); }
 .stella-example__state + .stella-example__state { border-top: 2px solid var(--gold-ink); }
+/* The example as two gold boxes, one for each state. */
+.stella-example { padding: 0; background: none; display: flex; flex-direction: column; gap: var(--s3); }
+.stella-example__state { padding: var(--s5); background: var(--gold); }
+.stella-example__state + .stella-example__state { margin-top: 0; padding-top: var(--s5); border-top: 0; }
