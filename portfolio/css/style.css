@@ -612,23 +612,35 @@ figcaption {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   /* The text row has a fixed height, so the images start at the
      same line on every page. Keep each description to about
-     70 words so it fits. */
-  grid-template-rows: 240px 1fr;
-  gap: 48px 24px;
+     80 words so it fits. */
+  grid-template-rows: 170px 1fr;
+  gap: 40px 24px;
   overflow: hidden;
   font-size: 22px;
   line-height: 1.5;
 }
 
-/* Two hanglines. Title, tools and text start together on the
-   first. The tops of all images start together on the second.
-   Each text column sits over the image column below it. */
-.deck__title { grid-column: 1 / span 4; font-size: 44px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
-.deck__tools { grid-column: 5 / span 4; list-style: none; margin: 0; padding: 0; color: #555; }
-.deck__text { grid-column: 9 / span 4; }
+/* The page splits at the center, between columns 6 and 7.
+   Two hanglines. The title and the description start together
+   on the first. The cover and the main image start together on
+   the second. The description sits over the right half at the
+   same six-column measure as the site's paragraphs. */
+.deck__head { grid-column: 1 / span 6; }
+.deck__title { font-size: 44px; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; }
+.deck__tools { margin-top: 12px; color: #555; }
+.deck__text { grid-column: 7 / span 6; }
 
-.deck__small { grid-column: 1 / span 4; display: grid; grid-template-rows: 1fr 1fr; gap: 24px; min-height: 0; }
-.deck__large { grid-column: span 4; min-height: 0; }
+.deck__cover { grid-column: 1 / span 6; min-height: 0; }
+.deck__right {
+  grid-column: 7 / span 6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;      /* three columns each */
+  grid-template-rows: 2fr 1fr;
+  gap: 24px;
+  min-height: 0;
+}
+.deck__main { grid-column: 1 / -1; }
+.deck__right > div { min-height: 0; }
 .deck img, .deck__box { width: 100%; height: 100%; object-fit: cover; }
 
 /* Placeholder boxes take the project's color, like on the site. */
@@ -645,12 +657,12 @@ figcaption {
 
 /* Cover: black, on the same columns as the project pages. */
 .deck--cover { background: #000; color: #fff; }
-.deck__name { grid-column: 1 / span 4; }
+.deck__name { grid-column: 1 / span 6; }
 .deck__name h1 { font-size: 44px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
 .deck__name p { margin-top: 8px; color: #aaa; }
-.deck__contact { grid-column: 5 / span 4; list-style: none; margin: 0; padding: 0; }
-.deck__statement { grid-column: 9 / span 4; grid-row: 2; align-self: end; }
-.deck__label { grid-column: 1 / span 4; grid-row: 2; align-self: end; }
+.deck__contact { grid-column: 7 / span 6; list-style: none; margin: 0; padding: 0; }
+.deck__statement { grid-column: 7 / span 6; grid-row: 2; align-self: end; }
+.deck__label { grid-column: 1 / span 6; grid-row: 2; align-self: end; }
 
 @media print {
   @page deck { size: 1920px 1080px; margin: 0; }

@@ -227,9 +227,10 @@ const Pages = {
       return list;
     };
 
-    // One page per project. Four columns hold two small images,
-    // stacked. Two large images take four columns each. The title,
-    // tools and text sit above them on the same column lines.
+    // One page per project, split at the center. The left half
+    // holds the title and tools above the cover. The right half
+    // holds the description above the main image and two small
+    // process images.
     const pages = projects.map(({ data: p }, n) => {
       const all = images(p);
       const cover = all[0];
@@ -238,15 +239,18 @@ const Pages = {
       const small = rest.filter(x => x !== main).slice(0, 2);
       const idea = (p.blocks || []).find(b => b.type === "text" && /idea/i.test(b.heading || ""));
       const text = [p.summary, idea ? idea.body.split(/\n\s*\n/)[0] : ""].filter(Boolean).join(" ");
-      const tools = (p.tools || "").split(",").map(t => t.trim()).filter(Boolean);
       return `
         <section class="deck">
-          <h2 class="deck__title">${n + 1}. ${esc(p.title)}</h2>
-          <ul class="deck__tools">${tools.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+          <div class="deck__head">
+            <h2 class="deck__title">${n + 1}. ${esc(p.title)}</h2>
+            <p class="deck__tools">${esc(p.tools || "")}</p>
+          </div>
           <p class="deck__text">${esc(text)}</p>
-          <div class="deck__small">${small.map(item => picture(item, p, false)).join("")}</div>
-          <div class="deck__large">${picture(cover, p, true)}</div>
-          <div class="deck__large">${main ? picture(main, p, false) : ""}</div>
+          <div class="deck__cover">${picture(cover, p, true)}</div>
+          <div class="deck__right">
+            <div class="deck__main">${main ? picture(main, p, false) : ""}</div>
+            ${small.map(item => `<div>${picture(item, p, false)}</div>`).join("")}
+          </div>
         </section>`;
     }).join("");
 
