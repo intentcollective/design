@@ -104,7 +104,7 @@ const Stars = {
   },
   // A star you can click to claim.
   button(n, size = 22) {
-    return `<button class="star-btn" type="button" data-star="${n}" aria-label="Star ${n}">${this.svg(n, size)}</button>`;
+    return `<button class="star-btn" type="button" data-star="${n}" aria-label="Stella ${n}">${this.svg(n, size)}</button>`;
   },
 
   /* ---------- The gold box ---------- */
@@ -129,7 +129,7 @@ const Stars = {
       <div class="stella-box__win${fresh ? " is-new" : ""}">
         <span class="stella-box__badge">${this.svg(n, 64, true)}<span class="glint" aria-hidden="true"></span></span>
         <div>
-          <p class="stella-box__q">Star ${n} of ${this.total}.</p>
+          <p class="stella-box__q">Stella ${n} of ${this.total}.</p>
           <p class="stella-box__note">${all ? "All eight. Imperial Scholar." : "Take a screenshot to claim it."}</p>
         </div>
       </div>`);
@@ -149,7 +149,7 @@ const Stars = {
           <p class="stella-final__row">${row}</p>
         </div>
       </div>
-      <p class="stella-final__msg">All eight stars, found. You read to the end, looked closely, got curious, and got in touch. That’s what reviewers notice. Take a screenshot and show it to Henry.</p>`);
+      <p class="stella-final__msg">All eight Stellas, found. You read to the end, looked closely, got curious, and got in touch. That’s what reviewers notice. Take a screenshot and show it to Henry.</p>`);
     dialog.classList.add("stella-final");
     dialog.addEventListener("close", () => dialog.classList.remove("stella-final"), { once: true });
     // A rising scale, one note for each star.
@@ -214,7 +214,7 @@ const Stars = {
     el.innerHTML = `
       <div class="stella-case__row">
         ${all ? `<span class="stella-case__title">Imperial Scholar</span>` : ""}
-        <span class="stella-case__stars" aria-label="${list.length} of ${this.total} stars found">
+        <span class="stella-case__stars" aria-label="${list.length} of ${this.total} Stellas found">
           ${Array.from({ length: this.total }, (_, i) => list.includes(i + 1)
             ? (i + 1 === latest ? `<span class="is-pop">${this.svg(0, 16)}</span>` : this.svg(0, 16))
             : this.outline(16)).join("")}
@@ -222,7 +222,7 @@ const Stars = {
       </div>
       ${all ? "" : `
       <form class="stella-case__code">
-        <input type="text" autocomplete="off" placeholder="Have a code word? Enter it here" aria-label="Star code">
+        <input type="text" autocomplete="off" placeholder="Have a code word? Enter it here" aria-label="Code word">
         <button type="submit">Add</button>
       </form>`}`;
     const form = el.querySelector("form");
