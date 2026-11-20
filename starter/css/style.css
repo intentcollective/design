@@ -347,7 +347,7 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
   align-items: flex-end;
   padding: var(--s4);
   background: var(--hue);
-  color: #111;
+  color: color-mix(in srgb, var(--fg) 80%, transparent);
   font-size: var(--fs-label);
   transition: filter 0.3s;
 }
@@ -456,8 +456,8 @@ figcaption {
    cover placeholder uses the full color. */
 .has-hue .b-placeholder {
   border: 0;
-  background: color-mix(in srgb, var(--hue) 38%, var(--bg));
-  color: color-mix(in srgb, var(--fg) 80%, transparent);
+  background: color-mix(in srgb, var(--hue) 40%, var(--bg));
+  color: color-mix(in srgb, var(--fg) 75%, transparent);
 }
 .b-placeholder--cover,
 .has-hue .b-placeholder--cover {
@@ -466,9 +466,8 @@ figcaption {
   width: var(--measure-wide);
   margin-inline: auto;
   background: var(--hue, var(--line));
-  color: #111;
+  color: color-mix(in srgb, var(--fg) 80%, transparent);
 }
-.b-placeholder--cover strong { color: #111; }
 
 /* Previous on the left, next on the right, because moving
    forward reads left to right. */
