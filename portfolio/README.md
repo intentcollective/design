@@ -17,6 +17,12 @@ Plain HTML, CSS and JavaScript. No framework and no build step.
 - `print.html` lays out the PDF portfolio. `resume.html` is the source of the resume PDF. Print either page to PDF from the browser and save it into `files/`.
 - `.pages.yml` at the top of the repository lets [Pages CMS](https://pagescms.org) edit the content files through forms.
 
+## Password screen
+
+`passwordHash` in `content/settings.json` turns on a simple password screen. It holds the SHA-256 hash of the password, not the password itself. To change the password, replace it with the hash of the new one (for example, `echo -n newpassword | shasum -a 256`). Remove the line to turn the screen off.
+
+This only keeps casual visitors and search engines out. Every file in the site and the repository is still public, so never rely on it to protect anything private.
+
 ## Preview locally
 
 Browsers block the content files when a page is opened straight from disk, so run a small server in this folder and visit `http://localhost:8000`.

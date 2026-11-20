@@ -159,6 +159,31 @@ h1, h2, h3 { text-wrap: balance; }         /* headings break into even lines */
   column-gap: var(--gutter);
 }
 
+/* ---------- Password screen ----------
+   While locked, only the form shows. See Site.gate() in site.js. */
+.is-locked body > *:not(.gate) { display: none !important; }
+.gate {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s3);
+  width: min(100% - 2 * var(--margin), 20rem);
+  margin: 0 auto;
+}
+.gate label { font-size: var(--fs-title); font-weight: 500; }
+.gate input {
+  font: inherit;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--muted);
+  padding: var(--s2) 0;
+  outline: none;
+}
+.gate input:focus { border-color: var(--accent); }
+.gate__error { min-height: 1.6em; font-size: var(--fs-label); color: var(--accent); }
+
 /* =========================================================
    4. Navigation and footer
    ========================================================= */

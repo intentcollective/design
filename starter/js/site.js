@@ -51,9 +51,55 @@ const Site = {
       throw err;
     }
     this.applyTheme();
+    await this.gate();
     this.buildNav();
     this.buildFooter();
     return this.settings;
+  },
+
+  /* A simple password screen. Set "passwordHash" in settings.json
+     to turn it on, or remove it to turn it off.
+
+     This only keeps casual visitors and search engines out. The
+     files themselves are still public, so never use it to hide
+     anything private. The hash is the SHA-256 of the password, so
+     the password itself is not written in any file. */
+  async gate() {
+    const hash = this.settings.passwordHash;
+    if (!hash) return document.documentElement.classList.remove("is-locked");
+    let open = false;
+    try { open = localStorage.getItem("unlocked") === hash; } catch (e) {}
+    if (open) return document.documentElement.classList.remove("is-locked");
+
+    document.documentElement.classList.add("is-locked");
+    const gate = document.createElement("form");
+    gate.className = "gate";
+    gate.innerHTML = `
+      <label for="gate-input">${esc(this.settings.name)}</label>
+      <input id="gate-input" type="password" placeholder="Password" autocomplete="current-password" autofocus>
+      <p class="gate__error" aria-live="polite"></p>`;
+    document.body.appendChild(gate);
+
+    const sha = async text => {
+      const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+      return [...new Uint8Array(bytes)].map(b => b.toString(16).padStart(2, "0")).join("");
+    };
+
+    await new Promise(resolve => {
+      gate.addEventListener("submit", async event => {
+        event.preventDefault();
+        const input = gate.querySelector("input");
+        if (await sha(input.value.trim().toLowerCase()) === hash) {
+          try { localStorage.setItem("unlocked", hash); } catch (e) {}
+          gate.remove();
+          document.documentElement.classList.remove("is-locked");
+          resolve();
+        } else {
+          gate.querySelector(".gate__error").textContent = "Try again.";
+          input.select();
+        }
+      });
+    });
   },
 
   /* Copy the theme colors from settings.json into the CSS variables. */
